@@ -38,3 +38,12 @@
     font-weight: 600;
     color: rgb(34, 34, 34);
   }
+  
+  .img{
+    text-align: center;
+    display: block;
+    align-items: center;
+    margin: auto;
+    width: 100;
+    height: 10
+  }
