@@ -1,0 +1,232 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/JasonTPhillipsJr/CarbonEmissionTracker/main/co2schema.json",
+  "title": "CO2 Emissions",
+  "description": "Tracks the carbon emissions from multiple suppliers through different transportation methods",
+  "x-vendia-acls": {
+    "MotorAcl": {
+      "type": "Motor"
+    },
+    "BatteryAcl": {
+      "type": "Battery"
+    },
+    "GroundTransportationAcl": {
+      "type": "GroundTransportation"
+    },
+    "SeaTransportationAcl": {
+      "type": "SeaTransportation"
+    },
+    "HornetPowerToolsAcl": {
+      "type": "HornetPowerTool"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "Motor": {
+      "description": "A simple motor to power various tools",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "PartNumber": {
+            "description": "Part Number",
+            "type": "string"
+          },
+          "SerialNumber": {
+            "description": "Serial Number",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Total co2 for transportation of part, measured in ppm",
+            "type": "number"
+          },
+          "dateManufactured": {
+            "description": "Date part was manufactured",
+            "type": "string",
+            "format": "date"
+          },
+          "costManufactured": {
+            "description": "Cost of manufacturing part",
+            "type": "number"
+          },
+          "salesPrice": {
+            "description": "Sales price of part",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "Battery": {
+      "description": "Battery information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "partNumber": {
+            "description": "Part Number",
+            "type": "string"
+          },
+          "serialNumber": {
+            "description": "Serial number for part",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Total co2 for transportation of part, measured in ppm",
+            "type": "number"
+          },
+          "dateManufactured": {
+            "description": "Date part was manufactured",
+            "type": "string",
+            "format": "date"
+          },
+          "costManufactured": {
+            "description": "Cost of manufacturing part",
+            "type": "number"
+          },
+          "salesPrice": {
+            "description": "Sales price of part",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "GroundTransportation": {
+      "description": "Ground Transport information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackingNumber": {
+            "description": "Number to track the vehicle",
+            "type": "string"
+          },
+          "routeId": {
+            "description": "Route ID",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Carbon output for transportation (type * distance)",
+            "type": "number"
+          },
+          "vehicleID": {
+            "description": "Identification number for the vehicle",
+            "type": "string"
+          },
+          "fuelCost": {
+            "description": "Price for fuel",
+            "type": "number"
+          },
+          "laborCost": {
+            "description": "Price for labor involved",
+            "type": "number"
+          },
+          "dateShipped": {
+            "description": "Date part was shipped",
+            "type": "string",
+            "format": "date"
+          },
+          "dateArrived": {
+            "description": "Date part arrived",
+            "type": "string",
+            "format": "date"
+          },
+          "bill": {
+            "description": "Bill to customer",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SeaTransportation": {
+      "description": "Sea Transport information",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "trackingNumber": {
+            "description": "Number to track the ship",
+            "type": "string"
+          },
+          "routeID": {
+            "description": "Route ID",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Carbon output for transportation (type * distance)",
+            "type": "number"
+          },
+          "shipID": {
+            "description": "Identification number for the ship",
+            "type": "string"
+          },
+          "fuelCost": {
+            "description": "Price for fuel",
+            "type": "number"
+          },
+          "laborCost": {
+            "description": "Price for labor involved",
+            "type": "number"
+          },
+          "dateShipped": {
+            "description": "Date part was shipped",
+            "type": "string",
+            "format": "date"
+          },
+          "dateArrived": {
+            "description": "Date part arrived",
+            "type": "string",
+            "format": "date"
+          },
+          "bill": {
+            "description": "Bill to customer",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "HornetPowerTool": {
+      "description": "Description of the tool",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "toolType": {
+            "description": "Type of tool",
+            "type": "string"
+          },
+          "serialNumber": {
+            "description": "Serial number for the tool",
+            "type": "string"
+          },
+          "co2": {
+            "description": "Total co2 for all the parts involved in the tool",
+            "type": "number"
+          },
+          "partsCost": {
+            "description": "Cost of manufacturing each part for the tool",
+            "type": "number"
+          },
+          "salesPrice": {
+            "description": "Sales price of part",
+            "type": "number"
+          },
+          "motorUsed": {
+            "description": "Motor parts used to make the tool",
+            "type": "string"
+          },
+          "batteryUsed": {
+            "description": "Battery part used to make the tool",
+            "type": "string"
+          },
+          "transportationMethod": {
+            "type": "string",
+            "enum": [
+              "ground",
+              "ship"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
