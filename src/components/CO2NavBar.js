@@ -7,16 +7,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 class CO2NavBar extends Component {
+
   render() {
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light">
         <Container fluid>
           <a href="https://www.vendia.net/">
             <img
               src="images/Vendia.jpg"
               width="90%"
               height="60"
-              margin="auto"
               // className="d-inline-block align-top"
               alt="Vendia logo"
             />
