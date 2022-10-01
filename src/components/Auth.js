@@ -15,6 +15,13 @@ export default function (props) {
         <div className="Auth-form-container">
 
           <form className="Auth-form">
+          <img
+src="images/logo.png"
+width="60"
+height="60"
+class="center"
+alt="React Bootstrap logo"
+/>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign In</h3>
               <div className="text-center">
