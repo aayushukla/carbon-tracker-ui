@@ -1,9 +1,10 @@
 import ConnectionService from './ConnectionService';
 
+const getEntity = ConnectionService();
+
 class MotorService {
 
     async getMotorData() {
-        const getEntity = ConnectionService();
         const response = await getEntity.motor.list();
 
         console.log("Fetched Motor Data:", response.items);

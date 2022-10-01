@@ -41,7 +41,7 @@ class CO2NavBar extends Component {
                 <NavDropdown.Item href="#action4">Product 3</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Tools" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">CO2 Calculator</NavDropdown.Item>
+                <NavDropdown.Item href="/totalco2">CO2 Calculator</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">CO2 History</NavDropdown.Item>
               </NavDropdown>
             </Nav>
