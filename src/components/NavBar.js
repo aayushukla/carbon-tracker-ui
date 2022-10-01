@@ -9,13 +9,24 @@ function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <img
+        {/* <img
           src="images/logo.png"
           width="60"
           height="60"
           className="d-inline-block align-top"
           alt="React Bootstrap logo"
-        />
+        /> */}
+
+        <a href="https://www.vendia.net/">
+          <img
+            src="images/Vendia.jpg"
+            width="90%"
+            height="60"
+            margin="auto"
+            // className="d-inline-block align-top"
+            alt="Vendia logo"
+          />
+        </a>
 
         <Navbar.Brand href="#">Hornet Power Tools</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />

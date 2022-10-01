@@ -11,15 +11,17 @@ class CO2NavBar extends Component {
     return (
       <Navbar bg="light" expand="lg">
         <Container fluid>
-          <img
-            src="images/logo.png"
-            width="60"
-            height="60"
-            className="d-inline-block align-top"
-            alt="React Bootstrap logo"
-          />
-
-          <Navbar.Brand href="#">CO2 Emission</Navbar.Brand>
+          <a href="https://www.vendia.net/">
+            <img
+              src="images/Vendia.jpg"
+              width="90%"
+              height="60"
+              margin="auto"
+              // className="d-inline-block align-top"
+              alt="Vendia logo"
+            />
+          </a>
+          <Navbar.Brand href="/home" style={{marginLeft: 30}}>CO2 Emission</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -27,7 +29,7 @@ class CO2NavBar extends Component {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1">Home</Nav.Link>
+              <Nav.Link href="/home">Home</Nav.Link>
               <NavDropdown title="Sources" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Battery Supplier</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Motor Supplier</NavDropdown.Item>
