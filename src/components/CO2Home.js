@@ -5,13 +5,13 @@ class CO2Home extends Component {
     render() {
         return (
             <div>
-                <CO2NavBar/>
-                <h4 style = {{textAlign: "center"}}>Welcome To CO2 Emission</h4>
+                <CO2NavBar />
+                <h4 style={{ textAlign: "center" }}>Welcome To CO2 Emission</h4>
                 <img
-              src="images/co2home.png"
-              className="img"
-            />
-                
+                    src="images/co2home.png"
+                    className="img"
+                />
+
             </div>
         );
     }
