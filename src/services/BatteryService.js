@@ -13,6 +13,25 @@ class BatteryService {
         return response.items;
     }
 
+    async getBatteryDataByID (serialNumber){
+
+        const batteryData = await getEntity.battery.list(
+            {
+             filter: {
+                 serialNumber: {
+                   contains: serialNumber,
+                 },
+            }
+         
+         }
+        );
+ 
+         console.log("Battery ID:", batteryData.items);
+ 
+         return batteryData.items;
+     }
+
+
     //working
     async addBattery() {
         console.log("Adding battery:")

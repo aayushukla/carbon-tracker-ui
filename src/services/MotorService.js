@@ -11,6 +11,26 @@ class MotorService {
 
         return response.items;
     }
+
+
+    async getMotorDataByID (serialNumber){
+
+        const motorData = await getEntity.motor.list(
+         {
+             filter: {
+                 SerialNumber: {
+                   contains: serialNumber,
+                 },
+            }
+         
+         }
+        );
+ 
+         console.log("ID:", motorData.items);
+ 
+         return motorData.items;
+     }
+     
 }
 
 
