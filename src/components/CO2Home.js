@@ -5,14 +5,13 @@ function CO2Home() {
 
         <div >
             <CO2NavBar />
-            <h4 style={{ textAlign: "center" }}>Welcome To CO2 Tracker</h4>
+            <h4 style={{ textAlign: "center", marginTop: '30px' }}>Welcome To CO2 Tracker</h4>
             <img
                 src="images/co2_main.png"
-                className="img"
+                className="co2HomeImg"
             />
 
         </div>
     );
 }
-
 export default CO2Home;
