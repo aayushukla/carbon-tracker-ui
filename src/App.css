@@ -15,12 +15,14 @@
 .hpt-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  width: 100vw;
-  height: 100vh;
+  align-items: center;
+  height: 90vh;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
   border-radius: 10px;
-
+  overflow-y: scroll;
+  border-radius: 8px;
+  padding-bottom: 15em;
+  padding-top: 15em;
 }
 
 .Auth-form {
