@@ -10,15 +10,13 @@ function CO2NavBar()  {
     return (
       <Navbar bg='light'>
         <Container fluid>
-          <a href="https://www.vendia.net/">
-            <img
-              src="images/Vendia.jpg"
-              width="90%"
-              height="60"
-              // className="d-inline-block align-top"
+        <img
+              src="images/vendia2.png"
+              width="15%"
+              height="15%"
+              className="d-inline-block align-top"
               alt="Vendia logo"
             />
-          </a>
           <Navbar.Brand href="/home" style={{marginLeft: 10}}>CO2 Tracker</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">

@@ -68,3 +68,14 @@
     height: 30%;
     margin-top: 100;
   }
+
+
+  .img-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
+    margin-top: 100;
+    padding-left: 100px;
+  }
