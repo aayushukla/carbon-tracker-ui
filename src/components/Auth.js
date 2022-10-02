@@ -1,27 +1,34 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
 
+  const navigate = useNavigate();
+
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
+  }
+
+  const handleSubmit = () => {
+    console.log("In handleclicked");
+    navigate('/home');
   }
 
   if (authMode === "signin") {
     return (
       <>
-        <NavBar />
         <div className="Auth-form-container">
 
-          <form className="Auth-form">
-          <img
+          <form className="Auth-form" onSubmit={handleSubmit}>
+          {/* <img
 src="images/logo.png"
 width="60"
 height="60"
 class="center"
 alt="React Bootstrap logo"
-/>
+/> */}
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign In</h3>
               <div className="text-center">

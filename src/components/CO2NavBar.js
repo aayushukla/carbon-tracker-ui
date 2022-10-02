@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -6,11 +5,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-class CO2NavBar extends Component {
+function CO2NavBar()  {
 
-  render() {
     return (
-      <Navbar bg="light">
+      <Navbar bg='light'>
         <Container fluid>
           <a href="https://www.vendia.net/">
             <img
@@ -21,7 +19,7 @@ class CO2NavBar extends Component {
               alt="Vendia logo"
             />
           </a>
-          <Navbar.Brand href="/home" style={{marginLeft: 30}}>CO2 Emission</Navbar.Brand>
+          <Navbar.Brand href="/home" style={{marginLeft: 10}}>CO2 Tracker</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -48,19 +46,27 @@ class CO2NavBar extends Component {
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
-              <Form.Control
+              {/* <Form.Control
                 type="search"
                 placeholder="Search"
                 className="me-2"
                 aria-label="Search"
-              />
-              <Button variant="outline-success">Search</Button>
+              /> */}
+              <Button variant="outline-success">Logout</Button>
             </Form>
+            {/* <a href="https://www.csus.edu/">
+            <img
+              src="images/logo.png"
+              width="100%"
+              height="60"
+              className="d-inline-block align-top"
+              alt="Sac state logo"
+            />
+          </a> */}
           </Navbar.Collapse>
         </Container>
       </Navbar>
     );
   }
-}
 
 export default CO2NavBar;

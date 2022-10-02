@@ -1,17 +1,18 @@
 import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import CO2NavBar from './CO2NavBar';
+// import NavDropdown from 'react-bootstrap/NavDropdown';
+// import Button from 'react-bootstrap/Button';
+// import Form from 'react-bootstrap/Form';
+// import Nav from 'react-bootstrap/Nav';
 
 function NavBar() {
-  
-    if(window.location.pathname === "/") {
-      return (
-        <Navbar bg="light" expand="lg">
-          <Container fluid>
-            {/* <img
+
+  if (window.location.pathname === "/") {
+    return (
+      <Navbar bg="light" expand="lg">
+        <Container fluid>
+          {/* <img
           src="images/logo.png"
           width="60"
           height="60"
@@ -19,28 +20,27 @@ function NavBar() {
           alt="React Bootstrap logo"
         /> */}
 
-            <a href="https://www.vendia.net/">
-              <img
-                src="images/Vendia.jpg"
-                width="50%"
-                height="50"
-                margin="auto"
-                // className="d-inline-block align-top"
-                alt="Vendia logo"
-              />
-            </a>
+          <a href="https://www.vendia.net/">
+            <img
+              src="images/Vendia.jpg"
+              width="90%"
+              height="60"
+              // className="d-inline-block align-top"
+              alt="Vendia logo"
+            />
+          </a>
 
-            <Navbar.Brand href="#">CO2 Tracker</Navbar.Brand>
-<Navbar.Toggle aria-controls="navbarScroll" />
-<Navbar.Collapse id="navbarScroll">
-<Nav
-className="me-auto my-2 my-lg-0"
-style={{ maxHeight: '100px' }}
-navbarScroll
->
-<Nav.Link href="#action1">Home</Nav.Link>
-<Nav.Link href="#action2">Dashboard</Nav.Link>
-{/* <NavDropdown title="Carbon Emission" id="navbarScrollingDropdown">
+          <Navbar.Brand href="https://www.vendia.net/"  style={{text: 'center'}}><h2>CO2 Tracker</h2></Navbar.Brand>
+          {/* <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: '100px' }}
+              navbarScroll
+            > */}
+              {/* <Nav.Link href="https://www.vendia.net/">Home</Nav.Link>
+              <Nav.Link href="#action2">Dashboard</Nav.Link> */}
+              {/* <NavDropdown title="Carbon Emission" id="navbarScrollingDropdown">
 <NavDropdown.Item href="#action3">Tool 1</NavDropdown.Item>
 <NavDropdown.Item href="#action4">
 Tool 2
@@ -50,21 +50,37 @@ Tool 2
 About
 </NavDropdown.Item>
 </NavDropdown> */}
-</Nav>
-<Form className="d-flex">
-<Form.Control
-type="search"
-placeholder="Search"
-className="me-2"
-aria-label="Search"
-/>
-<Button variant="outline-success">Search</Button>
-</Form>
-</Navbar.Collapse>
-</Container>
-</Navbar>
+            {/* </Nav> */}
+            {/* <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+              <Button variant="outline-success">Search</Button>
+            </Form> */}
+             <a href="https://www.csus.edu/">
+            <img
+              src="images/logo.png"
+              width="100%"
+              height="60"
+              className="d-inline-block align-top"
+              alt="Sac state logo"
+            />
+          </a>
+          {/* </Navbar.Collapse> */}
+        </Container>
+      </Navbar>
 
-      )}
+    )
+  }
+
+  if (window.location.pathname !== "/") {
+    return (
+      <CO2NavBar/>
+    )
+  }
 }
 
 export default NavBar;

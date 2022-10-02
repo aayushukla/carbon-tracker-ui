@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import MotorService from '../services/MotorService';
 import BatteryService from '../services/BatteryService';
 import { Link } from 'react-router-dom';
+import NavBar from './NavBar';
 
 function TotalCO2Component() {
     const [batteryData, setBatteryData] = useState([]);
