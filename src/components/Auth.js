@@ -9,6 +9,7 @@ export default function (props) {
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
+    console.log('authmod',authMode);
   }
 
   const handleSubmit = () => {
@@ -59,7 +60,7 @@ alt="React Bootstrap logo"
                 </button>
               </div>
               <p className="text-center mt-2">
-                Forgot <a href="#">password?</a>
+                 <a href="#">Forgot password?</a>
               </p>
             </div>
           </form>
@@ -70,12 +71,10 @@ alt="React Bootstrap logo"
   }
 
   return (
-    <>
-      <NavBar />
       <div className="Auth-form-container">
         <form className="Auth-form">
           <div className="Auth-form-content">
-            <h3 className="Auth-form-title">Sign In</h3>
+            <h3 className="Auth-form-title">Sign Up</h3>
             <div className="text-center">
               Already registered?{" "}
               <span className="link-primary" onClick={changeAuthMode}>
@@ -111,12 +110,11 @@ alt="React Bootstrap logo"
                 Submit
               </button>
             </div>
-            <p className="text-center mt-2">
-              Forgot <a href="#">password?</a>
-            </p>
+            {/* <p className="text-center mt-2">
+              <a href="#">Forgot password?</a>
+            </p> */}
           </div>
         </form>
       </div>
-    </>
   )
 }
