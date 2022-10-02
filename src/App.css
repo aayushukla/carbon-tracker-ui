@@ -11,6 +11,18 @@
     margin-top: -3%;
   }
   
+
+  .hpt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+    border-radius: 8px;
+
+  }
+  
   .Auth-form {
     width: 420px;
     box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
