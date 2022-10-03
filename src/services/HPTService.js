@@ -11,7 +11,7 @@ class HPTService {
         return response.items;
     }
 
-    async getHornetPowerToolDataByID (serialNumber){
+    async getHornetPowerToolDataByID (serialNumber, type){
 
         const hornetPowerToolData = await getEntity.hornetPowerTool.list(
             {
@@ -22,6 +22,37 @@ class HPTService {
             }
         }
         );
+
+        if (type == 'motor')
+        {
+            const motorData = await getEntity.motor.list(
+                {
+                 filter: {
+                     SerialNumber: {
+                       contains: hornetPowerToolData.items[0].motorUsed,
+                     },
+                }
+            }
+            );
+
+            return motorData.items;
+        }
+
+        if (type == 'battery'){
+
+            const batteryData = await getEntity.battery.list(
+                {
+                 filter: {
+                     serialNumber: {
+                       contains: hornetPowerToolData.items[0].batteryUsed,
+                     },
+                }
+            }
+            );
+
+            return batteryData.items;
+
+        }
 
          //Displays Hornet Power Tool as a list of attributes.
          console.log("HPT Items",hornetPowerToolData.items)

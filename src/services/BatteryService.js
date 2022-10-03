@@ -13,23 +13,23 @@ class BatteryService {
         return response.items;
     }
 
-    async getBatteryDataByID (serialNumber){
+    // async getBatteryDataByID (serialNumber){
 
-        const batteryData = await getEntity.battery.list(
-            {
-             filter: {
-                 serialNumber: {
-                   contains: serialNumber,
-                 },
-            }
+    //     const batteryData = await getEntity.battery.list(
+    //         {
+    //          filter: {
+    //              serialNumber: {
+    //                contains: serialNumber,
+    //              },
+    //         }
          
-         }
-        );
+    //      }
+    //     );
  
-         console.log("Battery ID:", batteryData.items);
+    //      console.log("Battery ID:", batteryData.items);
  
-         return batteryData.items;
-     }
+    //      return batteryData.items;
+    //  }
 
 
     //working
