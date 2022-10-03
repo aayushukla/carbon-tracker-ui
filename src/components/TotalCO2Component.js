@@ -82,7 +82,7 @@ function TotalCO2Component() {
   return (
     <>
       <CO2NavBar />
-      <div className='hpt-container'>
+      <div className='hpt-container' >
         <Card style={{ width: '40rem', height: '30rem' }}>
           <Card.Body>
             <Card.Img variant="top" src="https://us.123rf.com/450wm/bakhtiarzein/bakhtiarzein2108/bakhtiarzein210800018/172511672-carbon-neutral-balancing-co2-gas-emission-offset-with-clean-tech-power-eco-wind-solar-versus-pollute.jpg?ver=6" />
@@ -97,17 +97,20 @@ function TotalCO2Component() {
               </Button>
             </Form>
           </Card.Body>
-          <Link to="/home">Click here to see CO2 breakdown</Link>
           {visible ? <Card.Footer className='text-center'>
+
             <div>
-              <text> The Total CO2 Calculated for the above HPT is: </text>
+              <text style={{fontSize:'20px'}}> The Total CO2 Calculated for the above HPT is: </text>
               <h3>
                 {
                   totalCO2
                 }
               </h3>  <img style={{ height: '50%', width: '50%' }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
 
-            </div></Card.Footer> : null}
+            </div>
+            <Link style={{fontSize:'20px', paddingTop:'10em'}}to="/home">Click here to see CO2 breakdown</Link>
+
+            </Card.Footer> : null}
         </Card>
       </div>
     </>
