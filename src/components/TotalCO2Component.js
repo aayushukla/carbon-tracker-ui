@@ -39,11 +39,15 @@ function TotalCO2Component() {
       const hptTotal = await HPTService.getHornetPowerToolDataByID(serialNum)
       sethptData([...hptTotal])
 
-      const motortotal = await HPTService.getHornetPowerToolDataByID(serialNum, 'motor')
+      const motortotal = await MotorService.getMotorDataByID(hptTotal[0].motorUsed)
       setMotorData([...motortotal])
+      console.log("hptMotor information", motortotal)
 
-      const batteryTotal = await HPTService.getHornetPowerToolDataByID(serialNum, 'battery')
+
+      const batteryTotal = await BatteryService.getBatteryDataByID(hptTotal[0].batteryUsed)
       setBatteryData([...batteryTotal])
+
+      console.log("hptBattery information", batteryTotal)
 
       // const groundTransportTotal = await GroundTransportService.getGroundTransportDataByID(serialNum)
       // setgroundTransportData([...groundTransportTotal])

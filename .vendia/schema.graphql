@@ -418,14 +418,14 @@ input Self_GroundTransportation_PartialInput_ {
 }
 
 input Self_HornetPowerTool_ConditionInput_ {
-  batteryUsed: Vendia_ModelFloatInput_
+  batteryUsed: Vendia_ModelStringInput_
   co2: Vendia_ModelFloatInput_
-  groundTrackingNumber: Vendia_ModelFloatInput_
-  motorUsed: Vendia_ModelFloatInput_
+  groundTrackingNumber: Vendia_ModelStringInput_
+  motorUsed: Vendia_ModelStringInput_
   partsCost: Vendia_ModelFloatInput_
   salesPrice: Vendia_ModelFloatInput_
   serialNumber: Vendia_ModelStringInput_
-  shipTrackingNumber: Vendia_ModelFloatInput_
+  shipTrackingNumber: Vendia_ModelStringInput_
   toolType: Vendia_ModelStringInput_
   _and: [Self_HornetPowerTool_ConditionInput_]
   _or: [Self_HornetPowerTool_ConditionInput_]
@@ -433,14 +433,14 @@ input Self_HornetPowerTool_ConditionInput_ {
 }
 
 input Self_HornetPowerTool_FilterInput_ {
-  batteryUsed: Vendia_ModelFloatInput_
+  batteryUsed: Vendia_ModelStringInput_
   co2: Vendia_ModelFloatInput_
-  groundTrackingNumber: Vendia_ModelFloatInput_
-  motorUsed: Vendia_ModelFloatInput_
+  groundTrackingNumber: Vendia_ModelStringInput_
+  motorUsed: Vendia_ModelStringInput_
   partsCost: Vendia_ModelFloatInput_
   salesPrice: Vendia_ModelFloatInput_
   serialNumber: Vendia_ModelStringInput_
-  shipTrackingNumber: Vendia_ModelFloatInput_
+  shipTrackingNumber: Vendia_ModelStringInput_
   toolType: Vendia_ModelStringInput_
   _and: [Self_HornetPowerTool_FilterInput_]
   _or: [Self_HornetPowerTool_FilterInput_]
@@ -453,14 +453,14 @@ input Self_HornetPowerTool_OrderInput_ {
 
 type Self_HornetPowerTool {
   _id: ID!
-  batteryUsed: Float
+  batteryUsed: String
   co2: Float
-  groundTrackingNumber: Float
-  motorUsed: Float
+  groundTrackingNumber: String
+  motorUsed: String
   partsCost: Float
   salesPrice: Float
   serialNumber: String
-  shipTrackingNumber: Float
+  shipTrackingNumber: String
   toolType: String
   _acl: [Vendia_Acl!]
   _owner: String
@@ -468,14 +468,14 @@ type Self_HornetPowerTool {
 
 type Self_HornetPowerTool_Partial_ {
   _id: ID!
-  batteryUsed: Float
+  batteryUsed: String
   co2: Float
-  groundTrackingNumber: Float
-  motorUsed: Float
+  groundTrackingNumber: String
+  motorUsed: String
   partsCost: Float
   salesPrice: Float
   serialNumber: String
-  shipTrackingNumber: Float
+  shipTrackingNumber: String
   toolType: String
   _acl: [Vendia_Acl!]
   _owner: String
@@ -503,38 +503,38 @@ type Self_HornetPowerTool_Connection_ {
 }
 
 input Self_HornetPowerTool_Input_ {
-  batteryUsed: Float
+  batteryUsed: String
   co2: Float
-  groundTrackingNumber: Float
-  motorUsed: Float
+  groundTrackingNumber: String
+  motorUsed: String
   partsCost: Float
   salesPrice: Float
   serialNumber: String
-  shipTrackingNumber: Float
+  shipTrackingNumber: String
   toolType: String
 }
 
 input Self_HornetPowerTool_UpdateInput_ {
-  batteryUsed: Float
+  batteryUsed: String
   co2: Float
-  groundTrackingNumber: Float
-  motorUsed: Float
+  groundTrackingNumber: String
+  motorUsed: String
   partsCost: Float
   salesPrice: Float
   serialNumber: String
-  shipTrackingNumber: Float
+  shipTrackingNumber: String
   toolType: String
 }
 
 input Self_HornetPowerTool_PartialInput_ {
-  batteryUsed: Float
+  batteryUsed: String
   co2: Float
-  groundTrackingNumber: Float
-  motorUsed: Float
+  groundTrackingNumber: String
+  motorUsed: String
   partsCost: Float
   salesPrice: Float
   serialNumber: String
-  shipTrackingNumber: Float
+  shipTrackingNumber: String
   toolType: String
 }
 

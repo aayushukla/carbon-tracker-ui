@@ -13,23 +13,23 @@ class MotorService {
     }
 
 
-    // async getMotorDataByID (serialNumber){
+    async getMotorDataByID (serialNumber){
 
-    //     const motorData = await getEntity.motor.list(
-    //      {
-    //          filter: {
-    //              SerialNumber: {
-    //                contains: serialNumber,
-    //              },
-    //         }
+        const motorData = await getEntity.motor.list(
+         {
+             filter: {
+                 serialNumber: {
+                   contains: serialNumber,
+                 },
+            }
          
-    //      }
-    //     );
+         }
+        );
  
-    //      console.log("ID:", motorData.items);
+         console.log("ID:", motorData.items);
  
-    //      return motorData.items;
-    //  }
+         return motorData.items;
+     }
      
 }
 

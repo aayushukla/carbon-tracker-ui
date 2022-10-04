@@ -215,19 +215,19 @@
           },
           "motorUsed": {
             "description": "Serial Number for the Motor parts used to make the tool",
-            "type": "number"
+            "type": "string"
           },
           "batteryUsed": {
             "description": "Serial Number for the Battery part used to make the tool",
-            "type": "number"
+            "type": "string"
           },
           "shipTrackingNumber": {
             "description": "Transportation method used to ship tool",
-            "type": "number"
+            "type": "string"
           },
           "groundTrackingNumber": {
             "description": "Transportation method used to ship tool",
-            "type": "number"
+            "type": "string"
           }
         }
       }
