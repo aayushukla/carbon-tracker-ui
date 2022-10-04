@@ -418,28 +418,30 @@ input Self_GroundTransportation_PartialInput_ {
 }
 
 input Self_HornetPowerTool_ConditionInput_ {
-  batteryUsed: Vendia_ModelStringInput_
+  batteryUsed: Vendia_ModelFloatInput_
   co2: Vendia_ModelFloatInput_
-  motorUsed: Vendia_ModelStringInput_
+  groundTrackingNumber: Vendia_ModelFloatInput_
+  motorUsed: Vendia_ModelFloatInput_
   partsCost: Vendia_ModelFloatInput_
   salesPrice: Vendia_ModelFloatInput_
   serialNumber: Vendia_ModelStringInput_
+  shipTrackingNumber: Vendia_ModelFloatInput_
   toolType: Vendia_ModelStringInput_
-  transportationMethod: Vendia_ModelStringInput_
   _and: [Self_HornetPowerTool_ConditionInput_]
   _or: [Self_HornetPowerTool_ConditionInput_]
   _not: Self_HornetPowerTool_ConditionInput_
 }
 
 input Self_HornetPowerTool_FilterInput_ {
-  batteryUsed: Vendia_ModelStringInput_
+  batteryUsed: Vendia_ModelFloatInput_
   co2: Vendia_ModelFloatInput_
-  motorUsed: Vendia_ModelStringInput_
+  groundTrackingNumber: Vendia_ModelFloatInput_
+  motorUsed: Vendia_ModelFloatInput_
   partsCost: Vendia_ModelFloatInput_
   salesPrice: Vendia_ModelFloatInput_
   serialNumber: Vendia_ModelStringInput_
+  shipTrackingNumber: Vendia_ModelFloatInput_
   toolType: Vendia_ModelStringInput_
-  transportationMethod: Vendia_ModelStringInput_
   _and: [Self_HornetPowerTool_FilterInput_]
   _or: [Self_HornetPowerTool_FilterInput_]
   _not: Self_HornetPowerTool_FilterInput_
@@ -451,28 +453,30 @@ input Self_HornetPowerTool_OrderInput_ {
 
 type Self_HornetPowerTool {
   _id: ID!
-  batteryUsed: String
+  batteryUsed: Float
   co2: Float
-  motorUsed: String
+  groundTrackingNumber: Float
+  motorUsed: Float
   partsCost: Float
   salesPrice: Float
   serialNumber: String
+  shipTrackingNumber: Float
   toolType: String
-  transportationMethod: Self_HornetPowerTool_transportationMethodEnum
   _acl: [Vendia_Acl!]
   _owner: String
 }
 
 type Self_HornetPowerTool_Partial_ {
   _id: ID!
-  batteryUsed: String
+  batteryUsed: Float
   co2: Float
-  motorUsed: String
+  groundTrackingNumber: Float
+  motorUsed: Float
   partsCost: Float
   salesPrice: Float
   serialNumber: String
+  shipTrackingNumber: Float
   toolType: String
-  transportationMethod: Self_HornetPowerTool_transportationMethodEnum
   _acl: [Vendia_Acl!]
   _owner: String
 }
@@ -499,45 +503,48 @@ type Self_HornetPowerTool_Connection_ {
 }
 
 input Self_HornetPowerTool_Input_ {
-  batteryUsed: String
+  batteryUsed: Float
   co2: Float
-  motorUsed: String
+  groundTrackingNumber: Float
+  motorUsed: Float
   partsCost: Float
   salesPrice: Float
   serialNumber: String
+  shipTrackingNumber: Float
   toolType: String
-  transportationMethod: Self_HornetPowerTool_transportationMethodEnum
 }
 
 input Self_HornetPowerTool_UpdateInput_ {
-  batteryUsed: String
+  batteryUsed: Float
   co2: Float
-  motorUsed: String
+  groundTrackingNumber: Float
+  motorUsed: Float
   partsCost: Float
   salesPrice: Float
   serialNumber: String
+  shipTrackingNumber: Float
   toolType: String
-  transportationMethod: Self_HornetPowerTool_transportationMethodEnum
 }
 
 input Self_HornetPowerTool_PartialInput_ {
-  batteryUsed: String
+  batteryUsed: Float
   co2: Float
-  motorUsed: String
+  groundTrackingNumber: Float
+  motorUsed: Float
   partsCost: Float
   salesPrice: Float
   serialNumber: String
+  shipTrackingNumber: Float
   toolType: String
-  transportationMethod: Self_HornetPowerTool_transportationMethodEnum
 }
 
 input Self_Motor_ConditionInput_ {
   PartNumber: Vendia_ModelStringInput_
-  SerialNumber: Vendia_ModelStringInput_
   co2: Vendia_ModelFloatInput_
   costManufactured: Vendia_ModelFloatInput_
   dateManufactured: Vendia_ModelStringInput_
   salesPrice: Vendia_ModelFloatInput_
+  serialNumber: Vendia_ModelStringInput_
   _and: [Self_Motor_ConditionInput_]
   _or: [Self_Motor_ConditionInput_]
   _not: Self_Motor_ConditionInput_
@@ -545,11 +552,11 @@ input Self_Motor_ConditionInput_ {
 
 input Self_Motor_FilterInput_ {
   PartNumber: Vendia_ModelStringInput_
-  SerialNumber: Vendia_ModelStringInput_
   co2: Vendia_ModelFloatInput_
   costManufactured: Vendia_ModelFloatInput_
   dateManufactured: Vendia_ModelStringInput_
   salesPrice: Vendia_ModelFloatInput_
+  serialNumber: Vendia_ModelStringInput_
   _and: [Self_Motor_FilterInput_]
   _or: [Self_Motor_FilterInput_]
   _not: Self_Motor_FilterInput_
@@ -562,11 +569,11 @@ input Self_Motor_OrderInput_ {
 type Self_Motor {
   _id: ID!
   PartNumber: String
-  SerialNumber: String
   co2: Float
   costManufactured: Float
   dateManufactured: String
   salesPrice: Float
+  serialNumber: String
   _acl: [Vendia_Acl!]
   _owner: String
 }
@@ -574,11 +581,11 @@ type Self_Motor {
 type Self_Motor_Partial_ {
   _id: ID!
   PartNumber: String
-  SerialNumber: String
   co2: Float
   costManufactured: Float
   dateManufactured: String
   salesPrice: Float
+  serialNumber: String
   _acl: [Vendia_Acl!]
   _owner: String
 }
@@ -606,29 +613,29 @@ type Self_Motor_Connection_ {
 
 input Self_Motor_Input_ {
   PartNumber: String
-  SerialNumber: String
   co2: Float
   costManufactured: Float
   dateManufactured: String
   salesPrice: Float
+  serialNumber: String
 }
 
 input Self_Motor_UpdateInput_ {
   PartNumber: String
-  SerialNumber: String
   co2: Float
   costManufactured: Float
   dateManufactured: String
   salesPrice: Float
+  serialNumber: String
 }
 
 input Self_Motor_PartialInput_ {
   PartNumber: String
-  SerialNumber: String
   co2: Float
   costManufactured: Float
   dateManufactured: String
   salesPrice: Float
+  serialNumber: String
 }
 
 input Self_SeaTransportation_ConditionInput_ {
@@ -750,6 +757,85 @@ input Self_SeaTransportation_PartialInput_ {
   routeID: String
   shipID: String
   trackingNumber: String
+}
+
+input Self_User_ConditionInput_ {
+  Email: Vendia_ModelStringInput_
+  password: Vendia_ModelStringInput_
+  username: Vendia_ModelStringInput_
+  _and: [Self_User_ConditionInput_]
+  _or: [Self_User_ConditionInput_]
+  _not: Self_User_ConditionInput_
+}
+
+input Self_User_FilterInput_ {
+  Email: Vendia_ModelStringInput_
+  password: Vendia_ModelStringInput_
+  username: Vendia_ModelStringInput_
+  _and: [Self_User_FilterInput_]
+  _or: [Self_User_FilterInput_]
+  _not: Self_User_FilterInput_
+}
+
+input Self_User_OrderInput_ {
+  _id: Vendia_ModelSortDirection
+}
+
+type Self_User {
+  _id: ID!
+  Email: String
+  password: String
+  username: String
+  _acl: [Vendia_Acl!]
+  _owner: String
+}
+
+type Self_User_Partial_ {
+  _id: ID!
+  Email: String
+  password: String
+  username: String
+  _acl: [Vendia_Acl!]
+  _owner: String
+}
+
+union Self_User_PartialUnion_ = Self_User | Self_User_Partial_
+
+type Self_User_Result_ {
+  error: String
+  result: Self_User
+}
+
+type Self_User_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+  result: Self_User_PartialUnion_
+}
+
+type Self_User_Delete_Transaction_Result_ {
+  transaction: Vendia_Transaction!
+}
+
+type Self_User_Connection_ {
+  _UserItems: [Self_User_PartialUnion_]
+  nextToken: String
+}
+
+input Self_User_Input_ {
+  Email: String
+  password: String
+  username: String
+}
+
+input Self_User_UpdateInput_ {
+  Email: String
+  password: String
+  username: String
+}
+
+input Self_User_PartialInput_ {
+  Email: String
+  password: String
+  username: String
 }
 
 input Vendia_Block_transactions_transactionsItem_ConditionInput_ {
@@ -2006,11 +2092,6 @@ type Vendia_UniInfo_nodes_nodesItem_temporaryCredentials_uploadFile_Delete_Trans
   transaction: Vendia_Transaction!
 }
 
-enum Self_HornetPowerTool_transportationMethodEnum {
-  ground
-  ship
-}
-
 enum Vendia_File_vendia_checksums_checksumsItem_algorithmEnum {
   md5
   sha256
@@ -3105,6 +3186,9 @@ type Query {
   get_SeaTransportation(id: ID!, version: Int, readMode: Vendia_ReadMode = NODE_COMMITTED): Self_SeaTransportation_PartialUnion_
   list_SeaTransportationItems(filter: Self_SeaTransportation_FilterInput_, readMode: Vendia_ReadMode = NODE_COMMITTED, order: [Self_SeaTransportation_OrderInput_!], limit: Int, nextToken: String): Self_SeaTransportation_Connection_
   list_SeaTransportationVersions(id: ID!, limit: Int, nextToken: String): Vendia_Version_Connection_
+  get_User(id: ID!, version: Int, readMode: Vendia_ReadMode = NODE_COMMITTED): Self_User_PartialUnion_
+  list_UserItems(filter: Self_User_FilterInput_, readMode: Vendia_ReadMode = NODE_COMMITTED, order: [Self_User_OrderInput_!], limit: Int, nextToken: String): Self_User_Connection_
+  list_UserVersions(id: ID!, limit: Int, nextToken: String): Vendia_Version_Connection_
   listVendia_SubscriptionItems(filter: Vendia_Subscription_FilterInput_, order: [Vendia_Subscription_OrderInput_!], limit: Int, nextToken: String): Vendia_Subscription_Connection_
   getVendia_Block(id: ID!): Vendia_Block
   listVendia_BlockItems(filter: Vendia_Block_FilterInput_, order: [Vendia_Block_OrderInput_!], limit: Int, nextToken: String): Vendia_Block_Connection_
@@ -3171,6 +3255,14 @@ type Mutation {
   update_SeaTransportation(id: ID!, input: Self_SeaTransportation_UpdateInput_!, condition: Self_SeaTransportation_ConditionInput_, aclInput: Vendia_Acls_Input_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SeaTransportation_Transaction_Result_
   remove_SeaTransportation_async(id: ID!, condition: Self_SeaTransportation_ConditionInput_): Vendia_Transaction_Result_
   remove_SeaTransportation(id: ID!, condition: Self_SeaTransportation_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_SeaTransportation_Delete_Transaction_Result_
+  add_User_async(input: Self_User_Input_!, aclInput: Vendia_Acls_Input_): Vendia_Transaction_Result_
+  add_User(input: Self_User_Input_!, aclInput: Vendia_Acls_Input_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_User_Transaction_Result_
+  put_User_async(id: ID!, input: Self_User_Input_!, condition: Self_User_ConditionInput_, aclInput: Vendia_Acls_Input_!): Vendia_Transaction_Result_
+  put_User(id: ID!, input: Self_User_Input_!, condition: Self_User_ConditionInput_, aclInput: Vendia_Acls_Input_!, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_User_Transaction_Result_
+  update_User_async(id: ID!, input: Self_User_UpdateInput_!, condition: Self_User_ConditionInput_, aclInput: Vendia_Acls_Input_): Vendia_Transaction_Result_
+  update_User(id: ID!, input: Self_User_UpdateInput_!, condition: Self_User_ConditionInput_, aclInput: Vendia_Acls_Input_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_User_Transaction_Result_
+  remove_User_async(id: ID!, condition: Self_User_ConditionInput_): Vendia_Transaction_Result_
+  remove_User(id: ID!, condition: Self_User_ConditionInput_, syncMode: Vendia_SyncMode = NODE_COMMITTED): Self_User_Delete_Transaction_Result_
   addVendia_File_async(input: Vendia_File_Input_!): Vendia_Transaction_Result_
   addVendia_File(input: Vendia_File_Input_!, syncMode: Vendia_SyncMode!): Vendia_File_Transaction_Result_
   putVendia_File_async(id: ID!, input: Vendia_File_Input_!, condition: Vendia_File_ConditionInput_): Vendia_Transaction_Result_
@@ -3228,6 +3320,10 @@ type Subscription {
   onUpdate_SeaTransportation: Self_SeaTransportation_Result_
   onPut_SeaTransportation: Self_SeaTransportation_Result_
   onRemove_SeaTransportation: Self_SeaTransportation_Result_
+  onAdd_User: Self_User_Result_
+  onUpdate_User: Self_User_Result_
+  onPut_User: Self_User_Result_
+  onRemove_User: Self_User_Result_
   onAddVendia_Block: Vendia_Block_Result_
   onUpdateVendia_Block: Vendia_Block_Result_
   onPutVendia_Block: Vendia_Block_Result_
