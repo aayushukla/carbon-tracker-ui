@@ -114,7 +114,7 @@ function TotalCO2Component() {
               </h3>  <img style={{ height: '50%', width: '50%' }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
 
             </div>
-            <Link style={{fontSize:'20px', paddingTop:'10em'}}to="/breakdown">Click here to see CO2 breakdown</Link>
+            <Link style={{fontSize:'20px', paddingTop:'10em'}}to={{ pathname: "/breakdown", query: { totalBatteryCo2: {totalBatteryCo2} } }}>Click here to see CO2 breakdown</Link>
 
             </Card.Footer> : null}
         </Card>

@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 function CO2NavBar()  {
 
@@ -50,7 +51,9 @@ function CO2NavBar()  {
                 className="me-2"
                 aria-label="Search"
               /> */}
-              <Button variant="outline-success">Logout</Button>
+              <Link to="/">
+                  <Button variant="success">Logout</Button>
+              </Link>
             </Form>
             {/* <a href="https://www.csus.edu/">
             <img

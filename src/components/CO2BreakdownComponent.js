@@ -2,20 +2,66 @@ import './TotalCO2Component.js';
 import totalHPTCo2 from './TotalCO2Component';
 import totalBatteryCo2 from './TotalCO2Component';
 import totalMotorCo2 from './TotalCO2Component';
+import CO2NavBar from './CO2NavBar.js';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 
 console.log("hi jason");
 console.log("coming from total component", totalHPTCo2)
 
 //I have no idea what I'm doing, or how to pass values from component to component .-.
-function CO2Breakdown() {
-    return (
-        <div >
-            <h4 style={{ textAlign: "center", marginTop: '30px' }}>This is a test</h4>
-           
-            <div>         
+function CO2Breakdown(props) {
 
-            <text style={{fontSize:'20px'}}> The Total CO2 for the HPT is: </text>
+    const sourceStyle = {
+        textAlign: 'center',
+        backgroundColor: 'lightgray',
+        fontSize: '20px'
+    }
+
+    const co2Style = {
+        textAlign: 'center',
+        backgroundColor: "lightgray",
+        fontSize: '20px',
+        width: '150px'
+    }
+
+    return (
+        <>
+            <CO2NavBar />
+            <div style={{ textAlign: 'center' }}>
+                <h4 style={{ textAlign: "center", marginTop: '30px' }}>You can see total CO2 breakdown here..</h4>
+                <br></br>
+                <div>
+                    <input type="text" value="Hornet Power Tools" style={sourceStyle} disabled />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" value={totalHPTCo2} style={co2Style} disabled />
+                </div>
+                <br></br>
+                <div>
+                    <input type="text" value="Battery Supplier" style={sourceStyle} disabled />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" value={props.totalBatteryCo2} style={co2Style} disabled />
+                </div>
+                <br></br>
+                <div>
+                    <input type="text" value="Motor Supplier" style={sourceStyle} disabled />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" value={totalMotorCo2} style={co2Style} disabled />
+                </div>
+                <br></br>
+                <div>
+                    <input type="text" value="Sea Transportation" style={sourceStyle} disabled />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" value={totalHPTCo2} style={co2Style} disabled />
+                </div>
+                <br></br>
+                <div>
+                    <input type="text" value="Ground Transportation" style={sourceStyle} disabled />
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="text" value={totalHPTCo2} style={co2Style} disabled />
+                </div>
+                {/* <text style={{fontSize:'20px'}}> The Total CO2 for the HPT is: </text>
             {
                 totalHPTCo2
             }
@@ -33,10 +79,13 @@ function CO2Breakdown() {
             {
                 totalMotorCo2
             }
+            </div> */}
+                <br></br>
+                <Link to={{ pathname: "/totalco2", query: { msg: 'hi' } }}>
+                    <Button variant="primary">Back</Button>
+                </Link>
             </div>
-
-
-        </div>
+        </>
     );
 }
 
