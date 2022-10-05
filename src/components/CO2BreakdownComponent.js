@@ -1,17 +1,19 @@
 import './TotalCO2Component.js';
-import totalHPTCo2 from './TotalCO2Component';
-import totalBatteryCo2 from './TotalCO2Component';
-import totalMotorCo2 from './TotalCO2Component';
 import CO2NavBar from './CO2NavBar.js';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { useState } from 'react';
 
-
-console.log("hi jason");
-console.log("coming from total component", totalHPTCo2)
 
 //I have no idea what I'm doing, or how to pass values from component to component .-.
 function CO2Breakdown(props) {
+    const location = useLocation();
+
+    console.log("location: ",location)
+    const totalHPTCo2 = location.state?.HPTCo2;
+    const totalBatteryCo2 = location.state?.batteryCo2;
+    const totalMotorCo2 = location.state?.batteryCo2;
+
 
     const sourceStyle = {
         textAlign: 'center',
@@ -41,7 +43,7 @@ function CO2Breakdown(props) {
                 <div>
                     <input type="text" value="Battery Supplier" style={sourceStyle} disabled />
                     &nbsp;&nbsp;&nbsp;
-                    <input type="text" value={props.totalBatteryCo2} style={co2Style} disabled />
+                    <input type="text" value={totalBatteryCo2} style={co2Style} disabled />
                 </div>
                 <br></br>
                 <div>
