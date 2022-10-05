@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<Auth />} />
           <Route path="/home" element={<CO2Home />} />
           <Route path="/totalco2" element={<TotalCO2Component />} />
+          <Route path="/breakdown" element={<CO2BreakdownComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
