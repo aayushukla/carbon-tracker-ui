@@ -17,13 +17,11 @@ function TotalCO2Component() {
   const [batteryData, setBatteryData] = useState([]);
   const [motorData, setMotorData] = useState([]);
   const [hptData, sethptData] = useState([]);
-
-  const [serialNum, setSerialNum] = useState('');
-  const [visible, setVisible] = useState(false);
-
   const [groundTransportData, setgroundTransportData] = useState([]);
   const [seaTransportData, setseaTransportData] = useState([]);
 
+  const [serialNum, setSerialNum] = useState('');
+  const [visible, setVisible] = useState(false);
 
   const handleSubmit = event => {
 
@@ -35,25 +33,20 @@ function TotalCO2Component() {
 
       //filters items according to entered serialNumber
 
-
       const hptTotal = await HPTService.getHornetPowerToolDataByID(serialNum)
       sethptData([...hptTotal])
 
       const motortotal = await MotorService.getMotorDataByID(hptTotal[0].motorUsed)
       setMotorData([...motortotal])
-      console.log("hptMotor information", motortotal)
-
 
       const batteryTotal = await BatteryService.getBatteryDataByID(hptTotal[0].batteryUsed)
       setBatteryData([...batteryTotal])
 
-      console.log("hptBattery information", batteryTotal)
+      const groundTransportTotal = await GroundTransportService.getGroundTransportDataByID(hptTotal[0].groundTrackingNumber)
+      setgroundTransportData([...groundTransportTotal])
 
-      // const groundTransportTotal = await GroundTransportService.getGroundTransportDataByID(serialNum)
-      // setgroundTransportData([...groundTransportTotal])
-
-      // const seaTransportTotal = await SeaTransportService.getSeaTransportDataByID(serialNum)
-      // setseaTransportData([...seaTransportTotal])
+      const seaTransportTotal = await SeaTransportService.getSeaTransportDataByID(hptTotal[0].shipTrackingNumber)
+      setseaTransportData([...seaTransportTotal])
 
     }
 
@@ -70,20 +63,21 @@ function TotalCO2Component() {
   const totalHPTCo2 = hptData.reduce(function (res, item) {
     return res + item.co2;
   }, 0);
-  // const totalGroundTransportCo2 = groundTransportData.reduce(function (res, item) {
-  //   return res + item.co2;
-  // }, 0);
+  const totalGroundTransportCo2 = groundTransportData.reduce(function (res, item) {
+    return res + item.co2;
+  }, 0);
 
-  // const totalSeaTransportCo2 = seaTransportData.reduce(function (res, item) {
-  //   return res + item.co2;
-  // }, 0);
+  const totalSeaTransportCo2 = seaTransportData.reduce(function (res, item) {
+    return res + item.co2;
+  }, 0);
 
-
-  const totalCO2 = (totalBatteryCo2 + totalMotorCo2 + totalHPTCo2);
+  const totalCO2 = (totalBatteryCo2 + totalMotorCo2 + totalHPTCo2+totalGroundTransportCo2+totalSeaTransportCo2);
 
   console.log("totalBatteryCo2", totalBatteryCo2);
   console.log("totalMotorCo2", totalMotorCo2);
   console.log("totalHPTCo2", totalHPTCo2);
+  console.log("totalGroundCo2", totalGroundTransportCo2);
+  console.log("totalSeaCo2", totalSeaTransportCo2);
 
   return (
     <>
