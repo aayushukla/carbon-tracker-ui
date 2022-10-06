@@ -52,7 +52,7 @@ export default function (props) {
                 </div>
                 <div className="d-grid gap-2 mt-3">
                   <button type="submit" className="btn btn-primary">
-                    Submit
+                    Sign In
                   </button>
                 </div>
                 <p className="text-center mt-2">
@@ -107,7 +107,7 @@ export default function (props) {
               </div>
               <div className="d-grid gap-2 mt-3">
                 <button type="submit" className="btn btn-primary">
-                  Submit
+                  Sign Up
                 </button>
               </div>
               {/* <p className="text-center mt-2">
