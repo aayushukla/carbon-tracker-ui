@@ -1,5 +1,5 @@
 .App {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
 }
 
 .Auth-form-container {
@@ -16,11 +16,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  height: 90vh;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  border-radius: 10px;
+  overflow-y: scroll;
   border-radius: 8px;
-
+  padding-bottom: 15em;
+  padding-top: 15em;
 }
 
 .Auth-form {
@@ -60,7 +62,6 @@ label {
   width: 60%;
   height: 10%
 }
-
 .center {
   display: block;
   margin-left: auto;
@@ -70,10 +71,19 @@ label {
   margin-top: 100;
 }
 
+
+.img-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 50%;
+  margin-top: 100;
+  padding-left: 100px;
+}
+
 .navbar {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;
   box-shadow: 0 8px 6px -6px #999;
-
-  /* the rest of your styling */
 }

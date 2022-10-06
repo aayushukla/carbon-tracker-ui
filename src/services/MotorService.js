@@ -18,7 +18,7 @@ class MotorService {
         const motorData = await getEntity.motor.list(
          {
              filter: {
-                 SerialNumber: {
+                 serialNumber: {
                    contains: serialNumber,
                  },
             }

@@ -18,6 +18,9 @@
     },
     "HornetPowerToolsAcl": {
       "type": "HornetPowerTool"
+    },
+    "UserDetailsAcl": {
+      "type": "User"
     }
   },
   "type": "object",
@@ -32,7 +35,7 @@
             "description": "Part Number",
             "type": "string"
           },
-          "SerialNumber": {
+          "serialNumber": {
             "description": "Serial Number",
             "type": "string"
           },
@@ -211,19 +214,41 @@
             "type": "number"
           },
           "motorUsed": {
-            "description": "Motor parts used to make the tool",
+            "description": "Serial Number for the Motor parts used to make the tool",
             "type": "string"
           },
           "batteryUsed": {
-            "description": "Battery part used to make the tool",
+            "description": "Serial Number for the Battery part used to make the tool",
             "type": "string"
           },
-          "transportationMethod": {
-            "type": "string",
-            "enum": [
-              "ground",
-              "ship"
-            ]
+          "shipTrackingNumber": {
+            "description": "Transportation method used to ship tool",
+            "type": "string"
+          },
+          "groundTrackingNumber": {
+            "description": "Transportation method used to ship tool",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "User": {
+      "description": "User login informtation",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "description": "Name of user",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password for user login",
+            "type": "string"
+          },
+          "Email": {
+            "description": "Email for user login",
+            "type": "string"
           }
         }
       }
