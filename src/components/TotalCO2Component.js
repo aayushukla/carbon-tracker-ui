@@ -109,7 +109,8 @@ function TotalCO2Component() {
 
             </div>
             <Link style={{ fontSize: '20px', paddingTop: '10em' }} 
-            to="/breakdown"  state = {{HPTCo2: totalHPTCo2, batteryCo2: totalBatteryCo2, motorCo2 : totalMotorCo2}}>Click here to see CO2 breakdown</Link>
+            to="/breakdown"  state = {{HPTCo2: totalHPTCo2, batteryCo2: totalBatteryCo2, 
+            motorCo2 : totalMotorCo2, groundCo2: totalGroundTransportCo2, seaCo2: totalSeaTransportCo2}}>Click here to see CO2 breakdown</Link>
 
           </Card.Footer> : null}
         </Card>
