@@ -13,13 +13,13 @@ class SeaTransportService {
     }
 
 
-    async getSeaTransportDataByID (serialNumber){
+    async getSeaTransportDataByID (shipTrackingNumber){
 
         const seaTransport = await getEntity.seaTransportation.list(
          {
              filter: {
-                 serialNumber: {
-                   contains: serialNumber,
+                trackingNumber: {
+                   contains: shipTrackingNumber,
                  },
             }
          

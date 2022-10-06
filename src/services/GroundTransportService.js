@@ -13,13 +13,13 @@ class GroundTransportService {
     }
 
 
-    async getGroundTransportDataByID (serialNumber){
+    async getGroundTransportDataByID (groundTrackingNumber){
 
         const groundTransport = await getEntity.groundTransportation.list(
          {
              filter: {
-                 serialNumber: {
-                   contains: serialNumber,
+                trackingNumber: {
+                   contains: groundTrackingNumber,
                  },
             }
          
