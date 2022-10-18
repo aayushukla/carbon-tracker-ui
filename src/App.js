@@ -8,6 +8,7 @@ import CO2BreakdownComponent from "./components/CO2BreakdownComponent"
 import HPTComponent from "./components/HPTComponent"
 import AddHPTComponent from "./components/hpt/AddHPTComponent"
 import ViewHPTComponent from "./components/hpt/ViewHPTComponent"
+import SeaRouteComponent from "./components/SeaRoute"
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/hpt" element={<HPTComponent />} />
           <Route path="/addHPT" element={<AddHPTComponent />} />
           <Route path="/viewHPT" element={<ViewHPTComponent />} />
+          <Route path="/seaRoute" element={<SeaRouteComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
