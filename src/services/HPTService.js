@@ -11,62 +11,78 @@ class HPTService {
         return response.items;
     }
 
-    async getHornetPowerToolDataByID (serialNumber, type){
+    async getHornetPowerToolDataByID(serialNumber, type) {
 
         const hornetPowerToolData = await getEntity.hornetPowerTool.list(
             {
-             filter: {
-                 serialNumber: {
-                   contains: serialNumber,
-                 },
-            }
-        }
-        );
-
-        if (type == 'motor')
-        {
-            const motorData = await getEntity.motor.list(
-                {
-                 filter: {
-                     SerialNumber: {
-                       contains: hornetPowerToolData.items[0].motorUsed,
-                     },
+                filter: {
+                    serialNumber: {
+                        contains: serialNumber,
+                    },
                 }
             }
+        );
+
+        if (type == 'motor') {
+            const motorData = await getEntity.motor.list(
+                {
+                    filter: {
+                        SerialNumber: {
+                            contains: hornetPowerToolData.items[0].motorUsed,
+                        },
+                    }
+                }
             );
 
             return motorData.items;
         }
 
-        if (type == 'battery'){
+        if (type == 'battery') {
 
             const batteryData = await getEntity.battery.list(
                 {
-                 filter: {
-                     serialNumber: {
-                       contains: hornetPowerToolData.items[0].batteryUsed,
-                     },
+                    filter: {
+                        serialNumber: {
+                            contains: hornetPowerToolData.items[0].batteryUsed,
+                        },
+                    }
                 }
-            }
             );
 
             return batteryData.items;
 
         }
 
-         //Displays Hornet Power Tool as a list of attributes.
-         console.log("HPT Items",hornetPowerToolData.items)
-         //Displays Hornet Power Tool Serial Number.
-         //console.log("HPT ID:", hornetPowerToolData.items[0].serialNumber);
-         //Displays Serial Number for the motor used in HPT.
-         //console.log("HPT Moter Used", hornetPowerToolData.items[0].motorUsed);
-         //Displays Serial Number for the batter used in HPT.
-         //console.log("HPT Battery Used", hornetPowerToolData.items[0].batteryUsed);
+        //Displays Hornet Power Tool as a list of attributes.
+        console.log("HPT Items", hornetPowerToolData.items)
+        //Displays Hornet Power Tool Serial Number.
+        //console.log("HPT ID:", hornetPowerToolData.items[0].serialNumber);
+        //Displays Serial Number for the motor used in HPT.
+        //console.log("HPT Moter Used", hornetPowerToolData.items[0].motorUsed);
+        //Displays Serial Number for the batter used in HPT.
+        //console.log("HPT Battery Used", hornetPowerToolData.items[0].batteryUsed);
 
-         //Returns the entire list of attributes for the HPT with serialNumber
-         //From this values we can pull all other part data.
-         return hornetPowerToolData.items;
-     }
+        //Returns the entire list of attributes for the HPT with serialNumber
+        //From this values we can pull all other part data.
+        return hornetPowerToolData.items;
+    }
+
+    async addHornetPowerToolData(toolType, serialNum, co2, partsCosts,
+        salesPrice, motorUsed, batteryUsed, shipNumber, groundNumber) {
+        console.log("Adding HPT Data:")
+        const response = await getEntity.hornetPowerTool.add({
+            toolType: toolType,
+            serialNumber: serialNum,
+            co2: co2,
+            partsCost: partsCosts,
+            salesPrice: salesPrice,
+            motorUsed: motorUsed,
+            batteryUsed: batteryUsed,
+            shipTrackingNumber: shipNumber,
+            groundTrackingNumber: groundNumber
+        });
+
+    }
 }
 
 
