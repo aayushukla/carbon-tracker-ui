@@ -30,7 +30,7 @@ function CO2NavBar()  {
               <NavDropdown title="Sources" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="#action3">Battery Supplier</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Motor Supplier</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Sea Transport</NavDropdown.Item>
+                <NavDropdown.Item href="/seaRoute">Sea Transport</NavDropdown.Item>
                 <NavDropdown.Item href="#action4">Road Transport</NavDropdown.Item>
                 <NavDropdown.Item href="/hpt">Hornet Power Tool</NavDropdown.Item>
               </NavDropdown>
