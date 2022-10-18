@@ -6,6 +6,8 @@ import CO2Home from "./components/CO2Home"
 import TotalCO2Component from "./components/TotalCO2Component"
 import CO2BreakdownComponent from "./components/CO2BreakdownComponent"
 import HPTComponent from "./components/HPTComponent"
+import AddHPTComponent from "./components/hpt/AddHPTComponent"
+import ViewHPTComponent from "./components/hpt/ViewHPTComponent"
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/totalco2" element={<TotalCO2Component />} />
           <Route path="/breakdown" element={<CO2BreakdownComponent />} />
           <Route path="/hpt" element={<HPTComponent />} />
+          <Route path="/addHPT" element={<AddHPTComponent />} />
+          <Route path="/viewHPT" element={<ViewHPTComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
