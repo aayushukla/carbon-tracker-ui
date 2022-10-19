@@ -19,7 +19,6 @@ function SidebarComponent({children}) {
     ]
 
     return (
-        // <div className = "container">
         <div className="sidebar">
             <div className="top_Section">
                 <img className="tool" src=" "></img>
@@ -34,7 +33,6 @@ function SidebarComponent({children}) {
                 })
             }
         </div>
-    // </div>
     );
 }
 

@@ -113,7 +113,7 @@ label {
   background-color: lightgrey;
 }
 
-.sidebar {
+/* .sidebar {
   position: fixed;
   height: 60%;
   box-shadow: 5px 3px 20px black;
@@ -139,6 +139,60 @@ label {
 .sidebarList .link:hover {
   color: #00B1B0;
   cursor: pointer;
+}
+
+.toolContainer{
+  width: 65%;
+  height: 100%;
+  opacity: 1;
+  
+} */
+
+.container {
+  display: flex;
+}
+
+.main {
+  width: 100%;
+  /* padding: 20px; */
+}
+
+.sidebar {
+  background: lightseagreen ;
+  color: black;
+  height: 100vh;
+  width: 150px;
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+}
+
+.bars {
+  display: flex;
+  font-size: 20px;
+  margin-left: 50px;
+  align-items: center;
+}
+
+.link {
+  display: flex;
+  color : black;
+  padding: 10px 15px;
+  gap: 15px;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.link:hover {
+  background: lightgray ;
+  transition: all 0.5s;
+}
+
+#active {
+  background: lightgray;
 }
 
 .toolContainer{
