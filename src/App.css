@@ -154,6 +154,8 @@ label {
 
 .main {
   width: 100%;
+  justify-content: center;
+  /* margin: 2%; */
   /* padding: 20px; */
 }
 
@@ -161,7 +163,7 @@ label {
   background: lightseagreen ;
   color: black;
   height: 100vh;
-  width: 150px;
+  width: 200px;
 }
 
 .top_section {

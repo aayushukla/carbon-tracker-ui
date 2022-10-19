@@ -4,7 +4,9 @@ import {
     FaTh, FaUserAlt, FaShoppingBag
 } from 'react-icons/fa'
 
-function SidebarComponent({children}) {
+import { BsFillEyeFill } from 'react-icons/bs'
+
+function HPTSidebar() {
     const links = [
         {
             title: "Add Product",
@@ -14,14 +16,21 @@ function SidebarComponent({children}) {
         {
             title: "View Product",
             link: "/viewHPT",
-            icon: <FaShoppingBag/>
+            icon: <BsFillEyeFill/>
+        },
+        {
+            title: "Assign SerialNumber",
+            link: "/assignSN",
+            icon: <BsFillEyeFill/>
         },
     ]
 
     return (
         <div className="sidebar">
             <div className="top_Section">
-                <img className="tool" src=" "></img>
+                <a href="/hpt">
+                <img className="tool" width = "200px" style ={{justifyContent:'center'}} src="images/hpt.jpg"></img>
+                </a>
             </div>
             {
                 links.map((path, key) => { return(
@@ -36,4 +45,4 @@ function SidebarComponent({children}) {
     );
 }
 
-export default SidebarComponent;
+export default HPTSidebar;

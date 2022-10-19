@@ -1,6 +1,6 @@
 import React from 'react';
 import CO2NavBar from './CO2NavBar';
-import SidebarComponent from './SidebarComponent';
+import HPTSidebar from './HPTSidebar';
 
 function HPTComponent(props) {
 
@@ -9,7 +9,8 @@ function HPTComponent(props) {
             <CO2NavBar />
 
             <div className="container">
-                <SidebarComponent />
+                <HPTSidebar />
+
                 <main style={{ margin: '2%' }}>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
                         Hornet Power Tool</h4>

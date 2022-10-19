@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import HPTService from '../../services/HPTService';
 import CO2NavBar from '../CO2NavBar';
-import SidebarComponent from '../SidebarComponent';
+import HPTSidebar from '../HPTSidebar';
 
 function ViewHPTComponent(props) {
     const [records, setRecords] = useState([]);
@@ -55,12 +55,10 @@ function ViewHPTComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="row">
-                <div className="col" style={{ width: '5%', border: "10px" }}>
-                    <SidebarComponent />
-                </div>
-                <div className="col" style={{ margin: '2%', float: 'left' }}>
-                    <Container fluid>
+            <div className="container">
+                <HPTSidebar />
+
+                <main style={{ margin: '2%' }}>
                         <table>
                             <tbody>
                                 <tr>
@@ -89,9 +87,8 @@ function ViewHPTComponent(props) {
                                 ))}
                             </tbody>
                         </table>
-                    </Container>
+                    </main>
                 </div>
-            </div>
         </>
     );
 }
