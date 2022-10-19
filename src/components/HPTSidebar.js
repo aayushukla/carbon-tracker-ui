@@ -5,6 +5,7 @@ import {
 } from 'react-icons/fa'
 
 import { BsFillEyeFill } from 'react-icons/bs'
+import { MdAssignmentTurnedIn } from 'react-icons/md'
 
 function HPTSidebar() {
     const links = [
@@ -21,7 +22,7 @@ function HPTSidebar() {
         {
             title: "Assign SerialNumber",
             link: "/assignSN",
-            icon: <BsFillEyeFill/>
+            icon: <MdAssignmentTurnedIn/>
         },
     ]
 
