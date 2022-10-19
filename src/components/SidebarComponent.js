@@ -1,55 +1,40 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import SidebarMenu from 'react-bootstrap-sidebar-menu';
+import {
+    FaTh, FaUserAlt, FaShoppingBag
+} from 'react-icons/fa'
 
-function SidebarComponent(props) {
+function SidebarComponent({children}) {
     const links = [
         {
             title: "Add Product",
             link: "/addHPT",
-            image: "https://us.123rf.com/450wm/bakhtiarzein/bakhtiarzein2108/bakhtiarzein210800018/172511672-carbon-neutral-balancing-co2-gas-emission-offset-with-clean-tech-power-eco-wind-solar-versus-pollute.jpg?ver=6"
+            icon: <FaShoppingBag/>
         },
         {
             title: "View Product",
             link: "/viewHPT",
-            image: "https://us.123rf.com/450wm/bakhtiarzein/bakhtiarzein2108/bakhtiarzein210800018/172511672-carbon-neutral-balancing-co2-gas-emission-offset-with-clean-tech-power-eco-wind-solar-versus-pollute.jpg?ver=6"
+            icon: <FaShoppingBag/>
         },
     ]
 
     return (
-        <div>
-            <SidebarMenu>
-                <SidebarMenu.Header>
-                    <SidebarMenu.Brand style ={{marginTop:'2%'}}>
-                        <Card className="toolIcon">
-                        <Card className="toolBarImage">
-                            <Card.Body>
-                                <Card.Img variant ="top" src/>
-                            </Card.Body>
-                        </Card>
-                        <div>
-                            <h4>Hornet Power Tool</h4>
-                        </div>
-                        </Card>
-                    </SidebarMenu.Brand>
-                </SidebarMenu.Header>
-                <SidebarMenu.Body className="sidebarList">
-                    {
-                        links.map(link => {
-                            return (
-                                <SidebarMenu.Nav>
-                        <SidebarMenu.Nav.Link href={link.link} style={{textDecoration: 'none',color: 'gray'}}>
-                            <SidebarMenu.Nav.Title className="link" id={window.location.pathname === link.link? "active" : ""}>
-                                {link.title}
-                            </SidebarMenu.Nav.Title>
-                        </SidebarMenu.Nav.Link>
-                        </SidebarMenu.Nav>
-                            )
-                        })
-                    }
-                </SidebarMenu.Body>
-            </SidebarMenu>
+        // <div className = "container">
+        <div className="sidebar">
+            <div className="top_Section">
+                <img className="tool" src=" "></img>
+            </div>
+            {
+                links.map((path, key) => { return(
+                    <a href={path.link} key={key} className="link" id={window.location.pathname === path.link? "active" : ""}>
+                        <div className="icon">{path.icon}</div>
+                        <div className="link_text">{path.title}</div>
+                    </a>
+                ) 
+                })
+            }
         </div>
+    // </div>
     );
 }
 
