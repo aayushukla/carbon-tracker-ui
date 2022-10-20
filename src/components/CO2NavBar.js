@@ -28,8 +28,8 @@ function CO2NavBar()  {
             >
               <Nav.Link href="/home">Home</Nav.Link>
               <NavDropdown title="Sources" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Battery Supplier</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Motor Supplier</NavDropdown.Item>
+                <NavDropdown.Item href="/battery">Battery Supplier</NavDropdown.Item>
+                <NavDropdown.Item href="/motor">Motor Supplier</NavDropdown.Item>
                 <NavDropdown.Item href="/seaRoute">Sea Transport</NavDropdown.Item>
                 <NavDropdown.Item href="/roadRoute">Road Transport</NavDropdown.Item>
                 <NavDropdown.Item href="/hpt">Hornet Power Tool</NavDropdown.Item>
@@ -41,7 +41,7 @@ function CO2NavBar()  {
               </NavDropdown>
               <NavDropdown title="Tools" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/totalco2">CO2 Calculator</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">CO2 History</NavDropdown.Item>
+                <NavDropdown.Item href="/co2History">CO2 History</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">

@@ -45,7 +45,7 @@ function AddMotorComponent(props) {
                 <main style={{ margin: '2%' }}>
                     <div>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
-                            Add Battery Data</h4>
+                            Add Motor Data</h4>
                     </div>
             
                             
