@@ -63,12 +63,15 @@ function ViewHPTComponent(props) {
 
     const handleSubmit = event => {
         event.preventDefault();
+        // setHptRecords([])
         async function getHPTData() {
             //Add Records
             try {
-                const hptData = await HPTService.getHornetPowerToolDataByID(serialNum);
+                const response = await HPTService.getHornetPowerToolDataByID(serialNum);
+                const hptData = await response;
                 console.log("Fetched HPT Data:", hptData);
-
+                if(hptData) {
+                    console.log("hptRecords before fetching: " + hptRecords);
                 hptData.map(rows => {
                     // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
 
@@ -90,6 +93,12 @@ function ViewHPTComponent(props) {
                 console.log("hptRecords: " + hptRecords);
                 // setHptRecords(output);
                 setShowData(true);
+                }
+                else {
+                    return(
+                        <h4>No Records found</h4>
+                    )
+                }
             }
             catch (e) {
                 console.log(e);
@@ -100,53 +109,6 @@ function ViewHPTComponent(props) {
         setHptRecords([])
     }
 
-
-    function renderHPTData() {
-        const hptDataId = document.getElementById('hptData');
-        ReactDOM.render(
-            <MDBTable align='middle'>
-                <MDBTableHead>
-                    <tr>
-                        <th>Tool Type</th>
-                        <th>Serial Number</th>
-                        <th>CO2</th>
-                        <th>Parts Cost</th>
-                        <th>Sales Price</th>
-                        <th>Motor Used</th>
-                        <th>Battery Used</th>
-                        <th>Ship Tracking Number</th>
-                        <th>Ground Tracking Number</th>
-                    </tr>
-                </MDBTableHead>
-                <MDBTableBody>
-                    {
-                        hptRecords.map(item => {
-                            console.log("item: ", item.toolType)
-                            return (
-                                <tr>
-                                    <td>{item.toolType}</td>
-                                    <td>{item.serialNum}</td>
-                                    <td>
-                                        <MDBBadge color={item.co2 < 10 ? 'success' : 'danger'} pill>
-                                            {item.co2}
-                                        </MDBBadge>
-                                    </td>
-                                    <td>{item.partsCost}</td>
-                                    <td>{item.salesPrice}</td>
-                                    <td>{item.motorUsed}</td>
-                                    <td>{item.batteryUsed}</td>
-                                    <td>{item.shipNumber}</td>
-                                    <td>{item.groundNumber}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </MDBTableBody>
-            </MDBTable>, hptDataId
-        )
-    }
-
-
     return (
         <>
             <CO2NavBar />
@@ -154,14 +116,18 @@ function ViewHPTComponent(props) {
                 <HPTSidebar />
 
                 <main style={{ margin: '2%' }}>
+                    <div>
+                        <h4 style={{ margin: '1.5%', fontWeight: 'bold', fontSize: '18px', marginBottom: '50px' }}>
+                            Enter HPT Serial Number</h4>
+                    </div>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
+                        <input type="text" placeholder="Enter HPT Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        <Button variant="success" type="submit" value="Submit" onClick={() => setHptRecords([])}>View</Button>
                     </form>
                     {/* <div id="hptData"></div> */}
                     {
-                        showData &&
+                        showData && hptRecords &&
                         <MDBTable align='middle'>
                             <MDBTableHead>
                                 <tr>

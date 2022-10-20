@@ -10,12 +10,12 @@ import { MdAssignmentTurnedIn } from 'react-icons/md'
 function HPTSidebar() {
     const links = [
         {
-            title: "Add Product",
+            title: "Add Tool",
             link: "/addHPT",
             icon: <FaShoppingBag/>
         },
         {
-            title: "View Product",
+            title: "View Tool",
             link: "/viewHPT",
             icon: <BsFillEyeFill/>
         },
@@ -30,7 +30,7 @@ function HPTSidebar() {
         <div className="sidebar">
             <div className="top_Section">
                 <a href="/hpt">
-                <img className="tool" width = "200px" style ={{justifyContent:'center'}} src="images/hpt.jpg"></img>
+                <img className="tool" width = "200px" height = "150px" style ={{justifyContent:'center'}} src="images/hpt.jpg"></img>
                 </a>
             </div>
             {
