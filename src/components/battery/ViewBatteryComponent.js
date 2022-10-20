@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import MotorService from '../../services/MotorService';
+import BatteryService from '../../services/BatteryService';
 import CO2NavBar from '../CO2NavBar';
 import SidebarComponent from '../SidebarComponent';
 
@@ -14,7 +15,7 @@ function ViewBatteryComponent(props) {
         async function getBATTERYData() {
             //Add Records
             try {
-                const batteryData = await MotorService.getBatteryData();
+                const batteryData = await BatteryService.getBatteryData();
                 console.log(batteryData);
                 setRecords(batteryData.data);
                
