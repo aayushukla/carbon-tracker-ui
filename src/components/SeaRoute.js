@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CO2NavBar from './CO2NavBar';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Container } from 'react-bootstrap';
+import SeaTransportService from '../services/SeaTransportService';
 
 
 const map = document.getElementById('map-with-bullets');
 
 
-function SeaRouteComponent() {
+function SeaRouteComponent(props) {
 
+  const [records, setRecords] = useState([]);
 
+  useEffect(() => {
+    async function getSeaTransport() {
+      try {
+        const seaData = await SeaTransportService.getSeaTransportData();
+        console.log(seaData);
+        setRecords(seaData.data);
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    getSeaTransport();
+  }, []);
   return (
     <>
       <CO2NavBar />
@@ -26,92 +41,25 @@ function SeaRouteComponent() {
               <th scope='col'>Ship ID</th>
               <th scope='col'>Fuel Cost</th>
               <th scope='col'>Labour Cost</th>
-              <th scope='col'>Customer Cost</th>
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-            <tr>
-              <td>
-                1234
-              </td>
-              <td>
-                63456
-              </td>
+          {records.map((item, i) => (
+            <tr key={i}>
+              <td>{item.trackingNumber}</td>
+              <td>{item.routeID}</td>
               <td>
                 <MDBBadge color='success' pill>
-                  55
+                  5{item.co2}5
                 </MDBBadge>
               </td>
-              <td>
-                987654
-              </td>
-              <td>
-                $34,000
-              </td>
-              <td>
-                $4,000
-              </td>
-              <td>
-                $1,400
-              </td>
+              <td>{item.shipID}</td>
+              <td>${item.fuelCost}</td>
+              <td>${item.laborCost}</td>ß
+              <td>${item.trackingNumber}</td>
             </tr>
-
-
-
-            <tr>
-              <td>
-                5345
-              </td>
-              <td>
-                734
-              </td>
-              <td>
-                <MDBBadge color='primary' pill>
-                  12
-                </MDBBadge>
-              </td>
-              <td>
-                6322
-              </td>
-              <td>
-                $64,400
-              </td>
-              <td>
-                $1,040
-              </td>
-              <td>
-                $7,400
-              </td>
-            </tr>
-
-
-
-            <tr>
-              <td>
-                5255
-              </td>
-              <td>
-                7654
-              </td>
-              <td>
-                <MDBBadge color='warning' pill>
-                  233
-                </MDBBadge>
-              </td>
-              <td>
-                73445
-              </td>
-              <td>
-                $12,000
-              </td>
-              <td>
-                $43,000
-              </td>
-              <td>
-                $10,700
-              </td>
-            </tr>
-          </MDBTableBody>
+            ))}
+         </MDBTableBody>
         </MDBTable>
       </Container>
     </>
