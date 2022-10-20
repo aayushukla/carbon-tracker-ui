@@ -33,7 +33,7 @@ function CO2Home() {
             </div>
 
            
-          <Card style = {{width: "100%", height: "100%", alignItems:"center"}}>
+          <Card style = {{width: "100%", height: "100%", alignItems:"center", backgroundColor: "lightseagreen"}}>
             <Card.Body>
               <Card.Title style={{fontWeight: "bold"}}>Carbon Dashboard</Card.Title>
               <Card.Text style={{fontSize: "20px"}}>

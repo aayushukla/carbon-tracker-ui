@@ -18,6 +18,7 @@ import SeaRouteComponent from "./components/SeaRoute"
 import RoadComponent from "./components/RoadRoute"
 import RoadRouteComponent from "./components/road/ViewRoadComponent"
 import CO2History from "./components/CO2History"
+import AssignSNComponent from "./components/hpt/AssignSNComponent"
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/hpt" element={<HPTComponent />} />
           <Route path="/addHPT" element={<AddHPTComponent />} />
           <Route path="/viewHPT" element={<ViewHPTComponent />} />
+          <Route path="/assignSN" element={<AssignSNComponent />} />
           <Route path="/motor" element={<MotorComponent />} />
           <Route path="/addMotor" element={<AddMotorComponent />} />
           <Route path="/viewMotor" element={<ViewMotorComponent />} />
