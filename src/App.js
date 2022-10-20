@@ -14,7 +14,6 @@ import ViewMotorComponent from "./components/motor/ViewMotorComponent"
 import BatteryComponent from "./components/BatteryComponent"
 import AddBatteryComponent from "./components/battery/AddBatteryComponent"
 import ViewBatteryComponent from "./components/battery/ViewBatteryComponent"
-import SeaRouteComponent from "./components/SeaRoute"
 
 
 function App() {
@@ -35,6 +34,8 @@ function App() {
           <Route path="/battery" element={<BatteryComponent />} />
           <Route path="/addBattery" element={<AddBatteryComponent />} />
           <Route path="/viewBattery" element={<ViewBatteryComponent />} />
+          <Route path="/roadRoute" element={<RoadRouteComponent />} />
+          <Route path="/viewRoad" element={<ViewRoadComponent />} />
           <Route path="/seaRoute" element={<SeaRouteComponent />} />          
         </Routes>
       </BrowserRouter>
