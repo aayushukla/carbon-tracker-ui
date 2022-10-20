@@ -3,6 +3,7 @@ import CO2NavBar from './CO2NavBar';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Container } from 'react-bootstrap';
 import SeaTransportService from '../services/SeaTransportService';
+import ReactDOM from 'react-dom';
 
 
 const map = document.getElementById('map-with-bullets');
@@ -47,7 +48,7 @@ function SeaRouteComponent(props) {
             bill: rows["bill"]
           });
           console.log("created record", records)
-          setSeaTransportRecords([...seaRecords, records]);
+          setSeaRecords([...seaRecords, records]);
         })
 
         console.log("seaRecords: " + seaRecords);
@@ -58,7 +59,7 @@ function SeaRouteComponent(props) {
       }
     }
     getSeaTransportData();
-    setSeaTransportRecords([])
+    setSeaRecords([])
   }
 
 
