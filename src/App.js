@@ -14,6 +14,8 @@ import ViewMotorComponent from "./components/motor/ViewMotorComponent"
 import BatteryComponent from "./components/BatteryComponent"
 import AddBatteryComponent from "./components/battery/AddBatteryComponent"
 import ViewBatteryComponent from "./components/battery/ViewBatteryComponent"
+import RoadRouteComponent from "./components/RoadRoute"
+import ViewRoadComponent from "./components/road/ViewRoadComponent"
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
           <Route path="/battery" element={<BatteryComponent />} />
           <Route path="/addBattery" element={<AddBatteryComponent />} />
           <Route path="/viewBattery" element={<ViewBatteryComponent />} />
+          <Route path="/roadRoute" element={<RoadRouteComponent />} />
+          <Route path="/viewRoad" element={<ViewRoadComponent />} />
         </Routes>
       </BrowserRouter>
     </div>
