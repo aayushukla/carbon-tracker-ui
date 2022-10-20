@@ -10,21 +10,104 @@ const map = document.getElementById('map-with-bullets');
 
 function SeaRouteComponent(props) {
 
-  const [records, setRecords] = useState([]);
+  const [showData, setShowData] = useState(false);
+  const [serialNum, setSerialNum] = useState();
+  const [records, setRecords] = useState(
+    {
+      trackingNumber: "",
+      routeID: "",
+      co2: 0,
+      shipID: "",
+      fuelCost: 0,
+      laborCost: 0,
+      dateShipped: "",
+      dateArrived: "",
+      bill: ""
+    });
+  const [seaRecords, setSeaRecords] = useState([]);
 
-  useEffect(() => {
-    async function getSeaTransport() {
+  const handleSubmit = event => {
+    event.preventDefault();
+    async function getSeaTransportData() {
+      //Add Records
       try {
-        const seaData = await SeaTransportService.getSeaTransportData();
-        console.log(seaData);
-        setRecords(seaData.data);
+        const seaData = await SeaTransportService.getSeaTransportDataByID(serialNum);
+        console.log("Fetched Sea Data:", seaData);
+
+        seaData.map(rows => {
+          setRecords({
+            trackingNumber: rows["trackingNumber"],
+            routeID: rows["serialNum"],
+            co2: rows["co2"],
+            shipID: rows["shipID"],
+            fuelCost: rows["fuelCost"],
+            laborCost: rows["laborCost"],
+            dateShipped: rows["dateShipped"],
+            dateArrived: rows["dateArrived"],
+            bill: rows["bill"]
+          });
+          console.log("created record", records)
+          setSeaTransportRecords([...seaRecords, records]);
+        })
+
+        console.log("seaRecords: " + seaRecords);
+        setShowData(true);
       }
       catch (e) {
         console.log(e);
       }
     }
-    getSeaTransport();
-  }, []);
+    getSeaTransportData();
+    setSeaTransportRecords([])
+  }
+
+
+
+  ////////////////////////////
+
+
+  function renderSeaData() {
+    const seaDataId = document.getElementById('seaData');
+    ReactDOM.render(
+      <MDBTable align='middle'>
+        <MDBTableHead>
+          <tr>
+            <th scope='col'>Tracking Number</th>
+            <th scope='col'>Route ID</th>
+            <th scope='col'>C02 Data</th>
+            <th scope='col'>Ship ID</th>
+            <th scope='col'>Fuel Cost</th>
+            <th scope='col'>Labour Cost</th>
+          </tr>
+        </MDBTableHead>
+        <MDBTableBody>
+          {
+            seaRecords.map(item => {
+              return (
+                <tr>
+                  <td>{item.trackingNumber}</td>
+                  <td>{item.serialNum}</td>
+                  <td>
+                    <MDBBadge color={item.co2 < 10 ? 'success' : 'danger'} pill>
+                      {item.co2}
+                    </MDBBadge>
+                  </td>
+                  <td>{item.shipID}</td>
+                  <td>{item.fuelCost}</td>
+                  <td>{item.laborCost}</td>
+                  <td>{item.dateShipped}</td>
+                  <td>{item.dateArrived}</td>
+                  <td>{item.bill}</td>
+                </tr>
+              )
+            })
+          }
+        </MDBTableBody>
+      </MDBTable>, seaDataId
+    )
+  }
+
+  /////////////////////////////
   return (
     <>
       <CO2NavBar />
@@ -44,22 +127,22 @@ function SeaRouteComponent(props) {
             </tr>
           </MDBTableHead>
           <MDBTableBody>
-          {records.map((item, i) => (
-            <tr key={i}>
-              <td>{item.trackingNumber}</td>
-              <td>{item.routeID}</td>
-              <td>
-                <MDBBadge color='success' pill>
-                  5{item.co2}5
-                </MDBBadge>
-              </td>
-              <td>{item.shipID}</td>
-              <td>${item.fuelCost}</td>
-              <td>${item.laborCost}</td>ß
-              <td>${item.trackingNumber}</td>
-            </tr>
+            {records.map((item, i) => (
+              <tr key={i}>
+                <td>{item.trackingNumber}</td>
+                <td>{item.routeID}</td>
+                <td>
+                  <MDBBadge color='success' pill>
+                    5{item.co2}5
+                  </MDBBadge>
+                </td>
+                <td>{item.shipID}</td>
+                <td>${item.fuelCost}</td>
+                <td>${item.laborCost}</td>ß
+                <td>${item.trackingNumber}</td>
+              </tr>
             ))}
-         </MDBTableBody>
+          </MDBTableBody>
         </MDBTable>
       </Container>
     </>
