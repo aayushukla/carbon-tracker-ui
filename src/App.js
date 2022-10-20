@@ -9,6 +9,7 @@ import HPTComponent from "./components/HPTComponent"
 import AddHPTComponent from "./components/hpt/AddHPTComponent"
 import ViewHPTComponent from "./components/hpt/ViewHPTComponent"
 import SeaRouteComponent from "./components/SeaRoute"
+import AssignSNComponent from "./components/hpt/AssignSNComponent"
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/hpt" element={<HPTComponent />} />
           <Route path="/addHPT" element={<AddHPTComponent />} />
           <Route path="/viewHPT" element={<ViewHPTComponent />} />
+          <Route path="/assignSN" element={<AssignSNComponent/>}/>
           <Route path="/seaRoute" element={<SeaRouteComponent />} />
         </Routes>
       </BrowserRouter>
