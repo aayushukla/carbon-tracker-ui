@@ -17,6 +17,7 @@ import ViewBatteryComponent from "./components/battery/ViewBatteryComponent"
 import SeaRouteComponent from "./components/SeaRoute"
 import RoadComponent from "./components/RoadRoute"
 import RoadRouteComponent from "./components/road/ViewRoadComponent"
+import CO2History from "./components/CO2History"
 
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
           <Route path="/viewBattery" element={<ViewBatteryComponent />} />
           <Route path="/roadRoute" element={<RoadComponent />} />
           <Route path="/viewRoad" element={<RoadRouteComponent />} />
-          <Route path="/seaRoute" element={<SeaRouteComponent />} />          
+          <Route path="/seaRoute" element={<SeaRouteComponent />} />   
+          <Route path="/co2History" element={<CO2History />} />       
         </Routes>
       </BrowserRouter>
     </div>
