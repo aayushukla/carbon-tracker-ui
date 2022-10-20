@@ -30,7 +30,19 @@ class MotorService {
  
          return motorData.items;
      }
-     
+     async addMotorData(PartNumber, serialNumber, co2, dateManufactured,
+        costManufactured,salesPrice) {
+        console.log("Adding HPT Data:")
+        const response = await getEntity.motor.add({
+            partNumber: PartNumber,
+            serialNumber: serialNumber,
+            co2: co2,
+            dateManufactured: dateManufactured,
+            costtomanufacture: costManufactured,
+            salesPrice: salesPrice,
+            
+        });
+    }
 }
 
 

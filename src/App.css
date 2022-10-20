@@ -25,6 +25,32 @@
   padding-top: 15em;
 }
 
+.motor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  border-radius: 8px;
+  padding-bottom: 15em;
+  padding-top: 15em;
+}
+
+.battery-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  border-radius: 10px;
+  overflow-y: scroll;
+  border-radius: 8px;
+  padding-bottom: 15em;
+  padding-top: 15em;
+}
+
 .Auth-form {
   width: 420px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
