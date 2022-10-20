@@ -141,7 +141,7 @@ function AddHPTComponent(props) {
                                 {
                                     isAddClicked ? 
                                         isAdded ? <h3 style={{fontSize: "20px"}}>Tool got added Successfully!!</h3> 
-                                            : <h3 style={{fontSize: "20px"}}>Updating....</h3> : null
+                                            :  <h3 style={{fontSize: "20px"}}>Updating....</h3> : null
                                 }
                                  {/* {
                                     isAddClicked ? 

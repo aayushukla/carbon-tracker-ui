@@ -144,26 +144,42 @@ function ViewHPTComponent(props) {
                             </MDBTableHead>
                             <MDBTableBody>
                                 {
-                                    hptRecords.map(item => {
-                                        console.log("item: ", item)
-                                        return (
-                                            <tr>
-                                                <td>{item.toolType}</td>
-                                                <td>{item.serialNum}</td>
+                                    // hptRecords.map(item => {
+                                    //     console.log("item: ", item)
+                                    //     return (
+                                    //         <tr>
+                                    //             <td>{item.toolType}</td>
+                                    //             <td>{item.serialNum}</td>
+                                    //             <td>
+                                    //                 <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
+                                    //                     {item.co2}
+                                    //                 </MDBBadge>
+                                    //             </td>
+                                    //             <td>{item.partsCost}</td>
+                                    //             <td>{item.salesPrice}</td>
+                                    //             <td>{item.motorUsed}</td>
+                                    //             <td>{item.batteryUsed}</td>
+                                    //             <td>{item.shipNumber}</td>
+                                    //             <td>{item.groundNumber}</td>
+                                    //         </tr>
+                                    //     )
+                                    // })
+
+                                    <tr>
+                                                <td>Drill</td>
+                                                <td>55555</td>
                                                 <td>
-                                                    <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
-                                                        {item.co2}
+                                                    <MDBBadge color='danger' pill>
+                                                        30
                                                     </MDBBadge>
                                                 </td>
-                                                <td>{item.partsCost}</td>
-                                                <td>{item.salesPrice}</td>
-                                                <td>{item.motorUsed}</td>
-                                                <td>{item.batteryUsed}</td>
-                                                <td>{item.shipNumber}</td>
-                                                <td>{item.groundNumber}</td>
+                                                <td>30</td>
+                                                <td>60</td>
+                                                <td>12345</td>
+                                                <td>54321</td>
+                                                <td>99999</td>
+                                                <td>11111</td>
                                             </tr>
-                                        )
-                                    })
                                 }
                             </MDBTableBody>
                         </MDBTable>
