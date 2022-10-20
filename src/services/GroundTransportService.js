@@ -5,7 +5,7 @@ const getEntity = ConnectionService();
 class GroundTransportService {
 
     async getGroundTransportData() {
-        const response = await getEntity.motor.list();
+        const response = await getEntity.groundTransportation.list();
 
         console.log("Fetched Motor Data:", response.items);
 
