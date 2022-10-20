@@ -41,7 +41,7 @@ function CO2NavBar()  {
               </NavDropdown>
               <NavDropdown title="Tools" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/totalco2">CO2 Calculator</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">CO2 History</NavDropdown.Item>
+                <NavDropdown.Item href="/co2History">CO2 History</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
