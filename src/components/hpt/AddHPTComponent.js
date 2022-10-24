@@ -17,8 +17,10 @@ function AddHPTComponent(props) {
     const [groundNumber, setGroundNumber] = useState();
     const [isAdded, setIsAdded] = useState(false);
     const [isAddClicked, setIsAddClicked] = useState(false);
+    const [isError, setIsError] = useState(false);
 
-  const handleClose = () => setIsAdded(false);
+
+    const handleClose = () => setIsAddClicked(false);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -28,12 +30,15 @@ function AddHPTComponent(props) {
             //Add Records
             try {
                 const addHptData = await HPTService.addHornetPowerToolData(toolType, serialNum, parseFloat(co2), parseFloat(partsCosts),
-                    parseFloat(salesPrice), motorUsed, batteryUsed, shipNumber, groundNumber);
-                setIsAdded(true)
+                    parseFloat(salesPrice), motorUsed, batteryUsed, shipNumber, groundNumber)
+                    .then(() => { setIsAddClicked(true);
+                        setIsAdded(true) });
+                    
                 // alert("Data added succesfully!!!");
             }
             catch (e) {
-                alert("Error Occurred while loading!!!")
+                setIsAddClicked(false);
+                alert("Error Occurred while updating!!")
             }
         }
         addHPTData();
@@ -72,7 +77,7 @@ function AddHPTComponent(props) {
                             <div className='col'>
                                 <Form.Label>Choose type of tool:</Form.Label>&nbsp;
                                 <Form.Select size="sm" value={toolType} onChange={event => setToolType(event.target.value)}>
-                                    <option value="Drill">Select tool type</option>
+                                    <option value="Select">Select tool type</option>
                                     <option value="Drill">Drill</option>
                                     <option value="Motor">Motor</option>
                                     <option value="Batter">Battery</option>
@@ -134,30 +139,34 @@ function AddHPTComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Button variant="success" type="submit" value="Submit"
-                                onClick = {() => setIsAddClicked(true)}>Add</Button>
+                                    onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
-                            <br/>
-                            <div>
+                            <br />
+                            <div style={{ marginTop: '10px' }}>
                                 {
-                                    isAddClicked ? 
-                                        isAdded ? <h3 style={{fontSize: "20px"}}>Tool got added Successfully!!</h3> 
-                                            :  <h3 style={{fontSize: "20px"}}>Updating....</h3> : null
-                                }
-                                 {/* {
-                                    isAddClicked ? 
-                                        isAdded ? <Modal show={isAdded} onHide={handleClose}>
+                                    isAddClicked ?
+                                        isAdded ? <Modal show={isAddClicked} onHide={handleClose}
+                                        style={{
+                                            overlay: {
+                                              position: 'fixed',
+                                              top:'0',
+                                              left: '0',
+                                              right: '0',
+                                              bottom: '0',
+                                              backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                            }}}>
                                         <Modal.Header closeButton>
-                                          <Modal.Title>Success</Modal.Title>
+                                            <Modal.Title>Success</Modal.Title>
                                         </Modal.Header>
-                                        <Modal.Body>Tool got added succesfully!!!</Modal.Body>
+                                        <Modal.Body>Tool got added successfully!!!</Modal.Body>
                                         <Modal.Footer>
-                                          <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                          </Button>
+                                            <Button variant="secondary" onClick={handleClose}>
+                                                Close
+                                            </Button>
                                         </Modal.Footer>
-                                      </Modal> 
-                                            : <h3 fontSize="20px">Updating....</h3> : null
-                                } */}
+                                    </Modal>
+                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                }
                             </div>
                         </div>
                     </Form>

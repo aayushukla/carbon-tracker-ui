@@ -24,6 +24,11 @@ function HPTSidebar() {
             link: "/assignSN",
             icon: <MdAssignmentTurnedIn/>
         },
+        {
+            title: "Update Tool",
+            link: "/assignSN",
+            icon: <MdAssignmentTurnedIn/>
+        },
     ]
 
     return (
