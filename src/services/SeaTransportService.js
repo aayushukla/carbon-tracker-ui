@@ -30,6 +30,23 @@ class SeaTransportService {
  
          return seaTransport.items;
      }
+
+     async addSeaTransportData(trackingNumber, routeID, co2, shipID,
+        fuelCost, laborCost, dateShipped, dateArrived, bill) {
+        console.log("Adding Sea Transport Data:")
+        const response = await getEntity.seaTransportation.add({
+            trackingNumber: trackingNumber,
+            routeID: routeID,
+            co2: co2,
+            shipID: shipID,
+            fuelCost: fuelCost,
+            laborCost: laborCost,
+            dateShipped: dateShipped,
+            dateArrived: dateArrived,
+            bill: bill
+        });
+
+    }
      
 }
 
