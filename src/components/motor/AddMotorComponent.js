@@ -39,8 +39,8 @@ function AddMotorComponent(props) {
     return (                                  
         <>
             <CO2NavBar />
-            <div className="container">
-                <SidebarComponent />
+            <div className="co2container">
+            <SidebarComponent value="Motor" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

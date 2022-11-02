@@ -37,8 +37,8 @@ function AddBatteryComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="container">
-                <SidebarComponent />
+            <div className="co2container">
+            <SidebarComponent value="Battery" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

@@ -4,6 +4,7 @@ import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
 import SeaTransportService from '../../services/SeaTransportService';
 import SeaSidebar from '../SeaSideBar';
+import SidebarComponent from '../SidebarComponent';
 
 
 function AddSeaComponent(props) {
@@ -56,8 +57,8 @@ function AddSeaComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="container">
-                <SeaSidebar />
+            <div className="co2container">
+                <SidebarComponent value="Sea" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

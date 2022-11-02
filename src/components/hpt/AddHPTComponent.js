@@ -3,6 +3,7 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import HPTService from '../../services/HPTService';
 import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
+import SidebarComponent from '../SidebarComponent';
 
 
 function AddHPTComponent(props) {
@@ -63,8 +64,8 @@ function AddHPTComponent(props) {
         <>
             <CO2NavBar />
 
-            <div className="container">
-                <HPTSidebar />
+            <div className="co2container">
+            <SidebarComponent value="HPT" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

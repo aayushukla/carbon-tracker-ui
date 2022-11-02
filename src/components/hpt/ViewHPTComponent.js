@@ -5,6 +5,7 @@ import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
 import ReactDOM from 'react-dom';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import SidebarComponent from '../SidebarComponent';
 
 function ViewHPTComponent(props) {
 
@@ -112,8 +113,8 @@ function ViewHPTComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="container">
-                <HPTSidebar />
+            <div className="co2container">
+            <SidebarComponent value="HPT" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

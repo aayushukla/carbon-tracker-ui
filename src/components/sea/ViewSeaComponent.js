@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import SeaSidebar from '../SeaSideBar';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import SeaTransportService from '../../services/SeaTransportService';
+import SidebarComponent from '../SidebarComponent';
 
 function ViewSeaComponent(props) {
 
@@ -79,8 +80,8 @@ function ViewSeaComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="container">
-                <SeaSidebar />
+            <div className="co2container">
+                <SidebarComponent value="Sea" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

@@ -6,6 +6,7 @@ import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-reac
 import { Container } from 'react-bootstrap';
 import GroundTransportService from '../../services/GroundTransportService';
 import {Button} from 'react-bootstrap';
+import SidebarComponent from '../SidebarComponent';
 
 
 function RoadRouteComponent(props) {
@@ -104,8 +105,8 @@ function RoadRouteComponent(props) {
   return (
    <>
             <CO2NavBar />
-            <div className="container">
-                <RoadSidebar />
+            <div className="co2container">
+            <SidebarComponent value="Road" />
 
                 <main style={{ margin: '2%' }}>
                     <form onSubmit={handleSubmit}>
