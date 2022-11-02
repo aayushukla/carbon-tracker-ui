@@ -77,6 +77,85 @@ class GroundTransportService {
 
     }
 
+    async addGroundTransportData(groundTrackingNumber, routeId, co2, vehicleID,
+        fuelCost, laborCost, dateShipped, dateArrived, bill) {
+        console.log("Adding Ground Transport Data:")
+        const response = await getEntity.groundTransportation.add({
+            trackingNumber: groundTrackingNumber,
+            routeId: routeId,
+            co2: co2,
+            vehicleID: vehicleID,
+            fuelCost: fuelCost,
+            laborCost: laborCost,
+            dateShipped: dateShipped,
+            dateArrived: dateArrived,
+            bill: bill
+        });
+    }
+
+    async updateGroundTransportData(groundTrackingNumber, routeId, co2, vehicleID,
+        fuelCost, laborCost, dateShipped, dateArrived, bill){
+
+        const response = await getEntity.groundTransportation.list(
+         {
+             filter: {
+                trackingNumber: {
+                   contains: groundTrackingNumber,
+                }
+             }
+         }
+        );
+ 
+         console.log("ID:", response.items[0]);
+         console.log("Current date values:" + dateShipped);
+         const ID = response.items[0]._id;
+
+         if(routeId == ""){
+            console.log("Previous id" + routeId);
+            routeId = response.items[0].routeId;
+         };
+         if(isNaN(co2)){
+              //console.log("previous co2" + response.items[0].co2);
+              co2 = response.items[0].co2;
+         }
+         if(vehicleID == ""){
+              //console.log("previous vID" + response.items[0].vehicleID)
+              vehicleID = response.items[0].vehicleID;
+         }
+         if(isNaN(fuelCost)){
+              fuelCost = parseFloat(response.items[0].fuelCost);
+         }
+         if(isNaN(laborCost)){
+              laborCost = parseFloat(response.items[0].laborCost);
+         }
+         if(bill == undefined){
+              bill = response.items[0].bill;
+         }
+         if(typeof dateShipped == undefined){
+              dateShipped = response.items[0].dateShipped;
+         }
+         if(typeof dateArrived == undefined){
+              dateArrived = response.items[0].dateArrived;
+         }
+
+        const updateGround = await getEntity.groundTransportation.update(
+        
+            {_id:ID, 
+            routeId: routeId,
+            co2: co2,
+            vehicleID: vehicleID,
+            fuelCost: fuelCost,
+            laborCost: laborCost,
+            dateShipped: dateShipped,
+            dateArrived: dateArrived,
+            bill: bill
+            }
+        );
+        console.log("updated info: " + updateGround.co2);
+ 
+        // return response.items;
+    }
+
      
 }
 

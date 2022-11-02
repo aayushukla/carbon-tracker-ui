@@ -89,6 +89,11 @@ function SidebarComponent(componentType) {
                 link: "/viewRoad",
                 icon: <BsFillEyeFill />
             },
+            {
+                title: "Update Trasport Information",
+                link: "/updateRoad",
+                icon: <MdAssignmentTurnedIn />
+            },
 
         ]
     }

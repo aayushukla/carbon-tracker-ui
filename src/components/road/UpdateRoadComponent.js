@@ -7,7 +7,7 @@ import SidebarComponent from '../SidebarComponent';
 
 
 
-function AddRoadComponent(props) {
+function UpdateRoadComponent(props) {
     const [trackingNumber, settrackingNumber] = useState();
     const [routeID, setrouteID] = useState();
     const [co2, setCo2] = useState();
@@ -24,12 +24,12 @@ function AddRoadComponent(props) {
 
     const handleSubmit = event => {
         event.preventDefault();
-        async function addRoadData() {
+        async function updateRoadData() {
             console.log(trackingNumber, routeID, co2, vehicleID,
                 fuelCost, laborCost, Date(dateShipped), Date(dateArrived), bill);
             //Add Records
             try {
-                const addRoadData = await GroundTransportService.addGroundTransportData(trackingNumber, routeID, parseFloat(co2), vehicleID,
+                const RoadData = await GroundTransportService.updateGroundTransportData(trackingNumber, routeID, parseFloat(co2), vehicleID,
                     parseFloat(fuelCost), parseFloat(laborCost), dateShipped, dateArrived, bill);
                 setIsAdded(true)
 
@@ -38,7 +38,8 @@ function AddRoadComponent(props) {
                 alert("Error Occurred while loading!" + e)
             }
         }
-        addRoadData();
+
+        updateRoadData();
         reset();
     };
 
@@ -49,8 +50,8 @@ function AddRoadComponent(props) {
         setvehicleID("");
         setfuelCost("");
         setlaborCost("");
-        setdateShipped("");
-        setdateArrived("");
+        setdateShipped(undefined);
+        setdateArrived(undefined);
         setbill("");
     }
 
@@ -63,16 +64,17 @@ function AddRoadComponent(props) {
                 <main style={{ margin: '2%' }}>
                     <div>
                         <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
-                            Add Road Transport Data</h4>
+                            Update Road Transport Data</h4>
                     </div>
 
                     <Form onSubmit={handleSubmit}>
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Tracking Number:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Enter the Tracking Number of the vehicle you wish to update" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
 
                             </div>
+                            <div></div>
                             <div className='col'>
                                 <Form.Label>Route ID:</Form.Label>&nbsp;
                                 <Form.Control type="text" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
@@ -129,13 +131,13 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Button variant="success" type="submit" value="Submit"
-                                    onClick={() => setIsAddClicked(true)}>Add</Button>
+                                    onClick={() => setIsAddClicked(true)}>Update</Button>
                             </div>
                             <br />
                             <div>
                                 {
                                     isAddClicked ?
-                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Transport data added Successfully!!</h3>
+                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Transportation Info Updated Successfully!!</h3>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                             </div>
@@ -147,4 +149,4 @@ function AddRoadComponent(props) {
     );
 }
 
-export default AddRoadComponent;
+export default UpdateRoadComponent;
