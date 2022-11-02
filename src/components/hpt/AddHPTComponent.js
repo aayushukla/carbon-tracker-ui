@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import { MDBFile } from 'mdb-react-ui-kit';
+import React, { useState, useRef } from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import HPTService from '../../services/HPTService';
 import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
+
 import SidebarComponent from '../SidebarComponent';
 
 
@@ -19,6 +21,7 @@ function AddHPTComponent(props) {
     const [isAdded, setIsAdded] = useState(false);
     const [isAddClicked, setIsAddClicked] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [drillImage, setDrillImage] = useState();
 
 
     const handleClose = () => setIsAddClicked(false);
@@ -32,9 +35,11 @@ function AddHPTComponent(props) {
             try {
                 const addHptData = await HPTService.addHornetPowerToolData(toolType, serialNum, parseFloat(co2), parseFloat(partsCosts),
                     parseFloat(salesPrice), motorUsed, batteryUsed, shipNumber, groundNumber)
-                    .then(() => { setIsAddClicked(true);
-                        setIsAdded(true) });
-                    
+                    .then(() => {
+                        setIsAddClicked(true);
+                        setIsAdded(true)
+                    });
+
                 // alert("Data added succesfully!!!");
             }
             catch (e) {
@@ -58,14 +63,18 @@ function AddHPTComponent(props) {
         setBatteryUsed("");
         setShipNumber("");
         setGroundNumber("");
+        setDrillImage("");
     }
+
+    const handleUpload = () => {
+    };
 
     return (
         <>
             <CO2NavBar />
 
             <div className="co2container">
-            <SidebarComponent value="HPT" />
+                <SidebarComponent value="HPT" />
 
                 <main style={{ margin: '2%' }}>
                     <div>
@@ -139,6 +148,17 @@ function AddHPTComponent(props) {
                         </div>
                         <div className='row'>
                             <div className='col'>
+                                <Form.Label>Upload Drill Image:</Form.Label>&nbsp;
+                                <MDBFile id='customFile' onChange={event => setDrillImage(event.target.value)}></MDBFile>
+                                {/* <input className="d-none" ref={inputRef} type="file" />
+                                <Button variant="secondary" type="submit" value="Submit"
+                                    onClick={handleUpload}>Upload</Button> */}
+                            </div>
+
+                        </div>
+                        <br></br><br></br>
+                        <div className='row'>
+                            <div className='col'>
                                 <Button variant="success" type="submit" value="Submit"
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
@@ -147,25 +167,26 @@ function AddHPTComponent(props) {
                                 {
                                     isAddClicked ?
                                         isAdded ? <Modal show={isAddClicked} onHide={handleClose}
-                                        style={{
-                                            overlay: {
-                                              position: 'fixed',
-                                              top:'0',
-                                              left: '0',
-                                              right: '0',
-                                              bottom: '0',
-                                              backgroundColor: 'rgba(255, 255, 255, 0.75)'
-                                            }}}>
-                                        <Modal.Header closeButton>
-                                            <Modal.Title>Success</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>Tool got added successfully!!!</Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="secondary" onClick={handleClose}>
-                                                Close
-                                            </Button>
-                                        </Modal.Footer>
-                                    </Modal>
+                                            style={{
+                                                overlay: {
+                                                    position: 'fixed',
+                                                    top: '0',
+                                                    left: '0',
+                                                    right: '0',
+                                                    bottom: '0',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                                }
+                                            }}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Success</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Tool got added successfully!!!</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose}>
+                                                    Close
+                                                </Button>
+                                            </Modal.Footer>
+                                        </Modal>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                             </div>
