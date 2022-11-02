@@ -1,7 +1,11 @@
 import ConnectionService from './ConnectionService';
 
 const getEntity = ConnectionService();
-
+let columns = [];
+var headerData = [];
+let bodyData = [];
+let rows = [];
+let seaData = [];
 class SeaTransportService {
 
     async getSeaTransportData() {
@@ -47,6 +51,49 @@ class SeaTransportService {
         });
 
     }
+
+
+    async getSTColumnData () {
+        seaData = await getEntity.seaTransportation.list();
+        seaData = seaData.items;
+        if(seaData) {
+            headerData = Object.keys(seaData[0]);
+            console.log("FETCHED",headerData)
+            
+            for (var i=2;i<headerData.length;i++) {
+              columns[i] = {field : headerData[i]}
+            }
+
+            return columns;
+        }
+
+    }
+
+    async getSTRowsData () {
+        seaData = await getEntity.seaTransportation.list();
+        seaData = seaData.items;
+
+        if(seaData) {
+
+            for (var i=0; i<seaData.length; i++) {
+                headerData = Object.keys(seaData[0]);
+                bodyData = Object.values(seaData[i]);
+                console.log("BODY DATA",bodyData);
+                var jsondata = {};
+                for (var j=2;j<bodyData.length;j++) {
+                    console.log("HERE2");
+
+                    jsondata[headerData[j]] = bodyData[j];
+                }
+                jsondata['internalId'] = i;
+                rows.push(jsondata);
+            }    
+        }
+
+    return rows;
+
+    }
+
      
 }
 
