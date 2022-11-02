@@ -17,7 +17,7 @@ function BatteryComponent(props) {
                         Battery Supplier</h4>
                     <p>
 
-                        Here you can add, view battery information. <br /> <br />
+                        Here you can add, view and update battery information here. <br /> <br />
                         Click on the links on your left to explore more.
 
                     </p>

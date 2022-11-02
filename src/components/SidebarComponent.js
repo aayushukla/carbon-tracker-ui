@@ -51,7 +51,12 @@ function SidebarComponent(componentType) {
             {
                 title: "View Motor",
                 link: "/viewMotor",
-                icon: <FaShoppingBag />,
+                icon: <BsFillEyeFill />,
+            },
+            {
+                title: "Update Tool",
+                link: "/assignSN",
+                icon: <MdAssignmentTurnedIn />
             },
 
         ]
@@ -64,12 +69,17 @@ function SidebarComponent(componentType) {
                 title: "Add Battery",
                 link: "/addBattery",
                 icon: <FaShoppingBag />,
-                image: "images/hpt.jpg"
+                //image: "images/hpt.jpg"
             },
             {
                 title: "View Battery",
                 link: "/viewBattery",
-                icon: <FaShoppingBag />,
+                icon: <BsFillEyeFill />,
+            },
+            {
+                title: "Update Tool",
+                link: "/assignSN",
+                icon: <MdAssignmentTurnedIn />
             },
 
         ]
@@ -81,18 +91,13 @@ function SidebarComponent(componentType) {
         links = [
             {
                 title: "Add Route",
-                link: "/addRoad",
+                link: "/addBattery",
                 icon: <FaShoppingBag />,
             },
             {
                 title: "View Route",
                 link: "/viewRoad",
                 icon: <BsFillEyeFill />
-            },
-            {
-                title: "Update Trasport Information",
-                link: "/updateRoad",
-                icon: <MdAssignmentTurnedIn />
             },
 
         ]
