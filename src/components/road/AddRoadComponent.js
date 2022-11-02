@@ -3,8 +3,8 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
 import GroundTransportService from '../../services/GroundTransportService';
-import RoadSidebar from '../RoadSidebar';
-//import RoadSidebar from '../RoadSidebar';
+import SidebarComponent from '../SidebarComponent';
+
 
 
 function AddRoadComponent(props) {
@@ -58,7 +58,7 @@ function AddRoadComponent(props) {
         <>
             <CO2NavBar />
             <div className="co2container">
-                <RoadSidebar value="Road" />
+                <SidebarComponent value="Road" />
 
                 <main style={{ margin: '2%' }}>
                     <div>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import CO2NavBar from '../CO2NavBar';
-import RoadSidebar from '../RoadSidebar';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Container } from 'react-bootstrap';
 import GroundTransportService from '../../services/GroundTransportService';
 import {Button} from 'react-bootstrap';
-//import RoadSidebar from '../RoadSidebar';
+import SidebarComponent from '../SidebarComponent';
+
 
 
 function RoadRouteComponent(props) {
@@ -106,7 +106,7 @@ function RoadRouteComponent(props) {
    <>
             <CO2NavBar />
             <div className="co2container">
-            <RoadSidebar value="Road" />
+            <SidebarComponent value="Road" />
 
                 <main style={{ margin: '2%' }}>
                     <form onSubmit={handleSubmit}>

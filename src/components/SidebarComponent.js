@@ -81,7 +81,7 @@ function SidebarComponent(componentType) {
         links = [
             {
                 title: "Add Route",
-                link: "/addBattery",
+                link: "/addRoad",
                 icon: <FaShoppingBag />,
             },
             {
