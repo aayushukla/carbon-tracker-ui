@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import MotorService from "../services/MotorService";
 import BatteryService from "../services/BatteryService";
+import SeaTransportService from "../services/SeaTransportService";
+import GroundTransportService from "../services/GroundTransportService"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal'
 import {Bar} from 'react-chartjs-2';
@@ -74,6 +76,23 @@ function CO2History() {
             graphData = await BatteryService.getData();
 
         }
+
+        if(value == 'Sea Transport') {
+          rows = await SeaTransportService.getSTRowsData();
+          columns = await SeaTransportService.getSTColumnData();
+          // graphLabel = await MotorService.getYears();
+          // graphData = await MotorService.getData();
+
+      }
+
+      if(value == 'Ground Transport') {
+          rows = await GroundTransportService.getGTRowsData();
+          columns = await GroundTransportService.getGTColumnData();
+          // graphLabel = await BatteryService.getYears();
+          // graphData = await BatteryService.getData();
+
+      }
+
 
         setVisible(true);
 
