@@ -1,6 +1,5 @@
 import React from 'react';
 import CO2NavBar from './CO2NavBar';
-import RoadSidebar from './RoadSidebar';
 import SidebarComponent from './SidebarComponent';
 
 function RoadComponent(props) {
