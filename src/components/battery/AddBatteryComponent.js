@@ -68,7 +68,7 @@ function AddBatteryComponent(props) {
                             <Form.Label>Sales Price:</Form.Label>&nbsp;
                             <Form.Control type="text" onChange={event => setSalesPrice(event.target.value)}></Form.Control>
 
-                            <Button variant="success" type="submit" value="Submit">Add</Button>
+                            <Button variant="success" type="submit" value="Submit">Add</Button> <br/>
                         </Form>
                       </main>
                 </div>
