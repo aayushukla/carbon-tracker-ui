@@ -91,7 +91,7 @@ function SidebarComponent(componentType) {
         links = [
             {
                 title: "Add Route",
-                link: "/addBattery",
+                link: "/addRoad",
                 icon: <FaShoppingBag />,
             },
             {
@@ -99,6 +99,11 @@ function SidebarComponent(componentType) {
                 link: "/viewRoad",
                 icon: <BsFillEyeFill />
             },
+            {
+                title: "Update Route",
+                link: "/updateRoad",
+                icon: <MdAssignmentTurnedIn />
+            }
 
         ]
     }
