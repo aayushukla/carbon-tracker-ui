@@ -27,17 +27,12 @@ function CO2NavBar()  {
               navbarScroll
             >
               <Nav.Link href="/home">Home</Nav.Link>
-              <NavDropdown title="Sources" id="navbarScrollingDropdown">
+              <NavDropdown title="Suppliers" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/battery">Battery Supplier</NavDropdown.Item>
                 <NavDropdown.Item href="/motor">Motor Supplier</NavDropdown.Item>
                 <NavDropdown.Item href="/seaRoute">Sea Transport</NavDropdown.Item>
                 <NavDropdown.Item href="/roadRoute">Road Transport</NavDropdown.Item>
                 <NavDropdown.Item href="/hpt">Hornet Power Tool</NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Products" id="navbarScrollingDropdown">
-                <NavDropdown.Item href="#action3">Product 1</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Product 2</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Product 3</NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Tools" id="navbarScrollingDropdown">
                 <NavDropdown.Item href="/totalco2">CO2 Calculator</NavDropdown.Item>

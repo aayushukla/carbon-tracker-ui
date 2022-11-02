@@ -1,6 +1,7 @@
 import React from 'react';
 import CO2NavBar from './CO2NavBar';
 import SeaSidebar from './SeaSideBar';
+import SidebarComponent from './SidebarComponent';
 
 function SeaComponent(props) {
 
@@ -8,12 +9,12 @@ function SeaComponent(props) {
         <>
             <CO2NavBar />
 
-            <div className="container">
-                <SeaSidebar />
+            <div className="co2container">
+                <SidebarComponent value="Sea" />
 
                 <main style={{ margin: '2%' }}>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
-                        Sea Transport Data</h4>
+                        Sea Transporttation</h4>
                     <p>
                         The Hornet power tools have different tool types that are Drill, Motor, Battery.
                         You can add, view, assign serial number to motor and battery here. <br /> <br />

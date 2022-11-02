@@ -174,8 +174,9 @@ label {
   
 } */
 
-.container {
+.co2container {
   display: flex;
+  height: 60%;
 }
 
 .main {
