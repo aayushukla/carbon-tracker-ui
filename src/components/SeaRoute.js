@@ -14,7 +14,7 @@ function SeaComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
-                        Sea Transporttation</h4>
+                        Sea Transportation</h4>
                     <p>
                         The Hornet power tools have different tool types that are Drill, Motor, Battery.
                         You can add, view, assign serial number to motor and battery here. <br /> <br />

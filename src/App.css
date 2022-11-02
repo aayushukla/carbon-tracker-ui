@@ -1,5 +1,6 @@
 .App {
   background-color: white;
+    overflow: hidden;
 }
 
 .Auth-form-container {
@@ -179,9 +180,19 @@ label {
   height: 60%;
 }
 
+
+.mapcontainer {
+  height: 72vh;
+  width: 115ch;
+  box-shadow: 0px 1px 3px black;
+  
+ 
+}
+
 .main {
   width: 100%;
   justify-content: center;
+
   /* margin: 2%; */
   /* padding: 20px; */
 }
@@ -189,7 +200,7 @@ label {
 .sidebar {
   background: lightseagreen ;
   color: black;
-  height: 100vh;
+  height: 86vh;
   width: 200px;
 }
 
