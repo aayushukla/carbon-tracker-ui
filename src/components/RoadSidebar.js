@@ -9,17 +9,16 @@ import { MdAssignmentTurnedIn } from 'react-icons/md'
 
 function RoadSidebar() {
     const links = [
-       /* come back and implement this functionality
             {
             title: "Add Route",
-            link: "/viewRoad",
+            link: "/addRoad",
             icon: <FaShoppingBag/>
-        },*/
+        },
         {
             title: "View Route",
             link: "/viewRoad",
             icon: <BsFillEyeFill/>
-        },
+        }
         
     ]
 

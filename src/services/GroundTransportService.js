@@ -30,6 +30,23 @@ class GroundTransportService {
  
          return groundTransport.items;
      }
+
+     async addGroundTransportData(trackingNumber, routeId, co2, vehicleID,
+        fuelCost, laborCost, dateShipped, dateArrived, bill) {
+        console.log("Adding Ground Transport Data:")
+        const response = await getEntity.groundTransportation.add({
+            trackingNumber: trackingNumber,
+            routeId: routeId,
+            co2: co2,
+            vehicleID: vehicleID,
+            fuelCost: fuelCost,
+            laborCost: laborCost,
+            dateShipped: dateShipped,
+            dateArrived: dateArrived,
+            bill: bill
+        });
+
+    }
      
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import CO2NavBar from './CO2NavBar';
 import RoadSidebar from './RoadSidebar';
-import SidebarComponent from './SidebarComponent';
+//import SidebarComponent from './SidebarComponent';
 
 function RoadComponent(props) {
 
@@ -10,7 +10,7 @@ function RoadComponent(props) {
             <CO2NavBar />
 
             <div className="co2container">
-                <SidebarComponent value="Road" />
+                <RoadSidebar value="Road" />
 
                 <main style={{ margin: '2%' }}>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>

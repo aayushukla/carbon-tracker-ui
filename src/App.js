@@ -18,6 +18,7 @@ import ViewBatteryComponent from "./components/battery/ViewBatteryComponent"
 import SeaRouteComponent from "./components/SeaRoute"
 import RoadComponent from "./components/RoadRoute"
 import RoadRouteComponent from "./components/road/ViewRoadComponent"
+import AddRoadComponent from "./components/road/AddRoadComponent"
 import CO2History from "./components/CO2History"
 import AssignSNComponent from "./components/hpt/AssignSNComponent"
 import AddSeaComponent from "./components/sea/AddSeaComponent"
@@ -48,6 +49,7 @@ function App() {
         <Route path="/addBattery" element={<AddBatteryComponent />} />
         <Route path="/viewBattery" element={<ViewBatteryComponent />} />
         <Route path="/roadRoute" element={<RoadComponent />} />
+        <Route path="/addRoad" element={<AddRoadComponent />} />
         <Route path="/viewRoad" element={<RoadRouteComponent />} />
         <Route path="/seaRoute" element={<SeaRouteComponent />} />
         <Route path="/addSea" element={<AddSeaComponent />} />
