@@ -65,9 +65,9 @@ class SeaTransportService {
         if(seaData) {
             headerData = Object.keys(seaData[0]);
             console.log("FETCHED",headerData)
-            
+            let colValues = ['ID','test','Tracking No','Route ID', 'CO2','Ship ID','Fuel Cost','Labor Cost', 'Date of Shipment', 'Date of Arrival','Bill']
             for (var i=2;i<headerData.length;i++) {
-              columns[i] = {field : headerData[i]}
+              columns[i] = {field : headerData[i], headerName:colValues[i], width:150}
             }
 
             return columns;

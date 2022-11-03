@@ -47,15 +47,16 @@ class GroundTransportService {
         groundData = groundData.items;
         if(groundData) {
             headerData = Object.keys(groundData[0]);
+            let colValues = ['ID','test','Tracking No','Route ID', 'CO2','Vehicle ID','Fuel Cost','Labor Cost', 'Date of Shipment', 'Date of Arrival','Bill']
             console.log("FETCHED",headerData)
             
-            for (var i=2;i<headerData.length;i++) {
-              columns[i] = {field : headerData[i]}
+            for (var i=2;i<colValues.length;i++) {
+              columns[i] = {field : headerData[i], headerName: colValues[i],
+              width: 150}
             }
 
             return columns;
         }
-
     }
 
     async getGTRowsData () {

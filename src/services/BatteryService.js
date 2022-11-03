@@ -64,16 +64,16 @@ class BatteryService {
     {
        batteryData = await getEntity.battery.list();
        batteryData = batteryData.items;
-
        if(batteryData){
-           headerData = Object.keys(batteryData[0]);
-           console.log("FETCHED",batteryData)
-           console.log(headerData)
-           
-           for (var i=2;i<headerData.length;i++) {
-             columns[i] = {field : headerData[i]}
-           }
+        headerData = Object.keys(batteryData[0]);
+        console.log("FETCHED",batteryData)
+        console.log(headerData)
+        let colValues =   ['ID', 'Test', 'Part Number', 'Serial Number', 'CO2', 'Date of Manufacturing', 'Manufacturing Cost', 'Sales Price']
+
+        for (var i=2;i<headerData.length;i++) {
+          columns[i] = {field : headerData[i], headerName: colValues[i],width:150}
         }
+     }
         return columns;
 
     }
@@ -99,22 +99,6 @@ class BatteryService {
 
         return rows;
 
-    }
-
-    async getYears () {
-       let years = [];
-       for (var j=0;j<batteryData.length;j++) {
-           years.push(batteryData[j].dateManufactured);
-       }
-       return years;    
-    }
-
-    async getData () {
-       let data = [];
-       for (var j=0;j<batteryData.length;j++) {
-           data.push(batteryData[j].co2);
-       }
-        return data;
     }
 
     async updateBatteryData(partNumber, serialNumber, co2, dateManufactured,

@@ -60,13 +60,14 @@ class MotorService {
         if(motorData) {
             headerData = Object.keys(motorData[0]);
             console.log("FETCHED",motorData)
-            
+            let colValues =   ['ID', 'Test', 'Part Number', 'Serial Number', 'CO2', 'Date of Manufacturing', 'Manufacturing Cost', 'Sales Price']
+
             for (var i=2;i<headerData.length;i++) {
-              columns[i] = {field : headerData[i]}
+              columns[i] = {field : headerData[i], headerName: colValues[i],width:200}
             }
 
-            return columns;
         }
+        return columns
 
     }
 
@@ -95,22 +96,6 @@ class MotorService {
 
     }
 
-    async getYears () {
-        let years = [];
-        for (var j=0;j<motorData.length;j++) {
-            years.push(motorData[j].dateManufactured);
-        }
-        return years;  
-    }
-
-    async getData () {
-        let data = [];
-        for (var j=0;j<motorData.length;j++) {
-            data.push(motorData[j].co2);
-        }
-        return data;
-    }  
-   
     async updateMotorData(PartNumber, serialNumber, co2, dateManufactured,
         costManufactured,salesPrice) {
     
