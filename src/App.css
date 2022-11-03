@@ -277,3 +277,19 @@ label {
   padding-bottom: 15em;
   padding-top: 15em;
 }
+
+.card-container {
+  display: flex;
+  margin-right: 5%;
+  box-shadow: rgb(0 0 0 / 16%) 0px 0px 6px;
+  border: white;
+}
+
+.comp-card-container {
+  display: flex;
+
+  border: white;
+  padding: 20px;
+  margin-bottom: 2%;
+}
+
