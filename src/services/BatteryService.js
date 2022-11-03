@@ -110,7 +110,64 @@ class BatteryService {
        }
         return data;
     }
+
+    async updateBatteryData(partNumber, serialNumber, co2, dateManufactured,
+        costManufactured,salesPrice) {
+    
+            const response = await getEntity.battery.list(
+                {
+                 filter: {
+                     serialNumber: {
+                       contains: serialNumber,
+                     },
+                }
+            
+             }
+            );
+    
+            console.log("ID:", response.items[0]);
+            const ID = response.items[0]._id;
+    
+            if(partNumber == ""){
+               
+                partNumber = response.items[0].partNumber;
+             } 
+             
+             if(dateManufactured == ""){
+               
+                dateManufactured = response.items[0].dateManufactured;
+             } 
+    
+             if(isNaN(co2)){
+            
+                co2 = response.items[0].co2;
+             }
+    
+             if(isNaN(costManufactured)){
+                costManufactured = parseFloat(response.items[0].costManufactured);
+           }
+           
+           if(isNaN(salesPrice)){
+                salesPrice = parseFloat(response.items[0].salesPrice);
+           }
+    
+           const updateBattery = await getEntity.battery.update(
+            
+            {_id:ID, 
+            partNumber: partNumber ,
+            co2: co2,
+            dateManufactured: dateManufactured,
+            costManufactured: costManufactured,
+            salesPrice: salesPrice,
+            }
+        );
+        console.log("updated info: " + updateBattery.co2);
+      
+    }
 }
+
+
+
 
 
 export default new BatteryService();

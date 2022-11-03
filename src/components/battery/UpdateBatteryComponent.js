@@ -71,35 +71,37 @@ function UpdateBatteryComponent(props) {
                             <Form onSubmit={handleSubmit}>
                               <div className='row'>
                                 <div className='col'>
-                                   <Form.Label>Part Number:</Form.Label>&nbsp;
-                                   <Form.Control type="text" value = {partNumber} onChange={event => setPartNumber(event.target.value)}></Form.Control>
-                                 </div>
-
-                                 <div className='col'>
                                    <Form.Label>Serial Number:</Form.Label>&nbsp;
                                    <Form.Control type="text" placeholder = "Enter the Serial Number" value = {serialNumber} onChange={event => setSerialNumber(event.target.value)}></Form.Control>
                                  </div>
                               </div>
+                               
+
                               
                               <div className='row'>
+                              <div className='col'>
+                                   <Form.Label>Part Number:</Form.Label>&nbsp;
+                                   <Form.Control type="text" value = {partNumber} onChange={event => setPartNumber(event.target.value)}></Form.Control>
+                                 </div>
                                 <div className='col'>
 
                                   <Form.Label>CO2:</Form.Label>&nbsp;
                                   <Form.Control type="text" value = {co2} onChange={event => setCo2(event.target.value)}></Form.Control>
                                 </div>
+                            </div>
 
-                                <div>
+                            <div className='row'>
+                                <div className='col'>
                                   <Form.Label>Date Manufactured:</Form.Label>&nbsp;
                                   <Form.Control type="text" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
                                 </div>
-                               </div>
-                             
-                              <div className='row'>
+
                                 <div className='col'>
                                   <Form.Label>Cost To Manufacture:</Form.Label>&nbsp;
                                   <Form.Control type="text" value = {costManufactured} onChange={event => setCostManufactured(event.target.value)}></Form.Control>
                                 </div>
-                            
+                                </div>
+                               <div className='row'>
                                 <div className = 'col'>
                                   <Form.Label>Sales Price:</Form.Label>&nbsp;
                                   <Form.Control type="text" value = {salesPrice} onChange={event => setSalesPrice(event.target.value)}></Form.Control><br/>

@@ -103,7 +103,61 @@ class MotorService {
             data.push(motorData[j].co2);
         }
         return data;
-    }   
+    }  
+   
+    async updateMotorData(PartNumber, serialNumber, co2, dateManufactured,
+        costManufactured,salesPrice) {
+    
+            const response = await getEntity.motor.list(
+                {
+                 filter: {
+                     serialNumber: {
+                       contains: serialNumber,
+                     },
+                }
+            
+             }
+            );
+    
+            console.log("ID:", response.items[0]);
+            const ID = response.items[0]._id;
+    
+            if(PartNumber == ""){
+               
+                PartNumber = response.items[0].PartNumber;
+             } 
+             
+             if(dateManufactured == ""){
+               
+                dateManufactured = response.items[0].dateManufactured;
+             } 
+    
+             if(isNaN(co2)){
+            
+                co2 = response.items[0].co2;
+             }
+    
+             if(isNaN(costManufactured)){
+                costManufactured = parseFloat(response.items[0].costManufactured);
+           }
+           
+           if(isNaN(salesPrice)){
+                salesPrice = parseFloat(response.items[0].salesPrice);
+           }
+    
+           const updateMotor = await getEntity.motor.update(
+            
+            {_id:ID, 
+            PartNumber: PartNumber ,
+            co2: co2,
+            dateManufactured: dateManufactured,
+            costManufactured: costManufactured,
+            salesPrice: salesPrice,
+            }
+        );
+        console.log("updated info: " + updateMotor.co2);
+      
+    }
 }
 
 
