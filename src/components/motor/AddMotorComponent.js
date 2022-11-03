@@ -39,7 +39,7 @@ function AddMotorComponent(props) {
             }
             catch (e) {
                  setIsAddClicked(false);
-                alert("Error Occurred while loading!!!")
+                alert("Error Occurred while loading!!!" + e)
             }
         }
         addMOTORData();
@@ -89,7 +89,7 @@ function AddMotorComponent(props) {
                         </div>
                         <div>
                             <Form.Label>Date Manufactured:</Form.Label>
-                            <Form.Control type="text" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
+                            <Form.Control type="text" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
                         </div>
                     </div>
                     <div className='row'>

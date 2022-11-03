@@ -36,7 +36,7 @@ function AddBatteryComponent(props) {
             }
             catch (e) {
                  setIsAddClicked(false);
-                alert("Error Occurred while loading!!!")
+                alert("Error Occurred while loading!!!" + e)
             }
         }
         addBATTERYData();
@@ -91,7 +91,7 @@ function AddBatteryComponent(props) {
 
                                 <div>
                                   <Form.Label>Date Manufactured:</Form.Label>&nbsp;
-                                  <Form.Control type="text" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
+                                  <Form.Control type="text" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
                                 </div>
                                </div>
                              

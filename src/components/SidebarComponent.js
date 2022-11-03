@@ -55,7 +55,7 @@ function SidebarComponent(componentType) {
             },
             {
                 title: "Update Tool",
-                link: "/assignSN",
+                link: "/updateMotor",
                 icon: <MdAssignmentTurnedIn />
             },
 
@@ -78,7 +78,7 @@ function SidebarComponent(componentType) {
             },
             {
                 title: "Update Tool",
-                link: "/assignSN",
+                link: "/updateBattery",
                 icon: <MdAssignmentTurnedIn />
             },
 

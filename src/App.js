@@ -12,9 +12,11 @@ import ViewHPTComponent from "./components/hpt/ViewHPTComponent"
 import MotorComponent from "./components/MotorComponent"
 import AddMotorComponent from "./components/motor/AddMotorComponent"
 import ViewMotorComponent from "./components/motor/ViewMotorComponent"
+import UpdateMotorComponent from "./components/motor/UpdateMotorComponent"
 import BatteryComponent from "./components/BatteryComponent"
 import AddBatteryComponent from "./components/battery/AddBatteryComponent"
 import ViewBatteryComponent from "./components/battery/ViewBatteryComponent"
+import UpdateBatteryComponent from "./components/battery/UpdateBatteryComponent"
 import SeaRouteComponent from "./components/SeaRoute"
 import RoadComponent from "./components/RoadRoute"
 import RoadRouteComponent from "./components/road/ViewRoadComponent"
@@ -25,6 +27,7 @@ import AssignSNComponent from "./components/hpt/AssignSNComponent"
 import AddSeaComponent from "./components/sea/AddSeaComponent"
 import ViewSeaComponent from "./components/sea/ViewSeaComponent"
 import WorldMap from "./components/SeaRouteMap";
+
 
 
 function App() {
@@ -46,9 +49,11 @@ function App() {
         <Route path="/motor" element={<MotorComponent />} />
         <Route path="/addMotor" element={<AddMotorComponent />} />
         <Route path="/viewMotor" element={<ViewMotorComponent />} />
+        <Route path="/updateMotor" element={<UpdateMotorComponent />} />
         <Route path="/battery" element={<BatteryComponent />} />
         <Route path="/addBattery" element={<AddBatteryComponent />} />
         <Route path="/viewBattery" element={<ViewBatteryComponent />} />
+        <Route path="/updateBattery" element={<UpdateBatteryComponent />} />
         <Route path="/roadRoute" element={<RoadComponent />} />
         <Route path="/updateRoad" element={<UpdateRoadComponent />} />
         <Route path="/addRoad" element={<AddRoadComponent />} />

@@ -1,68 +1,158 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Form } from 'react-bootstrap';
-import MotorService from '../../services/MotorService';
-import BatteryService from '../../services/BatteryService';
+import ReactDOM from 'react-dom';
 import CO2NavBar from '../CO2NavBar';
+import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { Container } from 'react-bootstrap';
+import BatteryService from '../../services/BatteryService';
+import {Button} from 'react-bootstrap';
 import SidebarComponent from '../SidebarComponent';
 
+
+
 function ViewBatteryComponent(props) {
-    const [records, setRecords] = useState([]);
-   
 
+  const [showData, setShowData] = useState(false);
+  const [serialNumber, setserialNumber] = useState();
+  const [records, setRecords] = useState(
+  
+    {
+        partNumber: "",
+        serialNumber: "",
+        co2: 0,
+        dateManufactured: "",
+        costManufactured: 0,
+        salesCost: 0
+    });
 
+  const [batteryRecords, setBatteryRecords] = useState([]);
+  const output = [];
 
-    useEffect(() => {
-        async function getBATTERYData() {
-            //Add Records
-            try {
-                const batteryData = await BatteryService.getBatteryData();
-                console.log(batteryData);
-                setRecords(batteryData.data);
-               
-                console.log("records:", records)
-            }
-            catch (e) {
-                console.log(e);
-            }
-        }
-        getBATTERYData();
-    }, []);
+  const handleSubmit = event => {
+    event.preventDefault();
+    async function getBatteryData() {
+      try {
+      //Add Records
+        const batteryData = await BatteryService.getBatteryDataByID(serialNumber);
+        console.log("what im returning", batteryData);
 
-    return (
-        <>
-            <CO2NavBar />
-            <div className="row">
-                {/* <div className="col" style={{ width: '5%', border: "10px" }}>
-                 <SidebarComponent /> 
-                </div> */}
-                <div className="col" style={{ margin: '2%', float: 'left' }}>
-                    <Container fluid>
-                        <table>
-                            <tbody>
+        batteryData.map(rows => {
+
+            setRecords({
+                partNumber: "",
+                serialNumber: "",
+                co2: 0,
+                dateManufactured: "",
+                costManufactured: 0,
+                salesCost: 0
+                
+            });
+            console.log("created record", records)
+            setBatteryRecords([...batteryRecords, records]);
+        })
+        
+        console.log("batteryRecords: " + batteryRecords);
+        setShowData(true);
+      }
+      catch (e) {
+        console.log(e);
+      }
+    }
+    getBatteryData();
+
+    setBatteryRecords([])
+  }
+
+  
+  function renderBatteryData() {
+        const batteryDataId = document.getElementById('batteryData');
+        ReactDOM.render(
+            <MDBTable align='middle'>
+                <MDBTableHead>
+                    <tr>
+                        <th>Part Number</th>
+                        <th>Serail  Number</th>
+                        <th>CO2</th>
+                        <th>Date Manufactured</th>
+                        <th>Cost of Manufacture</th>
+                        <th>Sales Cost</th> 
+                    </tr>
+                </MDBTableHead>
+                <MDBTableBody>
+                    {
+                        batteryRecords.map(item => {
+                            console.log("item: ", item.serialNumber)
+                            return (
                                 <tr>
-                                    <th>Part Munber</th>&emsp;
-                                    <th>Serial Number</th>&emsp;
-                                    <th>CO2</th>&emsp;
-                                    <th>Cost of Manufacture</th>&emsp;
-                                    <th>Date Of Manufacture</th>&emsp;
-                                    <th>Sales Price</th>
-                                    
+                                    <td>{item.partNumber}</td>
+                                    <td>{item.serialNumber}</td>
+                                    <td>
+                                        <MDBBadge color={item.co2 < 10 ? 'success' : 'danger'} pill>
+                                            {item.co2}
+                                        </MDBBadge>
+                                    </td>
+                                    <td>{item.dateManufactured}</td>
+                                    <td>{item.costManufactured}</td>
+                                    <td>{item.salesCost}</td>
                                 </tr>
-                                {records.map((item, i) => (
-                                    <tr key={i}>
-                                        <td>{item.partNumber}</td>
-                                        <td>{item.serialNumber}</td>
-                                        <td>{item.co2}</td>
-                                        <td>{item.dateManufactured}</td>
-                                        <td>{item.costManufactured}</td>
-                                        <td>{item.salesPrice}</td>
-                                        
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </Container>
-                </div>
+                            )
+                        })
+                    }
+                </MDBTableBody>
+            </MDBTable>, batteryDataId
+        )
+    }
+    
+
+  return (
+   <>
+            <CO2NavBar />
+            <div className="co2container">
+            <SidebarComponent value="Battery" />
+
+                <main style={{ margin: '2%' }}>
+                    <form onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Enter Serial Number" onChange={event => setserialNumber(event.target.value)}></input>
+                        &nbsp;&nbsp;
+                        <Button variant="success" type="submit" value="Submit">View</Button>
+                    </form>
+    
+                    {
+                        showData &&
+                        <MDBTable align='middle'>
+                            <MDBTableHead>
+                                <tr>
+                                    <th>Part Number</th>
+                                    <th>Serial Number</th>
+                                    <th>CO2</th>
+                                    <th>Date Manufactured</th>
+                                    <th>Cost of Manufacture</th>
+                                    <th>Sales Cost</th>
+                                </tr>
+                            </MDBTableHead>
+                            <MDBTableBody>
+                                {
+                                    batteryRecords.map(item => {
+                                        console.log("item: ", item)
+                                        return (
+                                            <tr>
+                                                <td>{item.partNumber}</td>
+                                                <td>{item.serialNumber}</td>
+                                                <td>
+                                                    <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
+                                                        {item.co2}
+                                                    </MDBBadge>
+                                                </td>
+                                                <td>{item.dateManufactured}</td>
+                                                <td>{item.costManufactured}</td>
+                                                <td>{item.salesCost}</td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </MDBTableBody>
+                        </MDBTable>
+                    }
+                </main>
             </div>
         </>
     );
