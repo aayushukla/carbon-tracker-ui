@@ -110,7 +110,7 @@ function AddMotorComponent(props) {
                                
                             </div>
                       </div> */}
-                      <br/>
+        
                       <div className = 'row'>
                        <div className = 'col'>
                             <Button variant="success" type="submit" value="Submit"

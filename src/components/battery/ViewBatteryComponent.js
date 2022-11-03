@@ -12,7 +12,7 @@ import SidebarComponent from '../SidebarComponent';
 function ViewBatteryComponent(props) {
 
   const [showData, setShowData] = useState(false);
-  const [serialNumber, setserialNumber] = useState();
+  const [serialNumber, setSerialNumber] = useState();
   const [records, setRecords] = useState(
   
     {
@@ -38,12 +38,13 @@ function ViewBatteryComponent(props) {
         batteryData.map(rows => {
 
             setRecords({
-                partNumber: "",
-                serialNumber: "",
-                co2: 0,
-                dateManufactured: "",
-                costManufactured: 0,
-                salesCost: 0
+                
+                partNumber: rows["partNumber"],
+                serialNumber: rows["serialNumber"],
+                co2: rows["co2"],
+                dateManufactured: rows["dateManufactured"],
+                costManufactured: rows["costManufactured"],
+                salesCost: rows["salesCost"],
                 
             });
             console.log("created record", records)
@@ -111,7 +112,7 @@ function ViewBatteryComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter Serial Number" onChange={event => setserialNumber(event.target.value)}></input>
+                        <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNumber(event.target.value)}></input>
                         &nbsp;&nbsp;
                         <Button variant="success" type="submit" value="Submit">View</Button>
                     </form>
