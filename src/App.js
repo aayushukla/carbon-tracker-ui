@@ -27,6 +27,8 @@ import AssignSNComponent from "./components/hpt/AssignSNComponent"
 import AddSeaComponent from "./components/sea/AddSeaComponent"
 import ViewSeaComponent from "./components/sea/ViewSeaComponent"
 import WorldMap from "./components/SeaRouteMap";
+import UserProfile from "./components/UserProfile";
+import UpdateHPTComponent from "./components/hpt/UpdateHPTComponent";
 
 
 
@@ -44,6 +46,7 @@ function App() {
         <Route path="/breakdown" element={<CO2BreakdownComponent />} />
         <Route path="/hpt" element={<HPTComponent />} />
         <Route path="/addHPT" element={<AddHPTComponent />} />
+        <Route path="/updateHPT" element={<UpdateHPTComponent />} />
         <Route path="/viewHPT" element={<ViewHPTComponent />} />
         <Route path="/assignSN" element={<AssignSNComponent />} />
         <Route path="/motor" element={<MotorComponent />} />
@@ -63,6 +66,7 @@ function App() {
         <Route path="/viewSea" element={<ViewSeaComponent />} />
         <Route path="/co2History" element={<CO2History />} />
         <Route path="/seamap" element={<WorldMap />} />
+        <Route path="/userProfile" element={<UserProfile />} />
       </Routes>
   )
 }

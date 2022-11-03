@@ -78,7 +78,7 @@ function AddHPTComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
+                        <h4 style={{ margin: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '30px' }}>
                             Add Hornet Power Tool</h4>
                     </div>
 
@@ -156,7 +156,7 @@ function AddHPTComponent(props) {
                             </div>
 
                         </div>
-                        <br></br><br></br>
+                        <br></br>
                         <div className='row'>
                             <div className='col'>
                                 <Button variant="success" type="submit" value="Submit"

@@ -5,11 +5,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@mui/material';
 
 function CO2NavBar()  {
 
     return (
-      <Navbar bg='light'>
+      <Navbar bg='light' style = {{padding: '1%'}}>
         <Container fluid>
         <img
               src="images/vendia2.png"
@@ -46,9 +47,12 @@ function CO2NavBar()  {
                 className="me-2"
                 aria-label="Search"
               /> */}
+              <Link to="/userProfile">
+              <Avatar src="/broken-image.jpg" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}/>
+              </Link>&nbsp;&nbsp;
               <Link to="/">
                   <Button variant="success" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>Sign Out</Button>
-              </Link>
+              </Link> 
             </Form>
             {/* <a href="https://www.csus.edu/">
             <img

@@ -25,14 +25,14 @@ function SidebarComponent(componentType) {
                 link: "/viewHPT",
                 icon: <BsFillEyeFill />
             },
-            {
-                title: "Assign SerialNumber",
-                link: "/assignSN",
-                icon: <MdAssignmentTurnedIn />
-            },
+            // {
+            //     title: "Assign SerialNumber",
+            //     link: "/assignSN",
+            //     icon: <MdAssignmentTurnedIn />
+            // },
             {
                 title: "Update Tool",
-                link: "/assignSN",
+                link: "/updateHPT",
                 icon: <MdAssignmentTurnedIn />
             },
 

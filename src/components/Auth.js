@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import NavBar from './NavBar';
 
@@ -51,9 +52,13 @@ export default function (props) {
                   />
                 </div>
                 <div className="d-grid gap-2 mt-3">
-                  <button type="submit" className="btn btn-primary">
+                <Button variant="primary" type="submit"
+                  style={{ fontSize: "15px", marginLeft: '10px', marginBottom: '2px', backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                  Sign In
+                </Button>
+                  {/* <button type="submit" className="btn btn-primary">
                     Sign In
-                  </button>
+                  </button> */}
                 </div>
                 <p className="text-center mt-2">
                   <a href="#">Forgot password?</a>
@@ -70,52 +75,56 @@ export default function (props) {
     return (
       <div>
         <NavBar />
-          <div className="Auth-form-container">
-            <form className="Auth-form">
-              <div className="Auth-form-content">
-                <h3 className="Auth-form-title">Sign Up</h3>
-                <div className="text-center">
-                  Already registered?{" "}
-                  <span className="link-primary" onClick={changeAuthMode}>
-                    Sign In
-                  </span>
-                </div>
-                <div className="form-group mt-3">
-                  <label>Full Name</label>
-                  <input
-                    type="email"
-                    className="form-control mt-1"
-                    placeholder="e.g Jane Doe"
-                  />
-                </div>
-                <div className="form-group mt-3">
-                  <label>Email address</label>
-                  <input
-                    type="email"
-                    className="form-control mt-1"
-                    placeholder="Email Address"
-                  />
-                </div>
-                <div className="form-group mt-3">
-                  <label>Password</label>
-                  <input
-                    type="password"
-                    className="form-control mt-1"
-                    placeholder="Password"
-                  />
-                </div>
-                <div className="d-grid gap-2 mt-3">
-                  <button type="submit" className="btn btn-primary">
+        <div className="Auth-form-container">
+          <form className="Auth-form">
+            <div className="Auth-form-content">
+              <h3 className="Auth-form-title">Sign Up</h3>
+              <div className="text-center">
+                Already registered?{" "}
+                <span className="link-primary" onClick={changeAuthMode}>
+                  Sign In
+                </span>
+              </div>
+              <div className="form-group mt-3">
+                <label>Full Name</label>
+                <input
+                  type="email"
+                  className="form-control mt-1"
+                  placeholder="e.g Jane Doe"
+                />
+              </div>
+              <div className="form-group mt-3">
+                <label>Email address</label>
+                <input
+                  type="email"
+                  className="form-control mt-1"
+                  placeholder="Email Address"
+                />
+              </div>
+              <div className="form-group mt-3">
+                <label>Password</label>
+                <input
+                  type="password"
+                  className="form-control mt-1"
+                  placeholder="Password"
+                />
+              </div>
+              <div className="d-grid gap-2 mt-3">
+                <Button variant="primary" type="submit"
+                  style={{ fontSize: "15px", marginLeft: '10px', marginBottom: '2px', backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                  Sign Up
+                </Button>
+                {/* <button type="submit" className="btn btn-primary">
                     Sign Up
-                  </button>
-                </div>
-                {/* <p className="text-center mt-2">
+                  </button> */}
+              </div>
+              {/* <p className="text-center mt-2">
               <a href="#">Forgot password?</a>
             </p> */}
-              </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
+      </div>
     )
   }
 }
