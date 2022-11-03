@@ -56,7 +56,7 @@ function UpdateMotorComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="container">
+            <div className="co2container">
                <SidebarComponent  value="Motor"/>
      
             
