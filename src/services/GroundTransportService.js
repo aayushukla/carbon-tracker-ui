@@ -6,6 +6,12 @@ var headerData = [];
 let bodyData = [];
 let rows = [];
 let groundData = [];
+var yearMap = new Map()
+var yearsSet = new Set()
+
+let years = [];
+var date = '';
+var year = '';
 class GroundTransportService {
 
     async getGroundTransportData() {
@@ -155,6 +161,34 @@ class GroundTransportService {
  
         // return response.items;
     }
+
+    async getYears () {
+        for (var j=0;j<groundData.length;j++) {
+        date = new Date(groundData[j].dateArrived);
+        year = date.getFullYear();
+        yearMap.set(year,0)
+        yearsSet.add(year)
+        years = [...yearsSet]
+    }
+
+    
+    return years;     
+    }
+
+    async getData () {
+
+       for (var j = 0;j<groundData.length;j++){
+        date = new Date(groundData[j].dateArrived);
+        year = date.getFullYear();
+
+        yearMap.set(year,yearMap.get(year)+groundData[j].co2)      
+    
+       }  
+      
+        return [...yearMap.values()];
+    }
+
+    
 
      
 }

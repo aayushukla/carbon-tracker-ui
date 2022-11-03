@@ -8,6 +8,12 @@ var headerData = [];
 let bodyData = [];
 let rows = [];
 let batteryData = [];
+var yearMap = new Map()
+var yearsSet = new Set()
+
+let years = [];
+var date = '';
+var year = '';
 
 class BatteryService {
 
@@ -163,6 +169,32 @@ class BatteryService {
         );
         console.log("updated info: " + updateBattery.co2);
       
+    }
+
+    async getYears () {
+        for (var j=0;j<batteryData.length;j++) {
+        date = new Date(batteryData[j].dateManufactured);
+        year = date.getFullYear();
+        yearMap.set(year,0)
+        yearsSet.add(year)
+        years = [...yearsSet]
+    }
+
+    
+    return years;     
+    }
+
+    async getData () {
+
+       for (var j = 0;j<batteryData.length;j++){
+        date = new Date(batteryData[j].dateManufactured);
+        year = date.getFullYear();
+
+        yearMap.set(year,yearMap.get(year)+batteryData[j].co2)      
+    
+       }  
+      
+        return [...yearMap.values()];
     }
 }
 

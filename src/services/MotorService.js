@@ -6,6 +6,12 @@ var headerData = [];
 let bodyData = [];
 let rows = [];
 let motorData = [];
+var yearMap = new Map()
+var yearsSet = new Set()
+
+let years = [];
+var date = '';
+var year = '';
 class MotorService {
 
     async getMotorData() {
@@ -157,6 +163,31 @@ class MotorService {
         );
         console.log("updated info: " + updateMotor.co2);
       
+    }
+    async getYears () {
+        for (var j=0;j<motorData.length;j++) {
+        date = new Date(motorData[j].dateManufactured);
+        year = date.getFullYear();
+        yearMap.set(year,0)
+        yearsSet.add(year)
+        years = [...yearsSet]
+    }
+
+    
+    return years;     
+    }
+
+    async getData () {
+
+       for (var j = 0;j<motorData.length;j++){
+        date = new Date(motorData[j].dateManufactured);
+        year = date.getFullYear();
+
+        yearMap.set(year,yearMap.get(year)+motorData[j].co2)      
+    
+       }  
+      
+        return [...yearMap.values()];
     }
 }
 
