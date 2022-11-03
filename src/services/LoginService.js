@@ -19,7 +19,11 @@ class LoginService {
 
 
         console.log(userData.items)
-        if (userData.length == 0 || Email == undefined) {
+        if (Email == undefined) {
+            alert("Please enter Email")
+            return 0;
+        }
+        if (userData.length == 0) {
             return 0;
         }
         else {
