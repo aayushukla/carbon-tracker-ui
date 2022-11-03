@@ -14,16 +14,15 @@ function ViewSeaComponent(props) {
     const [serialNum, setSerialNum] = useState();
     const [records, setRecords] = useState(
         {
-            id: "",
-            toolType: '',
-            serialNum: "",
+            trackingNumber: "",
+            routeID: "",
             co2: 0,
-            partsCosts: 0,
-            salesPrice: 0,
-            motorUsed: '',
-            batteryUsed: '',
-            shipNumber: "",
-            groundNumber: ""
+            shipID: "",
+            fuelCost: 0,
+            laborCost: 0,
+            dateShipped: '',
+            dateArrived: '',
+            bill: ""
         });
 
     const [seaRecords, setSeaRecords] = useState([]);
@@ -31,28 +30,25 @@ function ViewSeaComponent(props) {
 
     const handleSubmit = event => {
         event.preventDefault();
-        // setHptRecords([])
         async function getSeaData() {
-            //Add Records
             try {
                 const response = await SeaTransportService.getSeaTransportDataByID(serialNum);
                 const seaData = await response;
-                console.log("Fetched Sea Data:", seaData);
-                if (seaData) {
+      
 
                     seaData.map(rows => {
                         // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
 
                         setRecords({
-                            toolType: rows["toolType"],
-                            serialNum: rows["serialNum"],
-                            co2: rows["co2"],
-                            partsCosts: rows["partsCost"],
-                            salesPrice: rows["salesPrice"],
-                            motorUsed: rows["motorUsed"],
-                            batteryUsed: rows["batteryUsed"],
-                            shipNumber: rows["shipNumber"],
-                            groundNumber: rows["groundNumber"],
+                            trackingNumber: "",
+                            routeID: "",
+                            co2: 0,
+                            shipID: "",
+                            fuelCost: 0,
+                            laborCost: 0,
+                            dateShipped: '',
+                            dateArrived: '',
+                            bill: ""
                         });
                         console.log("created record", records)
                         setSeaRecords([...seaRecords, records]);
@@ -61,12 +57,12 @@ function ViewSeaComponent(props) {
                     console.log("seaRecords: " + seaRecords);
                     // setHptRecords(output);
                     setShowData(true);
-                }
-                else {
+                
+               
                     return (
                         <h4>No Records found</h4>
                     )
-                }
+                
             }
             catch (e) {
                 console.log(e);
@@ -76,6 +72,53 @@ function ViewSeaComponent(props) {
         // renderHPTData();
         setSeaRecords([])
     }
+
+
+    // function renderSeaData() {
+    //     const seaTransportationDataId = document.getElementById('seaTransportationData');
+    //     ReactDOM.render(
+    //         <MDBTable align='middle'>
+    //             <MDBTableHead>
+    //                 <tr>
+    //                     <th>Tracking Number</th>
+    //                     <th>Route ID</th>
+    //                     <th>CO2</th>
+    //                     <th>Ship ID</th>
+    //                     <th>Fuel Cost</th>
+    //                     <th>Labour Cost</th> 
+    //                     <th>Shipped Date</th> 
+    //                     <th>Arrived Date</th> 
+    //                     <th>Bill</th> 
+    //                 </tr>
+    //             </MDBTableHead>
+    //             <MDBTableBody>
+    //                 {
+    //                     seaRecords.map(item => {
+    //                         console.log("item: ", item.trackingNumber)
+    //                         return (
+    //                             <tr>
+    //                                 <td>{item.trackingNumber}</td>
+    //                                 <td>{item.serialNumber}</td>
+    //                                 <td>
+    //                                     <MDBBadge color={item.co2 < 10 ? 'success' : 'danger'} pill>
+    //                                         {item.co2}
+    //                                     </MDBBadge>
+    //                                 </td>
+    //                                 <td>{item.dateManufactured}</td>
+    //                                 <td>{item.costManufactured}</td>
+    //                                 <td>{item.salesCost}</td>
+    //                             </tr>
+    //                         )
+    //                     })
+    //                 }
+    //             </MDBTableBody>
+    //         </MDBTable>, motorDataId
+    //     )
+    // }
+    
+
+
+
 
     return (
         <>
@@ -91,7 +134,7 @@ function ViewSeaComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Sea Transport Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" onClick={() => setSeaRecords([])}>View</Button>
+                        <Button variant="success" type="submit" value="Submit" >View</Button>
                     </form>
                     {/* <div id="hptData"></div> */}
                     {
@@ -130,8 +173,8 @@ function ViewSeaComponent(props) {
                                                 <td>{item.fuelCost}</td>
                                                 <td>{item.laborCost}</td>
                                                 <td>{item.dateShipped}</td>
-                                                <td>{item.shipNumber}</td>
-                                                <td>{item.groundNumber}</td>
+                                                <td>{item.dateArrived}</td>
+                                                <td>{item.bill}</td>
                                             </tr>
 
                                         )

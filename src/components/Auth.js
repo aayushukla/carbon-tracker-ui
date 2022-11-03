@@ -1,21 +1,57 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import LoginService from "../services/LoginService";
 import NavBar from './NavBar';
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
-
   const navigate = useNavigate();
+
+  const [Email, setEmail] = useState();
+  const [records, setRecords] = useState(
+
+    {
+      username: "",
+      password: "",
+      Email: ""
+    });
 
   const changeAuthMode = () => {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
     console.log('authmod', authMode);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async event => {
+    event.preventDefault();
     console.log("In handleclicked");
-    navigate('/home');
+    await getUserData({
+      Email
+    });
+
+  }
+  async function getUserData(Email) {
+    console.log("inside getuserdata");
+    console.log(Email['Email'])
+    const userData = await LoginService.getUserByID(Email['Email']);
+
+    // userData.map(rows => {
+    //   setRecords({
+    //     username: "",
+    //     password: "",
+    //     Email: ""
+    //   })
+    // })
+
+
+    if (userData == 0) {
+      alert("User not found")
+      console.log("user not found")
+    }
+    else {
+      navigate('/home');
+    }
+
   }
 
   if (authMode === "signin") {
@@ -40,6 +76,7 @@ export default function (props) {
                   <input
                     type="email"
                     className="form-control mt-1"
+                    onChange={event => setEmail(event.target.value)}
                     placeholder="Enter email"
                   />
                 </div>
@@ -52,10 +89,10 @@ export default function (props) {
                   />
                 </div>
                 <div className="d-grid gap-2 mt-3">
-                <Button variant="primary" type="submit"
-                  style={{ fontSize: "15px", marginLeft: '10px', marginBottom: '2px', backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
-                  Sign In
-                </Button>
+                  <Button variant="primary" type="submit"
+                    style={{ fontSize: "15px", marginLeft: '10px', marginBottom: '2px', backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                    Sign In
+                  </Button>
                   {/* <button type="submit" className="btn btn-primary">
                     Sign In
                   </button> */}
