@@ -13,8 +13,8 @@ function CO2NavBar()  {
         <Container fluid>
         <img
               src="images/vendia2.png"
-              width="15%"
-              height="15%"
+              width="12%"
+              height="12%"
               className="d-inline-block align-top"
               alt="Vendia logo"
             />
