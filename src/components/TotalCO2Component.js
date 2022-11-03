@@ -11,7 +11,7 @@ import GroundTransportService from '../services/GroundTransportService';
 import SeaTransportService from '../services/SeaTransportService';
 import CO2NavBar from './CO2NavBar';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
-
+import Alert from '@mui/material/Alert';
 
 var serial = 0;
 var motorInfo = 0;
@@ -156,8 +156,8 @@ function TotalCO2Component() {
   
     <Card  style={{ border:'white',width: '100%',height:'150%'}}>
       <Card.Header style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
-      <h style={{ fontSize: '20px' , fontWeight: 'bold', color:'white'}}> Hornet Power Tool {serial} </h>
-      </Card.Header>
+      <h style={{ fontSize: '20px' , fontWeight: 'bold', color:'white'}}> Serial Number: {serial} </h>
+           </Card.Header>
 
       <Card  style={{ width: '100%', padding:'10px',borderColor:'white',  display: 'flex',
   justifyContent: 'center',
@@ -168,7 +168,7 @@ function TotalCO2Component() {
           {
                   totalCO2
                 }
-               {/*<img  src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" /> */} 
+               
           </Card.Text>
     
 
@@ -176,38 +176,47 @@ function TotalCO2Component() {
       </Card>
   
         
-  <div className='row'>
-  <div className="col"> 
+  <div className='row justify-content-sm-center'>
+  <div className="col-sm"> 
   <Card className='comp-card-container'>
   Battery Used: {batteryInfo}
 
   </Card>
   </div>
-  <div className="col">
+  <div className="col-sm">
     <Card className='comp-card-container'>
     Motor Used: {motorInfo}
     </Card>
    </div>
   
 </div>
-<div className='row'>
-  <div className="col">
+<div className='row justify-content-sm-center'>
+  <div className="col-sm">
     <Card className='comp-card-container'>
       Sea Transportation: {STInfo}
     </Card>
    </div>
-  <div className="col">
+  <div className="col-sm">
     <Card className='comp-card-container'>
     Ground Transportation: {GTInfo}
       </Card></div>
 </div>
-         
-         { visibleContent ?  
-         <Link style={{ fontSize: '20px' }} 
+
+<div className="col-sm">
+    <Card className='comp-card-container'>
+    Drill Image:
+<img style={{width: "150px", height:"100px"}} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
+      </Card></div>
+
+        
+        <Card.Footer style={{backgroundColor:'white',alignItems:'right' , display: 'flex', justifyContent:'right'}}> { visibleContent ?  
+         <Link style={{ fontSize: '15px'}} 
             to="/breakdown"  state = {{HPTCo2: totalHPTCo2, batteryCo2: totalBatteryCo2, 
-            motorCo2 : totalMotorCo2, groundCo2: totalGroundTransportCo2, seaCo2: totalSeaTransportCo2}}>Click here to see CO2 breakdown</Link> : null}
+            motorCo2 : totalMotorCo2, groundCo2: totalGroundTransportCo2, seaCo2: totalSeaTransportCo2}}>Go to CO2 breakdown</Link> : null}
+</Card.Footer>
 
     </Card>
+    
     </div>
   </div> : null}
 
