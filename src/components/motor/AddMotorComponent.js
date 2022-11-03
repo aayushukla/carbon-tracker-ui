@@ -18,7 +18,7 @@ function AddMotorComponent(props) {
     const [isAdded, setIsAdded] = useState(false);
     const [isAddClicked, setIsAddClicked] = useState(false);
     const [isError, setIsError] = useState(false);
-    const [drillImage, setDrillImage] = useState();
+    //const [drillImage, setDrillImage] = useState();
 
     const handleClose = () => setIsAddClicked(false);
 
@@ -103,13 +103,13 @@ function AddMotorComponent(props) {
                         </div>
                       </div>
 
-                      <div className='row'>
+                      {/* <div className='row'>
                             <div className='col'>
                             <Form.Label>Upload Drill Image:</Form.Label>&nbsp;
                                 <MDBFile id='customFile' onChange={event => setDrillImage(event.target.value)}></MDBFile>
                                
                             </div>
-                      </div>
+                      </div> */}
                       <br/>
                       <div className = 'row'>
                        <div className = 'col'>
