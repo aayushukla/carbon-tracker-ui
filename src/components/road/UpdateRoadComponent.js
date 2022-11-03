@@ -77,12 +77,12 @@ function UpdateRoadComponent(props) {
                             <div></div>
                             <div className='col'>
                                 <Form.Label>Route ID:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Rt000" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
                                 <Form.Label>CO2:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={co2} onChange={event => setCo2(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Enter Number" value={co2} onChange={event => setCo2(event.target.value)}></Form.Control>
                             </div>
                         </div>
 
@@ -91,11 +91,11 @@ function UpdateRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Vehicle ID:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={vehicleID} onChange={event => setvehicleID(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "V000" value={vehicleID} onChange={event => setvehicleID(event.target.value)}></Form.Control>
                             </div>
                             <div className='col'>
                                 <Form.Label>Fuel Cost:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={fuelCost} onChange={event => setfuelCost(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Enter Number" value={fuelCost} onChange={event => setfuelCost(event.target.value)}></Form.Control>
                             </div>
                         </div>
 
@@ -104,7 +104,7 @@ function UpdateRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Labor Cost:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={laborCost} onChange={event => setlaborCost(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Enter Number" value={laborCost} onChange={event => setlaborCost(event.target.value)}></Form.Control>
                             </div>
                             <div className='col'>
                                 <Form.Label>Date Shipped:</Form.Label>&nbsp;
@@ -122,7 +122,7 @@ function UpdateRoadComponent(props) {
                             </div>
                             <div className='col'>
                                 <Form.Label>Bill:</Form.Label>&nbsp;
-                                <Form.Control type="text" value={bill}
+                                <Form.Control type="text" placeholder = "Enter Number" value={bill}
                                     onChange={event => setbill(event.target.value)}>
                                 </Form.Control><br />
 
