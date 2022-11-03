@@ -47,7 +47,7 @@ function CO2NavBar()  {
                 aria-label="Search"
               /> */}
               <Link to="/">
-                  <Button variant="success">Sign Out</Button>
+                  <Button variant="success" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>Sign Out</Button>
               </Link>
             </Form>
             {/* <a href="https://www.csus.edu/">
