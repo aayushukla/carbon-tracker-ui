@@ -135,7 +135,8 @@ class GroundTransportService {
          if(isNaN(laborCost)){
               laborCost = parseFloat(response.items[0].laborCost);
          }
-         if(bill == undefined){
+         if(bill == ""){
+              console.log("Bill is: " + bill);
               bill = response.items[0].bill;
          }
          if(typeof dateShipped == undefined){

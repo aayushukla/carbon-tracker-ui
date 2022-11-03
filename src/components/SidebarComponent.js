@@ -103,6 +103,11 @@ function SidebarComponent(componentType) {
                 title: "Update Route",
                 link: "/updateRoad",
                 icon: <MdAssignmentTurnedIn />
+            },
+            {
+                title: "View Road Map",
+                link: "/roadMap",
+                icon: <BsFillEyeFill/>
             }
 
         ]
