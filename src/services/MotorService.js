@@ -36,13 +36,13 @@ class MotorService {
      }
      async addMotorData(PartNumber, serialNumber, co2, dateManufactured,
         costManufactured,salesPrice) {
-        console.log("Adding HPT Data:")
+        console.log("Adding Motor Data:")
         const response = await getEntity.motor.add({
-            partNumber: PartNumber,
+            PartNumber: PartNumber,
             serialNumber: serialNumber,
             co2: co2,
             dateManufactured: dateManufactured,
-            costtomanufacture: costManufactured,
+            costManufactured: costManufactured,
             salesPrice: salesPrice,
             
         });
