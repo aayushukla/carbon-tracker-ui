@@ -86,7 +86,7 @@ function CO2Breakdown(props) {
             </div> */}
                 <br></br>
                 <Link to={{ pathname: "/totalco2", query: { msg: 'hi' } }}>
-                    <Button variant="primary">Back</Button>
+                    <Button variant="primary" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>Back</Button>
                 </Link>
             </div>
         </>

@@ -10,7 +10,10 @@ import GroundTransportService from "../services/GroundTransportService"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal'
 import {Bar} from 'react-chartjs-2';
+import Typography from '@mui/material/Typography';
 import Chart from 'chart.js/auto';
+import LinearProgress from '@mui/material/LinearProgress';
+
 
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
@@ -80,16 +83,16 @@ function CO2History() {
         if(value == 'Sea Transport') {
           rows = await SeaTransportService.getSTRowsData();
           columns = await SeaTransportService.getSTColumnData();
-          // graphLabel = await MotorService.getYears();
-          // graphData = await MotorService.getData();
+          graphLabel = await SeaTransportService.getYears();
+          graphData = await SeaTransportService.getData();
 
       }
 
       if(value == 'Ground Transport') {
           rows = await GroundTransportService.getGTRowsData();
           columns = await GroundTransportService.getGTColumnData();
-          // graphLabel = await BatteryService.getYears();
-          // graphData = await BatteryService.getData();
+          graphLabel = await GroundTransportService.getYears();
+          graphData = await GroundTransportService.getData();
 
       }
 
@@ -110,6 +113,7 @@ function CO2History() {
     event.preventDefault();
     setComponentVal('');
     getCO2Val();
+    
     };
 
     return (
@@ -145,6 +149,9 @@ function CO2History() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
+        <Typography id="modal-modal-title" variant="h6" component="h1">
+          Highest CO2 Emission : {Math.max(...graphData)} 
+          </Typography>
         <Bar
           data={state}
           options={{
@@ -162,13 +169,14 @@ function CO2History() {
       </Modal>
     </Form>
     </Card>
+
     </div>
 
 {visible && columns && columns.length ?
-
+  
     <div className="container">
-
-    <div style={{ height: 300, width: '100%' }}>
+      
+    <div style={{ height: 400, width: '100%' }}>
         <DataGrid
             rows={rows}
             getRowId={(row) => row.internalId}
@@ -176,11 +184,12 @@ function CO2History() {
             pageSize={5}
             rowsPerPageOptions={[5]}
             sx={{
-        
+              
                 '&.MuiDataGrid-root': {
                 border: 'none',
                 }
             }}
+    
             loading={loading}
             components={{
           Toolbar: CustomToolbar,
