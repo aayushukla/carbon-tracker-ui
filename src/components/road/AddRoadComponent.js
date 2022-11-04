@@ -70,12 +70,12 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Tracking Number:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "5-Digits" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "RTXXXXX" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
                                 <Form.Label>Route ID:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Rt000" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "5-Digits" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
