@@ -19,7 +19,7 @@ function ViewBatteryComponent(props) {
              co2: 0,
              dateManufactured: "",
              costManufactured: 0,
-             salesCost: 0
+             salesPrice: 0
         });
 
     const [batteryRecords, setBatteryRecords] = useState([]);
@@ -38,6 +38,14 @@ function ViewBatteryComponent(props) {
                     
 
                     setRecords({
+
+                        partNumber: rows["partNumber"],
+                        serialNumber: rows["serialNumber"],
+                        co2: rows["co2"],
+                        dateManufactured: rows["dateManufactured"],
+                        costManufactured: rows["costManufactured"],
+                        salesPrice: rows["salesPrice"],
+                        
                        
                     });
                     console.log("created record", records)
@@ -90,7 +98,7 @@ function ViewBatteryComponent(props) {
                                     <th>CO2</th>
                                     <th>Date Manufactured</th>
                                     <th>Cost of Manufacture</th>
-                                    <th>Sales Cost</th>
+                                    <th>Sales Price</th>
                                 </tr>
                             </MDBTableHead>
                             <MDBTableBody>
