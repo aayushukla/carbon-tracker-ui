@@ -16,12 +16,9 @@ class SeaTransportService {
 
     async getSeaTransportData() {
         const response = await getEntity.seaTransportation.list();
-
         console.log("Fetched Motor Data:", response.items);
-
         return response.items;
     }
-
 
     async getSeaTransportDataByID (shipTrackingNumber){
 

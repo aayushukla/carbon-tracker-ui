@@ -12,115 +12,59 @@ function ViewSeaComponent(props) {
 
     const [showData, setShowData] = useState(false);
     const [serialNum, setSerialNum] = useState();
-    const [records, setRecords] = useState(
-        {
-            trackingNumber: "",
-            routeID: "",
-            co2: 0,
-            shipID: "",
-            fuelCost: 0,
-            laborCost: 0,
-            dateShipped: '',
-            dateArrived: '',
-            bill: ""
-        });
+    const [isDataPresent, setIsDataPresent] = useState(false)
+    const [records, setRecords] = useState([]);
 
     const [seaRecords, setSeaRecords] = useState([]);
-    const output = [];
+
 
     const handleSubmit = event => {
         event.preventDefault();
+        console.log("initial sea record data: ",records)
         async function getSeaData() {
             try {
-                const response = await SeaTransportService.getSeaTransportDataByID(serialNum);
-                const seaData = await response;
-      
-
-                    seaData.map(rows => {
-                        // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
-
-                        setRecords({
-                            trackingNumber: "",
-                            routeID: "",
-                            co2: 0,
-                            shipID: "",
-                            fuelCost: 0,
-                            laborCost: 0,
-                            dateShipped: '',
-                            dateArrived: '',
-                            bill: ""
-                        });
-                        console.log("created record", records)
+                 SeaTransportService.getSeaTransportDataByID(serialNum)
+                    .then(seaData => {
+                        console.log("Seadata",seaData)
+                        seaData.map(rows => {
+                            setRecords({
+                                trackingNumber: rows["trackingNumber"],
+                                routeID: rows["routeID"],
+                                co2: rows["co2"],
+                                shipID: rows["shipID"],
+                                fuelCost: rows["fuelCost"],
+                                laborCost: rows["laborCost"],
+                                dateShipped: rows["dateShipped"],
+                                dateArrived: rows["dateArrived"],
+                                bill: rows["bill"]
+                            });
+                            console.log("created record", records)
+                        })
+                       
                         setSeaRecords([...seaRecords, records]);
+                        console.log("seaRecords: " + seaRecords);
+
+                        setShowData(true);
+                        setIsDataPresent(true)
                     })
 
-                    console.log("seaRecords: " + seaRecords);
-                    // setHptRecords(output);
-                    setShowData(true);
-                
-               
-                    return (
-                        <h4>No Records found</h4>
+                    .catch(e =>
+                        console.log(e)
                     )
-                
+            } catch (e) {
+
             }
-            catch (e) {
-                console.log(e);
-            }
+
         }
+       
         getSeaData();
-        // renderHPTData();
-        setSeaRecords([])
+
+
     }
 
 
-    // function renderSeaData() {
-    //     const seaTransportationDataId = document.getElementById('seaTransportationData');
-    //     ReactDOM.render(
-    //         <MDBTable align='middle'>
-    //             <MDBTableHead>
-    //                 <tr>
-    //                     <th>Tracking Number</th>
-    //                     <th>Route ID</th>
-    //                     <th>CO2</th>
-    //                     <th>Ship ID</th>
-    //                     <th>Fuel Cost</th>
-    //                     <th>Labour Cost</th> 
-    //                     <th>Shipped Date</th> 
-    //                     <th>Arrived Date</th> 
-    //                     <th>Bill</th> 
-    //                 </tr>
-    //             </MDBTableHead>
-    //             <MDBTableBody>
-    //                 {
-    //                     seaRecords.map(item => {
-    //                         console.log("item: ", item.trackingNumber)
-    //                         return (
-    //                             <tr>
-    //                                 <td>{item.trackingNumber}</td>
-    //                                 <td>{item.serialNumber}</td>
-    //                                 <td>
-    //                                     <MDBBadge color={item.co2 < 10 ? 'success' : 'danger'} pill>
-    //                                         {item.co2}
-    //                                     </MDBBadge>
-    //                                 </td>
-    //                                 <td>{item.dateManufactured}</td>
-    //                                 <td>{item.costManufactured}</td>
-    //                                 <td>{item.salesCost}</td>
-    //                             </tr>
-    //                         )
-    //                     })
-    //                 }
-    //             </MDBTableBody>
-    //         </MDBTable>, motorDataId
-    //     )
-    // }
-    
 
-
-
-
-    return (
+     return (
         <>
             <CO2NavBar />
             <div className="co2container">
@@ -134,11 +78,11 @@ function ViewSeaComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Sea Transport Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" >View</Button>
+                        <Button variant="success" type="submit" value="Submit" onClick={() => setSeaRecords([])}>View</Button>
                     </form>
-                    {/* <div id="hptData"></div> */}
+                  
                     {
-                        showData && seaRecords &&
+                        showData && isDataPresent &&
                         <MDBTable align='middle'>
                             <MDBTableHead>
                                 <tr>
@@ -155,8 +99,6 @@ function ViewSeaComponent(props) {
                             </MDBTableHead>
                             <MDBTableBody>
                                 {
-
-
                                     seaRecords.map(item => {
                                         console.log("item: ", item)
                                         return (
@@ -176,6 +118,24 @@ function ViewSeaComponent(props) {
                                                 <td>{item.dateArrived}</td>
                                                 <td>{item.bill}</td>
                                             </tr>
+
+
+                                            // <tr>
+
+                                            //     <td>121</td>
+                                            //     <td>22</td>
+                                            //     <td>
+                                            //         <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
+                                            //             121
+                                            //         </MDBBadge>
+                                            //     </td>
+                                            //     <td>121</td>
+                                            //     <td>121</td>
+                                            //     <td>121</td>
+                                            //     <td>2022-10-06</td>
+                                            //     <td>2022-10-07</td>
+                                            //     <td>121</td>
+                                            // </tr>
 
                                         )
                                     })

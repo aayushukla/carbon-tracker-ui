@@ -24,10 +24,10 @@ class LoginService {
             return 0;
         }
         if (userData.length == 0) {
+            alert("User not found")
             return 0;
         }
         else {
-            
                 return userData.items;
         }
 

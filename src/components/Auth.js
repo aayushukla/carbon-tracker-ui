@@ -45,7 +45,7 @@ export default function (props) {
 
 
     if (userData == 0) {
-      alert("User not found")
+      
       console.log("user not found")
     }
     else {
