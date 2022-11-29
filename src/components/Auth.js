@@ -24,6 +24,9 @@ export default function (props) {
 
   const handleSubmit = async event => {
     event.preventDefault();
+    // const email = Email['Email']
+    // if(email == "")
+
     console.log("In handleclicked");
     await getUserData({
       Email
@@ -78,6 +81,7 @@ export default function (props) {
                     className="form-control mt-1"
                     onChange={event => setEmail(event.target.value)}
                     placeholder="Enter email"
+                    required
                   />
                 </div>
                 <div className="form-group mt-3">
@@ -86,6 +90,7 @@ export default function (props) {
                     type="password"
                     className="form-control mt-1"
                     placeholder="Enter password"
+                    required
                   />
                 </div>
                 <div className="d-grid gap-2 mt-3">
