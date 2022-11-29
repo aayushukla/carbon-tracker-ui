@@ -32,6 +32,8 @@ function TotalCO2Component() {
   const [serialNum, setSerialNum] = useState('');
   const [visible, setVisible] = useState(false);
   const [visibleContent, setVisibleContent] = useState(false);
+  const [displayAlert, setDisplay] = useState(false);
+
 
 
   const handleChange = event => {
@@ -57,6 +59,12 @@ function TotalCO2Component() {
 
       const hptTotal = await HPTService.getHornetPowerToolDataByID(serialNum)
       sethptData([...hptTotal])
+
+      if(Object.keys(hptTotal).length == 0)
+      {
+        setDisplay(true)
+
+      }
 
       const motortotal = await MotorService.getMotorDataByID(hptTotal[0].motorUsed)
       setMotorData([...motortotal])
@@ -145,7 +153,10 @@ function TotalCO2Component() {
       /> 
        </Form> 
           </Card.Body>
-          
+          {displayAlert ?  <Alert severity="error" style = {{}}> HPT Serial Number not found </Alert>
+
+ : null }
+ 
         </Card>
       </div>
   </div>
@@ -209,19 +220,18 @@ function TotalCO2Component() {
       </Card></div>
 
         
-        <Card.Footer style={{backgroundColor:'white',alignItems:'right' , display: 'flex', justifyContent:'right'}}> { visibleContent ?  
-         <Link style={{ fontSize: '15px'}} 
+       { visibleContent ?  
+         <Link style={{ fontSize: '15px', paddingBottom: '10px', paddingLeft: '5px'}} 
             to="/breakdown"  state = {{HPTCo2: totalHPTCo2, batteryCo2: totalBatteryCo2, 
             motorCo2 : totalMotorCo2, groundCo2: totalGroundTransportCo2, seaCo2: totalSeaTransportCo2}}>Go to CO2 breakdown</Link> : null}
-</Card.Footer>
+
 
     </Card>
     
     </div>
   </div> : null}
 
-      
- 
+  
 </div> 
   
 </>
