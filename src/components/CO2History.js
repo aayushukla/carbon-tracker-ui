@@ -13,6 +13,8 @@ import {Bar} from 'react-chartjs-2';
 import Typography from '@mui/material/Typography';
 import Chart from 'chart.js/auto';
 import LinearProgress from '@mui/material/LinearProgress';
+import Alert from '@mui/material/Alert';
+
 
 
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
@@ -62,6 +64,9 @@ function CO2History() {
     const [value, setComponentVal] = useState('');
     const [visible, setVisible] = useState(false);
 
+    const [displayAlert, setDisplay] = useState(false);
+
+
     async function getCO2Val() {
 
         if(value == 'Motor') {
@@ -96,6 +101,13 @@ function CO2History() {
 
       }
 
+      if(value == '')
+      {
+        setDisplay(true)
+
+      }
+
+
 
         setVisible(true);
 
@@ -121,10 +133,16 @@ function CO2History() {
         <CO2NavBar />
 
         <div className="container">
+          
         <Card style={{borderWidth: 0, borderColor: 'transparent', elevation: 0, width:'100%'}}>
                  
     <Card.Title style={{fontSize: '25px', marginTop:'20px', fontWeight:'bold'}}>CO2 History</Card.Title>
     <Form onSubmit={handleSubmit}>
+
+    {displayAlert ?  <Alert severity="error"> Please select a component type </Alert>
+
+: null }
+
     <Card.Text style={{fontSize: '20px'}}>
             Select a Component
     </Card.Text>
@@ -175,7 +193,6 @@ function CO2History() {
 {visible && columns && columns.length ?
   
     <div className="container">
-      
     <div style={{ height: 400, width: '100%' }}>
         <DataGrid
             rows={rows}
@@ -194,9 +211,13 @@ function CO2History() {
             components={{
           Toolbar: CustomToolbar,
         }}
+        
         />
+
         </div>
+
     </div>
+    
 : null}
    
     </>
