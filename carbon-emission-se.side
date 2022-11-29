@@ -1,0 +1,74 @@
+{
+  "id": "8756be71-5cc0-42d7-b58c-4d901a405d79",
+  "version": "2.0",
+  "name": "carbon-emission-se",
+  "url": "http://localhost:3000/totalco2",
+  "tests": [{
+    "id": "ee028c04-23a2-4e0b-b3e4-267c8ea874c5",
+    "name": "CheckTotalCo2_test",
+    "commands": [{
+      "id": "d5603835-42f4-4ebd-87ed-88a9b48cfd89",
+      "comment": "",
+      "command": "open",
+      "target": "http://localhost:3000/totalco2",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "561379b5-983a-4c38-a74f-2be5d681334c",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1440x793",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2306ca36-6710-494f-90e5-cacb68223099",
+      "comment": "",
+      "command": "click",
+      "target": "id=floatingInput",
+      "targets": [
+        ["id=floatingInput", "id"],
+        ["css=#floatingInput", "css:finder"],
+        ["xpath=//input[@id='floatingInput']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "00dfad9a-5352-467b-bee1-2fd1bf644092",
+      "comment": "",
+      "command": "type",
+      "target": "id=floatingInput",
+      "targets": [
+        ["id=floatingInput", "id"],
+        ["css=#floatingInput", "css:finder"],
+        ["xpath=//input[@id='floatingInput']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/form/div/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "0002HPT"
+    }, {
+      "id": "0b194f43-196e-4baa-937d-e751f6daa1ed",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-primary",
+      "targets": [
+        ["css=.btn-primary", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div/div/div/div/form/button", "xpath:idRelative"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Calculate Total CO2')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "c3e5f566-a732-4b9f-a846-31021c0552c0",
+    "name": "co2 tools",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": []
+  }],
+  "urls": ["http://localhost:3000/co2History"],
+  "plugins": []
+}
