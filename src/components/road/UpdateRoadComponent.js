@@ -71,7 +71,7 @@ function UpdateRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Tracking Number:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Enter the Tracking Number of the vehicle you wish to update" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Enter the Tracking Number of the vehicle you wish to update" value={trackingNumber} onClick={() => setIsAddClicked(false)} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
 
                             </div>
                             <div></div>

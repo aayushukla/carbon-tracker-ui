@@ -49,8 +49,8 @@ function AddRoadComponent(props) {
         setvehicleID("");
         setfuelCost("");
         setlaborCost("");
-        setdateShipped("");
-        setdateArrived("");
+        setdateShipped(undefined);
+        setdateArrived(undefined);
         setbill("");
     }
 
