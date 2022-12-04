@@ -30,6 +30,7 @@ import ViewSeaComponent from "./components/sea/ViewSeaComponent"
 import WorldMap from "./components/SeaRouteMap";
 import UserProfile from "./components/UserProfile";
 import UpdateHPTComponent from "./components/hpt/UpdateHPTComponent";
+import UpdateSeaComponent from "./components/sea/UpdateSeaComponent";
 
 
 
@@ -69,6 +70,8 @@ function App() {
         <Route path="/co2History" element={<CO2History />} />
         <Route path="/seamap" element={<WorldMap />} />
         <Route path="/userProfile" element={<UserProfile />} />
+        <Route path="/editSea" element={<UpdateSeaComponent />} />
+
       </Routes>
   )
 }

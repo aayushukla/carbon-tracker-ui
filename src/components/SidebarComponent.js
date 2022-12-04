@@ -131,6 +131,11 @@ function SidebarComponent(componentType) {
                 title: "View Sea Map",
                 link: "/seamap",
                 icon: <BsFillEyeFill/>
+            },
+            {
+                title: "Edit Sea Route",
+                link: "/editSea",
+                icon: <MdAssignmentTurnedIn/>
             }
         ]
     }
