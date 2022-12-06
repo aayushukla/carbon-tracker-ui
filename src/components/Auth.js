@@ -9,6 +9,7 @@ export default function (props) {
   const navigate = useNavigate();
 
   const [Email, setEmail] = useState();
+  const [passwd, setPassword] = useState("");
   const [records, setRecords] = useState(
 
     {
@@ -46,13 +47,18 @@ export default function (props) {
     //   })
     // })
 
-
+    
     if (userData == 0) {
       
       console.log("user not found")
     }
     else {
-      navigate('/home');
+      const fetchedPassword = userData[0]["password"];
+      console.log("fetchedPassword: ", fetchedPassword)
+      if(fetchedPassword === passwd)
+        navigate('/home');
+      else 
+        alert("Password does not match.");
     }
 
   }
@@ -90,6 +96,7 @@ export default function (props) {
                     type="password"
                     className="form-control mt-1"
                     placeholder="Enter password"
+                    onChange={event => setPassword(event.target.value)}
                     required
                   />
                 </div>
