@@ -63,6 +63,7 @@ function ViewHPTComponent(props) {
                                     });
                                     console.log("created record", records)
                                     // setHptRecords([...hptRecords, records]);
+                                    setHptRecords([]);
                                     hptRecords.push({
                                         toolType: rows["toolType"],
                                         serialNum: rows["serialNumber"],
