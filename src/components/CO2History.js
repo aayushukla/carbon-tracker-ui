@@ -74,7 +74,6 @@ function CO2History() {
             columns = await MotorService.getMotorColumnData();
             graphLabel = await MotorService.getYears();
             graphData = await MotorService.getData();
-
         }
 
         if(value == 'Battery') {
@@ -147,7 +146,7 @@ function CO2History() {
             Select a Component
     </Card.Text>
     <select style={{width:'30rem', height:'3rem', marginBottom:'40px'}} value={value} onChange={event => setComponentVal(event.target.value)} placeholder="Choose a Component">
-            <option value=""></option>
+            <option value="Select Component">Select Component</option>
             <option value="Motor">Motor</option>
             <option value="Battery">Battery</option>
             <option  value="Sea Transport">Sea Transportation</option>

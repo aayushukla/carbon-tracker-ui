@@ -10,7 +10,9 @@ import SidebarComponent from '../SidebarComponent';
 function ViewHPTComponent(props) {
 
     const [showData, setShowData] = useState(false);
-    const [serialNum, setSerialNum] = useState();
+    const [serialNum, setSerialNum] = useState("");
+    // let showData = false;
+    // let isDataPresent = false;
     const [isDataPresent, setIsDataPresent] = useState(false)
     const [records, setRecords] = useState(
         {
@@ -26,142 +28,165 @@ function ViewHPTComponent(props) {
             groundNumber: ""
         });
 
-    const [hptRecords, setHptRecords] = useState([]);
-    
+    const [hptRecords, setHptRecords] = useState();
 
     const handleSubmit = event => {
+        // setHptRecords([])
         event.preventDefault();
         // setHptRecords([])
+        console.log("hpt records on click view: ", hptRecords)
         async function getHPTData() {
             //Add Records
+            console.log("Serial number entered: ",serialNum)
             try {
-                const response = await HPTService.getHornetPowerToolDataByID(serialNum)
-                .then(hptData => {
-                // const hptData = await response;
-                // console.log("Fetched HPT Data:", hptData);
-                // if(hptData) {
-                //     console.log("hptRecords before fetching: " + hptRecords);
-                hptData.map(rows => {
-                    // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
+                if ((serialNum === "" || serialNum === null))
+                    alert("Please enter HPT serial number");
+                else {
+                    const response = await HPTService.getHornetPowerToolDataByID(serialNum)
+                        .then(hptData => {
 
-                    setRecords({
-                        toolType: rows["toolType"],
-                        serialNum: rows["serialNumber"],
-                        co2: rows["co2"],
-                        partsCosts: rows["partsCost"],
-                        salesPrice: rows["salesPrice"],
-                        motorUsed: rows["motorUsed"],
-                        batteryUsed: rows["batteryUsed"],
-                        shipNumber: rows["shipTrackingNumber"],
-                        groundNumber: rows["groundTrackingNumber"],
-                    });
-                    console.log("created record", records)
-                    setHptRecords([...hptRecords, records]);
-                })
+                            console.log("hptdata records: ", hptData.length)
+                            if (hptData.length > 0) {
+                                hptData.map(rows => {
+                                    // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
 
-                console.log("hptRecords: " + hptRecords);
-                // setHptRecords(output);
-                setShowData(true);
-                setIsDataPresent(true)
-                })
-                // else {
-                //     return(
-                //         <h4>No Records found</h4>
-                //     )
-                // }
-            // }
-            .catch(e =>
-                console.log(e)
-            )
-        } catch(e) {
+                                    setRecords({
+                                        toolType: rows["toolType"],
+                                        serialNum: rows["serialNumber"],
+                                        co2: rows["co2"],
+                                        partsCosts: rows["partsCost"],
+                                        salesPrice: rows["salesPrice"],
+                                        motorUsed: rows["motorUsed"],
+                                        batteryUsed: rows["batteryUsed"],
+                                        shipNumber: rows["shipTrackingNumber"],
+                                        groundNumber: rows["groundTrackingNumber"],
+                                    });
+                                    console.log("created record", records)
+                                    // setHptRecords([...hptRecords, records]);
+                                    hptRecords.push({
+                                        toolType: rows["toolType"],
+                                        serialNum: rows["serialNumber"],
+                                        co2: rows["co2"],
+                                        partsCosts: rows["partsCost"],
+                                        salesPrice: rows["salesPrice"],
+                                        motorUsed: rows["motorUsed"],
+                                        batteryUsed: rows["batteryUsed"],
+                                        shipNumber: rows["shipTrackingNumber"],
+                                        groundNumber: rows["groundTrackingNumber"],
+                                    });
 
+                                })
+                                setHptRecords(hptRecords);
+
+                                console.log("hptRecords: ", hptRecords);
+                                setShowData(true);
+                                setIsDataPresent(true)
+                            }
+                            else {
+                                alert("HPT data not found!")
+                            }
+                        })
+
+                        .catch(e =>
+                            console.log(e)
+                        )
+                }
+
+            } catch (e) {
+                console.log(e);
+            }}
+            getHPTData();
+            setHptRecords([])
         }
-        
+
+        return (
+            <>
+                <CO2NavBar />
+                <div className="co2container">
+                    <SidebarComponent value="HPT" />
+
+                    <main style={{ margin: '2%' }}>
+                        <div>
+                            <p style={{ margin: '1%', fontSize: '18px' }}>
+                                Enter HPT Serial Number</p>
+                        </div><br></br>
+                        <form onSubmit={handleSubmit}>
+                            <input type="text" placeholder="Enter HPT Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
+                            &nbsp;&nbsp;
+                            <Button variant="success" type="submit" value="Submit">View</Button>
+                            &nbsp;&nbsp;&nbsp;
+                            {
+                                showData && isDataPresent &&
+                                <Button variant="success" type="submit" value="Submit" onClick={() => {setHptRecords([]); setShowData(false)}}>Clear</Button>
+                            }
+                            
+                        </form>
+                        {/* <div id="hptData"></div> */}
+                        {console.log("showData & isDataPresent: ", showData, isDataPresent)}
+                        {
+                            showData && isDataPresent &&
+                            <MDBTable align='middle'>
+                                <MDBTableHead>
+                                    <tr>
+                                        <th>Tool Type</th>
+                                        <th>Serial Number</th>
+                                        <th>CO2</th>
+                                        <th>Parts Cost</th>
+                                        <th>Sales Price</th>
+                                        <th>Motor Used</th>
+                                        <th>Battery Used</th>
+                                        <th>Ship Tracking Number</th>
+                                        <th>Ground Tracking Number</th>
+                                    </tr>
+                                </MDBTableHead>
+                                <MDBTableBody>
+                                    {console.log("iterate over hptrecords: ", hptRecords)}
+                                    {
+
+                                        hptRecords.map(item => {
+                                            console.log("item: ", item)
+                                            return (
+                                                <tr>
+                                                    <td>{item.toolType}</td>
+                                                    <td>{item.serialNum}</td>
+                                                    <td>
+                                                        <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
+                                                            {item.co2}
+                                                        </MDBBadge>
+                                                    </td>
+                                                    <td>{item.partsCost}</td>
+                                                    <td>{item.salesPrice}</td>
+                                                    <td>{item.motorUsed}</td>
+                                                    <td>{item.batteryUsed}</td>
+                                                    <td>{item.shipNumber}</td>
+                                                    <td>{item.groundNumber}</td>
+                                                </tr>
+                                            )
+                                        })
+                                        
+                                        // <tr>
+                                        //             <td>Drill</td>
+                                        //             <td>55555</td>
+                                        //             <td>
+                                        //                 <MDBBadge color='danger' pill>
+                                        //                     30
+                                        //                 </MDBBadge>
+                                        //             </td>
+                                        //             <td>30</td>
+                                        //             <td>60</td>
+                                        //             <td>12345</td>
+                                        //             <td>54321</td>
+                                        //             <td>99999</td>
+                                        //             <td>11111</td>
+                                        //         </tr>
+                                    }
+                                </MDBTableBody>
+                            </MDBTable>
+                        }
+                    </main>
+                </div>
+            </>
+        );
     }
-    getHPTData();
-        // renderHPTData();
-        setHptRecords([])
-}
 
-    return (
-        <>
-            <CO2NavBar />
-            <div className="co2container">
-            <SidebarComponent value="HPT" />
-
-                <main style={{ margin: '2%' }}>
-                    <div>
-                        <p style={{ margin: '1%', fontSize: '18px'}}>
-                            Enter HPT Serial Number</p>
-                    </div><br></br>
-                    <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter HPT Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
-                        &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" onClick={() => setHptRecords([])}>View</Button>
-                    </form>
-                    {/* <div id="hptData"></div> */}
-                    {
-                        showData && isDataPresent &&
-                        <MDBTable align='middle'>
-                            <MDBTableHead>
-                                <tr>
-                                    <th>Tool Type</th>
-                                    <th>Serial Number</th>
-                                    <th>CO2</th>
-                                    <th>Parts Cost</th>
-                                    <th>Sales Price</th>
-                                    <th>Motor Used</th>
-                                    <th>Battery Used</th>
-                                    <th>Ship Tracking Number</th>
-                                    <th>Ground Tracking Number</th>
-                                </tr>
-                            </MDBTableHead>
-                            <MDBTableBody>
-                                {
-                                    hptRecords.map(item => {
-                                        console.log("item: ", item)
-                                        return (
-                                            <tr>
-                                                <td>{item.toolType}</td>
-                                                <td>{item.serialNum}</td>
-                                                <td>
-                                                    <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
-                                                        {item.co2}
-                                                    </MDBBadge>
-                                                </td>
-                                                <td>{item.partsCost}</td>
-                                                <td>{item.salesPrice}</td>
-                                                <td>{item.motorUsed}</td>
-                                                <td>{item.batteryUsed}</td>
-                                                <td>{item.shipNumber}</td>
-                                                <td>{item.groundNumber}</td>
-                                            </tr>
-                                        )
-                                    })
-
-                                    // <tr>
-                                    //             <td>Drill</td>
-                                    //             <td>55555</td>
-                                    //             <td>
-                                    //                 <MDBBadge color='danger' pill>
-                                    //                     30
-                                    //                 </MDBBadge>
-                                    //             </td>
-                                    //             <td>30</td>
-                                    //             <td>60</td>
-                                    //             <td>12345</td>
-                                    //             <td>54321</td>
-                                    //             <td>99999</td>
-                                    //             <td>11111</td>
-                                    //         </tr>
-                                }
-                            </MDBTableBody>
-                        </MDBTable>
-                    }
-                </main>
-            </div>
-        </>
-    );
-}
-
-export default ViewHPTComponent;
+    export default ViewHPTComponent;
