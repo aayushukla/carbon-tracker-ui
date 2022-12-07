@@ -11,18 +11,19 @@ function ViewBatteryComponent(props) {
     const [showData, setShowData] = useState(false);
     const [serialNumber, setSerialNumber] = useState("");
     const [isDataPresent, setIsDataPresent] = useState(false)
-    const [records, setRecords] = useState(
-        {
-            id: "",
-            partNumber: "",
-            serialNumber: "",
-            co2: 0,
-            dateManufactured: "",
-            costManufactured: 0,
-            salesPrice: 0
-        });
+    // const [records, setRecords] = useState(
+    //     {
+    //         id: "",
+    //         partNumber: "",
+    //         serialNumber: "",
+    //         co2: 0,
+    //         dateManufactured: "",
+    //         costManufactured: 0,
+    //         salesPrice: 0
+    //     });
 
-    const [batteryRecords, setBatteryRecords] = useState();
+    let records = {};
+    const [batteryRecords, setBatteryRecords] = useState([]);
 
 
     const handleSubmit = event => {
@@ -37,9 +38,8 @@ function ViewBatteryComponent(props) {
                     const response = await BatteryService.getBatteryDataByID(serialNumber)
                         .then(batteryData => {
                             if (batteryData.length > 0) {
-                                
                                 batteryData.map(rows => {
-                                    batteryRecords.push({
+                                    records = {
                                         partNumber: rows["partNumber"],
                                         serialNumber: rows["serialNumber"],
                                         co2: rows["co2"],
@@ -48,14 +48,12 @@ function ViewBatteryComponent(props) {
                                         salesPrice: rows["salesPrice"],
 
 
-                                    });
+                                    };
                                     console.log("created record", records)
                                     setBatteryRecords([...batteryRecords, records]);
                                 })
 
                                 console.log("batteryRecords: " + batteryRecords);
-                                // setBatteryRecords(output);
-                                setBatteryRecords(batteryRecords);
                                 setShowData(true);
                                 setIsDataPresent(true)
                             }

@@ -12,18 +12,19 @@ function ViewMotorComponent(props) {
     const [showData, setShowData] = useState(false);
     const [serialNumber, setSerialNumber] = useState("");
     const [isDataPresent, setIsDataPresent] = useState(false)
-    const [records, setRecords] = useState(
-        {
-            id: "",
-            PartNumber: "",
-            serialNumber: "",
-            co2: 0,
-            dateManufactured: "",
-            costManufactured: 0,
-            salesPrice: 0
-        });
+    // const [records, setRecords] = useState(
+    //     {
+    //         id: "",
+    //         PartNumber: "",
+    //         serialNumber: "",
+    //         co2: 0,
+    //         dateManufactured: "",
+    //         costManufactured: 0,
+    //         salesPrice: 0
+    //     });
+    let records = {};
 
-    const [motorRecords, setMotorRecords] = useState();
+    const [motorRecords, setMotorRecords] = useState([]);
 
 
     const handleSubmit = event => {
@@ -41,8 +42,7 @@ function ViewMotorComponent(props) {
                             if (motorData.length > 0) {
                                 motorData.map(rows => {
 
-                                    motorRecords.push({
-
+                                    records = {
                                         PartNumber: rows["PartNumber"],
                                         serialNumber: rows["serialNumber"],
                                         co2: rows["co2"],
@@ -51,15 +51,12 @@ function ViewMotorComponent(props) {
                                         salesPrice: rows["salesPrice"],
 
 
-                                    });
+                                    };
                                     console.log("created record", records)
-                                    // setMotorRecords([...motorRecords, records]);
                                     setMotorRecords([...motorRecords, records]);
                                 })
 
                                 console.log("motorRecords: " + motorRecords);
-                                // setMotorRecords(output);
-                                setMotorRecords(motorRecords)
                                 setShowData(true);
                                 setIsDataPresent(true)
                             }

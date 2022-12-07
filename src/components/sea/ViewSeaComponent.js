@@ -11,60 +11,71 @@ import SidebarComponent from '../SidebarComponent';
 function ViewSeaComponent(props) {
 
     const [showData, setShowData] = useState(false);
-    const [serialNum, setSerialNum] = useState();
+    const [serialNum, setSerialNum] = useState("");
     const [isDataPresent, setIsDataPresent] = useState(false)
-    const [records, setRecords] = useState([]);
+    // const [records, setRecords] = useState([]);
+    let records = {};
 
     const [seaRecords, setSeaRecords] = useState([]);
 
+    // useEffect(() => {
+
+    // }, [seaRecords]
+    // )
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log("initial sea record data: ",records)
+        console.log("initial sea record data: ", records)
         async function getSeaData() {
             try {
-                 SeaTransportService.getSeaTransportDataByID(serialNum)
-                    .then(seaData => {
-                        console.log("Seadata",seaData)
-                        seaData.map(rows => {
-                            setRecords({
-                                trackingNumber: rows["trackingNumber"],
-                                routeID: rows["routeID"],
-                                co2: rows["co2"],
-                                shipID: rows["shipID"],
-                                fuelCost: rows["fuelCost"],
-                                laborCost: rows["laborCost"],
-                                dateShipped: rows["dateShipped"],
-                                dateArrived: rows["dateArrived"],
-                                bill: rows["bill"]
-                            });
-                            console.log("created record", records)
+                if ((serialNum === "" || serialNum === null))
+                    alert("Please enter Sea Route Id");
+                else {
+                    SeaTransportService.getSeaTransportDataByID(serialNum)
+                        .then(seaData => {
+                            console.log("Seadata", seaData)
+                            if (seaData.length > 0) {
+                                seaData.map(rows => {
+                                    records = {
+                                        trackingNumber: rows["trackingNumber"],
+                                        routeID: rows["routeID"],
+                                        co2: rows["co2"],
+                                        shipID: rows["shipID"],
+                                        fuelCost: rows["fuelCost"],
+                                        laborCost: rows["laborCost"],
+                                        dateShipped: rows["dateShipped"],
+                                        dateArrived: rows["dateArrived"],
+                                        bill: rows["bill"]
+                                    };
+                                    console.log("created record", records)
+                                    setSeaRecords([...seaRecords, records]);
+                                })
+
+                                
+                                console.log("seaRecords: " + seaRecords);
+
+                                setShowData(true);
+                                setIsDataPresent(true)
+                            } else {
+                                alert("Sea Transporatation data not found!")
+                            }
                         })
-                       
-                        setSeaRecords([...seaRecords, records]);
-                        console.log("seaRecords: " + seaRecords);
 
-                        setShowData(true);
-                        setIsDataPresent(true)
-                    })
-
-                    .catch(e =>
-                        console.log(e)
-                    )
+                        .catch(e =>
+                            console.log(e)
+                        )
+                }
             } catch (e) {
 
             }
 
         }
-       
+
         getSeaData();
-
-
+        
     }
 
-
-
-     return (
+    return (
         <>
             <CO2NavBar />
             <div className="co2container">
@@ -72,15 +83,20 @@ function ViewSeaComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <h4 style={{ margin: '1.5%', fontWeight: 'bold', fontSize: '18px', marginBottom: '50px' }}>
-                            Enter Sea Transport Serial Number</h4>
-                    </div>
+                        <p style={{ margin: '1%', fontSize: '18px' }}>
+                            Enter Sea Route Id</p>
+                    </div><br></br>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter Sea Transport Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
+                        <input type="text" placeholder="Enter Sea Route Id" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" onClick={() => setSeaRecords([])}>View</Button>
+                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        &nbsp;&nbsp;&nbsp;
+                        {
+                            showData && 
+                            <Button variant="success" type="submit" value="Submit" onClick={() => { setSeaRecords([]); setShowData(false) }}>Clear</Button>
+                        }
                     </form>
-                  
+
                     {
                         showData && isDataPresent &&
                         <MDBTable align='middle'>

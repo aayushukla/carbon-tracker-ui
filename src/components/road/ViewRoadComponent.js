@@ -13,19 +13,19 @@ function RoadRouteComponent(props) {
 
     const [showData, setShowData] = useState(false);
     const [trackingNum, setTrackingNum] = useState("");
-    const [records, setRecords] = useState(
+    // const [records, setRecords] = useState(
+    let records = {};
 
-        {
-            trackingNumber: "",
-            vehicleId: "",
-            co2: 0,
-            routeID: "",
-            fuelCost: 0,
-            laborCost: 0
-        });
+        // {
+        //     trackingNumber: "",
+        //     vehicleId: "",
+        //     co2: 0,
+        //     routeID: "",
+        //     fuelCost: 0,
+        //     laborCost: 0
+        // });
 
-    const [roadRecords, setRoadRecords] = useState();
-    const output = [];
+    const [roadRecords, setRoadRecords] = useState([]);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -39,17 +39,16 @@ function RoadRouteComponent(props) {
                     console.log("what im returning", roadData);
                     if (roadData.length > 0) {
                         roadData.map(rows => {
-                            roadRecords.push({
+                            records = {
                                 trackingNumber: rows["trackingNumber"],
                                 vehicleID: rows["vehicleID"],
                                 co2: rows["co2"],
                                 routeId: rows["routeId"],
                                 fuelCost: rows["fuelCost"],
                                 laborCost: rows["laborCost"],
-                            });
+                            };
                             console.log("created record", records)
-                            // setRoadRecords([...roadRecords, records]);
-                            setRoadRecords(roadRecords);
+                            setRoadRecords([...roadRecords, records]);
                         })
 
                         console.log("roadRecords: " + roadRecords);
@@ -65,7 +64,6 @@ function RoadRouteComponent(props) {
         }
         getRoadTransport();
 
-        setRoadRecords([])
     }
 
 
@@ -121,7 +119,7 @@ function RoadRouteComponent(props) {
                             Enter Route Id</p>
                     </div><br></br>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter Tracking Number" onChange={event => setTrackingNum(event.target.value)}></input>
+                        <input type="text" placeholder="Enter Road Rout Id" onChange={event => setTrackingNum(event.target.value)}></input>
                         &nbsp;&nbsp;
                         <Button variant="success" type="submit" value="Submit">View</Button>
                         &nbsp;&nbsp;&nbsp;

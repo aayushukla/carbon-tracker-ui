@@ -14,21 +14,23 @@ function ViewHPTComponent(props) {
     // let showData = false;
     // let isDataPresent = false;
     const [isDataPresent, setIsDataPresent] = useState(false)
-    const [records, setRecords] = useState(
-        {
-            id: "",
-            toolType: '',
-            serialNum: "",
-            co2: 0,
-            partsCosts: 0,
-            salesPrice: 0,
-            motorUsed: '',
-            batteryUsed: '',
-            shipNumber: "",
-            groundNumber: ""
-        });
+    // const [records, setRecords] = useState(
+    //     {
+    //         id: "",
+    //         toolType: '',
+    //         serialNum: "",
+    //         co2: 0,
+    //         partsCosts: 0,
+    //         salesPrice: 0,
+    //         motorUsed: '',
+    //         batteryUsed: '',
+    //         shipNumber: "",
+    //         groundNumber: ""
+    //     });
 
-    const [hptRecords, setHptRecords] = useState();
+    let records = {};
+
+    const [hptRecords, setHptRecords] = useState([]);
 
     const handleSubmit = event => {
         // setHptRecords([])
@@ -50,7 +52,7 @@ function ViewHPTComponent(props) {
                                 hptData.map(rows => {
                                     // Object.keys(rows).map(key => console.log("key",key," value", rows["toolType"]));
 
-                                    setRecords({
+                                    records = {
                                         toolType: rows["toolType"],
                                         serialNum: rows["serialNumber"],
                                         co2: rows["co2"],
@@ -60,24 +62,11 @@ function ViewHPTComponent(props) {
                                         batteryUsed: rows["batteryUsed"],
                                         shipNumber: rows["shipTrackingNumber"],
                                         groundNumber: rows["groundTrackingNumber"],
-                                    });
+                                    };
                                     console.log("created record", records)
-                                    // setHptRecords([...hptRecords, records]);
-                                    setHptRecords([]);
-                                    hptRecords.push({
-                                        toolType: rows["toolType"],
-                                        serialNum: rows["serialNumber"],
-                                        co2: rows["co2"],
-                                        partsCosts: rows["partsCost"],
-                                        salesPrice: rows["salesPrice"],
-                                        motorUsed: rows["motorUsed"],
-                                        batteryUsed: rows["batteryUsed"],
-                                        shipNumber: rows["shipTrackingNumber"],
-                                        groundNumber: rows["groundTrackingNumber"],
-                                    });
-
+                                    setHptRecords([...hptRecords, records]);
                                 })
-                                setHptRecords(hptRecords);
+                                
 
                                 console.log("hptRecords: ", hptRecords);
                                 setShowData(true);
