@@ -9,85 +9,97 @@ import SidebarComponent from '../SidebarComponent';
 function ViewBatteryComponent(props) {
 
     const [showData, setShowData] = useState(false);
-    const [serialNumber, setSerialNumber] = useState();
+    const [serialNumber, setSerialNumber] = useState("");
     const [isDataPresent, setIsDataPresent] = useState(false)
     const [records, setRecords] = useState(
         {
             id: "",
-             partNumber: "",
-             serialNumber: "",
-             co2: 0,
-             dateManufactured: "",
-             costManufactured: 0,
-             salesPrice: 0
+            partNumber: "",
+            serialNumber: "",
+            co2: 0,
+            dateManufactured: "",
+            costManufactured: 0,
+            salesPrice: 0
         });
 
-    const [batteryRecords, setBatteryRecords] = useState([]);
-    
+    const [batteryRecords, setBatteryRecords] = useState();
+
 
     const handleSubmit = event => {
         event.preventDefault();
-   
+
         async function getBatteryData() {
             //Add Records
             try {
-                const response = await BatteryService.getBatteryDataByID(serialNumber)
-                .then(batteryData => {
-                
-                batteryData.map(rows => {
-                    
+                if ((serialNumber === "" || serialNumber === null))
+                    alert("Please enter Battery serial number");
+                else {
+                    const response = await BatteryService.getBatteryDataByID(serialNumber)
+                        .then(batteryData => {
+                            if (batteryData.length > 0) {
+                                
+                                batteryData.map(rows => {
+                                    batteryRecords.push({
+                                        partNumber: rows["partNumber"],
+                                        serialNumber: rows["serialNumber"],
+                                        co2: rows["co2"],
+                                        dateManufactured: rows["dateManufactured"],
+                                        costManufactured: rows["costManufactured"],
+                                        salesPrice: rows["salesPrice"],
 
-                    setRecords({
 
-                        partNumber: rows["partNumber"],
-                        serialNumber: rows["serialNumber"],
-                        co2: rows["co2"],
-                        dateManufactured: rows["dateManufactured"],
-                        costManufactured: rows["costManufactured"],
-                        salesPrice: rows["salesPrice"],
-                        
-                       
-                    });
-                    console.log("created record", records)
-                    setBatteryRecords([...batteryRecords, records]);
-                })
+                                    });
+                                    console.log("created record", records)
+                                    setBatteryRecords([...batteryRecords, records]);
+                                })
 
-                console.log("batteryRecords: " + batteryRecords);
-                // setBatteryRecords(output);
-                setShowData(true);
-                setIsDataPresent(true)
-                })
-                
-            .catch(e =>
-                console.log(e)
-            )
-        } catch(e) {
+                                console.log("batteryRecords: " + batteryRecords);
+                                // setBatteryRecords(output);
+                                setBatteryRecords(batteryRecords);
+                                setShowData(true);
+                                setIsDataPresent(true)
+                            }
+                            else {
+                                alert("Battery data not found!")
+                            }
+                        })
+
+                        .catch(e =>
+                            console.log(e)
+                        )
+                }
+            } catch (e) {
+
+            }
 
         }
-        
-    }
-    getBatteryData();
-        
+        getBatteryData();
+
         setBatteryRecords([])
-}
+    }
 
     return (
         <>
             <CO2NavBar />
             <div className="co2container">
-            <SidebarComponent value="Battery" />
+                <SidebarComponent value="Battery" />
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <p style={{ margin: '1%', fontSize: '18px'}}>
+                        <p style={{ margin: '1%', fontSize: '18px' }}>
                             Enter  Serial Number</p>
                     </div><br></br>
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNumber(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" onClick={() => setBatteryRecords([])}>View</Button>
+                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        &nbsp;&nbsp;&nbsp;
+                        {
+                            showData && isDataPresent &&
+                            <Button variant="success" type="submit" value="Submit" onClick={() => { setBatteryRecords([]); setShowData(false) }}>Clear</Button>
+                        }
                     </form>
-                   
+
                     {
                         showData && isDataPresent &&
                         <MDBTable align='middle'>
@@ -117,12 +129,12 @@ function ViewBatteryComponent(props) {
                                                 <td>{item.dateManufactured}</td>
                                                 <td>{item.costManufactured}</td>
                                                 <td>{item.salesPrice}</td>
-                                                
+
                                             </tr>
                                         )
                                     })
 
-                                   
+
                                 }
                             </MDBTableBody>
                         </MDBTable>
