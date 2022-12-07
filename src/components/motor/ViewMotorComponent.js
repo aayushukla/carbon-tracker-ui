@@ -10,84 +10,100 @@ import SidebarComponent from '../SidebarComponent';
 function ViewMotorComponent(props) {
 
     const [showData, setShowData] = useState(false);
-    const [serialNumber, setSerialNumber] = useState();
+    const [serialNumber, setSerialNumber] = useState("");
     const [isDataPresent, setIsDataPresent] = useState(false)
     const [records, setRecords] = useState(
         {
             id: "",
-             PartNumber: "",
-             serialNumber: "",
-             co2: 0,
-             dateManufactured: "",
-             costManufactured: 0,
-             salesPrice: 0
+            PartNumber: "",
+            serialNumber: "",
+            co2: 0,
+            dateManufactured: "",
+            costManufactured: 0,
+            salesPrice: 0
         });
 
-    const [motorRecords, setMotorRecords] = useState([]);
-    
+    const [motorRecords, setMotorRecords] = useState();
+
 
     const handleSubmit = event => {
         event.preventDefault();
-   
+
         async function getMotorData() {
             //Add Records
+            console.log("serialNumber: ", serialNumber)
             try {
-                const response = await MotorService.getMotorDataByID(serialNumber)
-                .then(motorData => {
-                
-                motorData.map(rows => {
-                             
-                    setRecords({
-                        
-                        PartNumber: rows["PartNumber"],
-                        serialNumber: rows["serialNumber"],
-                        co2: rows["co2"],
-                        dateManufactured: rows["dateManufactured"],
-                        costManufactured: rows["costManufactured"],
-                        salesPrice: rows["salesPrice"],
-                        
-                       
-                    });
-                    console.log("created record", records)
-                    setMotorRecords([...motorRecords, records]);
-                })
+                if ((serialNumber === "" || serialNumber === null))
+                    alert("Please enter Motor serial number");
+                else {
+                    const response = await MotorService.getMotorDataByID(serialNumber)
+                        .then(motorData => {
+                            if (motorData.length > 0) {
+                                motorData.map(rows => {
 
-                console.log("motorRecords: " + motorRecords);
-                // setMotorRecords(output);
-                setShowData(true);
-                setIsDataPresent(true)
-                })
-                
-            .catch(e =>
-                console.log(e)
-            )
-        } catch(e) {
+                                    motorRecords.push({
+
+                                        PartNumber: rows["PartNumber"],
+                                        serialNumber: rows["serialNumber"],
+                                        co2: rows["co2"],
+                                        dateManufactured: rows["dateManufactured"],
+                                        costManufactured: rows["costManufactured"],
+                                        salesPrice: rows["salesPrice"],
+
+
+                                    });
+                                    console.log("created record", records)
+                                    // setMotorRecords([...motorRecords, records]);
+                                    setMotorRecords([...motorRecords, records]);
+                                })
+
+                                console.log("motorRecords: " + motorRecords);
+                                // setMotorRecords(output);
+                                setMotorRecords(motorRecords)
+                                setShowData(true);
+                                setIsDataPresent(true)
+                            }
+                            else {
+                                alert("Motor data not found!");
+                            }
+                        })
+                        .catch(e => {
+                            console.log(e);
+                        }
+                        )
+                }
+            } catch (e) {
+
+            }
 
         }
-        
-    }
-    getMotorData();
-        
+        getMotorData();
+
         setMotorRecords([])
-}
+    }
 
     return (
         <>
             <CO2NavBar />
             <div className="co2container">
-            <SidebarComponent value="Motor" />
+                <SidebarComponent value="Motor" />
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <p style={{ margin: '1%', fontSize: '18px'}}>
+                        <p style={{ margin: '1%', fontSize: '18px' }}>
                             Enter  Serial Number</p>
                     </div><br></br>
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNumber(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit" onClick={() => setMotorRecords([])}>View</Button>
+                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        &nbsp;&nbsp;&nbsp; {
+                            showData && isDataPresent &&
+                            <Button variant="success" type="submit" value="Submit" onClick={() => { setMotorRecords([]); setShowData(false); setIsDataPresent(false) }}>Clear</Button>
+                        }
+
                     </form>
-                   
+
                     {
                         showData && isDataPresent &&
                         <MDBTable align='middle'>
@@ -117,12 +133,12 @@ function ViewMotorComponent(props) {
                                                 <td>{item.dateManufactured}</td>
                                                 <td>{item.costManufactured}</td>
                                                 <td>{item.salesPrice}</td>
-                                                
+
                                             </tr>
                                         )
                                     })
 
-                                   
+
                                 }
                             </MDBTableBody>
                         </MDBTable>
