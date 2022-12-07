@@ -4,65 +4,72 @@ import CO2NavBar from '../CO2NavBar';
 import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { Container } from 'react-bootstrap';
 import GroundTransportService from '../../services/GroundTransportService';
-import {Button} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import SidebarComponent from '../SidebarComponent';
 
 
 
 function RoadRouteComponent(props) {
 
-  const [showData, setShowData] = useState(false);
-  const [trackingNum, setTrackingNum] = useState();
-  const [records, setRecords] = useState(
-  
-    {
-        trackingNumber: "",
-        vehicleId: "",
-        co2: 0,
-        routeID: "",
-        fuelCost: 0,
-        laborCost: 0
-    });
+    const [showData, setShowData] = useState(false);
+    const [trackingNum, setTrackingNum] = useState("");
+    const [records, setRecords] = useState(
 
-  const [roadRecords, setRoadRecords] = useState([]);
-  const output = [];
+        {
+            trackingNumber: "",
+            vehicleId: "",
+            co2: 0,
+            routeID: "",
+            fuelCost: 0,
+            laborCost: 0
+        });
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    async function getRoadTransport() {
-      try {
-      //Add Records
-        const roadData = await GroundTransportService.getGroundTransportDataByID(trackingNum);
-        console.log("what im returning", roadData);
+    const [roadRecords, setRoadRecords] = useState();
+    const output = [];
 
-        roadData.map(rows => {
+    const handleSubmit = event => {
+        event.preventDefault();
+        async function getRoadTransport() {
+            try {
+                if ((trackingNum === "" || trackingNum === null))
+                    alert("Please enter Route Id.");
+                else {
+                    //Add Records
+                    const roadData = await GroundTransportService.getGroundTransportDataByID(trackingNum);
+                    console.log("what im returning", roadData);
+                    if (roadData.length > 0) {
+                        roadData.map(rows => {
+                            roadRecords.push({
+                                trackingNumber: rows["trackingNumber"],
+                                vehicleID: rows["vehicleID"],
+                                co2: rows["co2"],
+                                routeId: rows["routeId"],
+                                fuelCost: rows["fuelCost"],
+                                laborCost: rows["laborCost"],
+                            });
+                            console.log("created record", records)
+                            // setRoadRecords([...roadRecords, records]);
+                            setRoadRecords(roadRecords);
+                        })
 
-            setRecords({
-                trackingNumber: rows["trackingNumber"],
-                vehicleID:  rows["vehicleID"],
-                co2:        rows["co2"],
-                routeId:    rows["routeId"],
-                fuelCost:   rows["fuelCost"],
-                laborCost:  rows["laborCost"],
-            });
-            console.log("created record", records)
-            setRoadRecords([...roadRecords, records]);
-        })
-        
-        console.log("roadRecords: " + roadRecords);
-        setShowData(true);
-      }
-      catch (e) {
-        console.log(e);
-      }
+                        console.log("roadRecords: " + roadRecords);
+                        setShowData(true);
+                    } else {
+                        alert("Road Transportation data not found!")
+                    }
+                }
+            }
+            catch (e) {
+                console.log(e);
+            }
+        }
+        getRoadTransport();
+
+        setRoadRecords([])
     }
-    getRoadTransport();
 
-    setRoadRecords([])
-  }
 
-  
-  function renderRoadData() {
+    function renderRoadData() {
         const roadDataId = document.getElementById('roadData');
         ReactDOM.render(
             <MDBTable align='middle'>
@@ -73,7 +80,7 @@ function RoadRouteComponent(props) {
                         <th>CO2</th>
                         <th>Route ID</th>
                         <th>Fuel Cost</th>
-                        <th>Labor Cost</th> 
+                        <th>Labor Cost</th>
                     </tr>
                 </MDBTableHead>
                 <MDBTableBody>
@@ -100,19 +107,28 @@ function RoadRouteComponent(props) {
             </MDBTable>, roadDataId
         )
     }
-    
 
-  return (
-   <>
+
+    return (
+        <>
             <CO2NavBar />
             <div className="co2container">
-            <SidebarComponent value="Road" />
+                <SidebarComponent value="Road" />
 
                 <main style={{ margin: '2%' }}>
+                    <div>
+                        <p style={{ margin: '1%', fontSize: '18px' }}>
+                            Enter Route Id</p>
+                    </div><br></br>
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Tracking Number" onChange={event => setTrackingNum(event.target.value)}></input>
                         &nbsp;&nbsp;
                         <Button variant="success" type="submit" value="Submit">View</Button>
+                        &nbsp;&nbsp;&nbsp;
+                        {
+                            showData &&
+                            <Button variant="success" type="submit" value="Submit" onClick={() => { setRoadRecords([]); setShowData(false) }}>Clear</Button>
+                        }
                     </form>
                     {/* <div id="hptData"></div> */}
                     {
