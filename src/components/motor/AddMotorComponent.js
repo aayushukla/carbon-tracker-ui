@@ -117,12 +117,18 @@ function AddMotorComponent(props) {
                             <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
                               onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            {
+                                isAddClicked && !isAdded && 
+                                <div className='col' style={{margin: '-2%', padding: '0px'}}>
+                                <img style={{padding: '0px'}} src={loader} alt="" />
+                            </div>
+                            }
                             <br />
                             <br />
                             <div>
                                 {
-                                    isAddClicked ?
-                                        isAdded ? 
+                                    isAddClicked &&
+                                        isAdded &&
                                         <Modal show={isAddClicked} onHide={handleClose}
                                             style={{
                                                 overlay: {
@@ -144,7 +150,7 @@ function AddMotorComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <img src={loader} alt=""/> : null
+                                            // : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>

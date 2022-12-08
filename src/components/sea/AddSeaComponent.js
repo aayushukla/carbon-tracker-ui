@@ -21,7 +21,7 @@ function AddSeaComponent(props) {
     const [isAdded, setIsAdded] = useState(false);
     const [isAddClicked, setIsAddClicked] = useState(false);
 
-    const handleClose = () => setIsAdded(false);
+    const handleClose = () => setIsAddClicked(false);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -132,12 +132,18 @@ function AddSeaComponent(props) {
                                 <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            {
+                                isAddClicked && !isAdded && 
+                                <div className='col' style={{margin: '-2%', padding: '0px'}}>
+                                <img style={{padding: '0px'}} src={loader} alt="" />
+                            </div>
+                            }
                             <br />
                             <br />
                             <div>
                                 {
-                                    isAddClicked ?
-                                        isAdded ? 
+                                    isAddClicked &&
+                                        isAdded &&
                                         <Modal show={isAddClicked} onHide={handleClose}
                                             style={{
                                                 overlay: {
@@ -159,7 +165,7 @@ function AddSeaComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <img src={loader} alt=""/> : null
+                                            // : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>
