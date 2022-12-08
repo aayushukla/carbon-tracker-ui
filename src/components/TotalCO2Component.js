@@ -191,13 +191,13 @@ function TotalCO2Component() {
 
 
               <div className='row justify-content-sm-center' style={{display: 'flex', justifyContent: 'center'}}>
-                <div className="col-sm">
+                <div className="col-sm" style={{paddingLeft: '120px',paddingRight: '0px'}}>
                   <Card className='comp-card-container'>
                     Battery Used: {batteryInfo}
 
                   </Card>
                 </div>
-                <div className="col-sm">
+                <div className="col-sm" >
                   <Card className='comp-card-container'>
                     Motor Used: {motorInfo}
                   </Card>
@@ -205,7 +205,7 @@ function TotalCO2Component() {
 
               </div>
               <div className='row justify-content-sm-center'>
-                <div className="col-sm">
+                <div className="col-sm" style={{paddingLeft: '120px',paddingRight: '0px'}}>
                   <Card className='comp-card-container'>
                     Sea Transportation: {STInfo}
                   </Card>
@@ -215,8 +215,8 @@ function TotalCO2Component() {
                     Ground Transportation: {GTInfo}
                   </Card></div>
               </div>
-
-              <div className="col-sm">
+              <div className='row justify-content-sm-center'>
+              <div className="col-sm" style={{paddingLeft: '120px',paddingRight: '0px'}}>
                 <Card className='comp-card-container'>
                   Drill Image: 
                   {
@@ -229,12 +229,27 @@ function TotalCO2Component() {
                         
                     })
                   }
+                  {/* <img style={{ width: "150px", height: "100px" }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" /> */}
+                </Card></div>
+                <div className="col-sm" >
+                <Card className='comp-card-container'>
+                 
+                  {
+                    HPTImages.map((hpt) => {
+                      // console.log("hpt.sn : ",hpt.sn,serialNum, hpt.sn === serialNum, hpt.image)
+                      hpt.sn === serialNum ? 
+                        <img style={{ width: "150px", height: "100px" }} src={hpt.image} />
+                        :
+                        <img style={{ width: "150px", height: "100px" }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
+                        
+                    })
+                  }
                   <img style={{ width: "150px", height: "100px" }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
                 </Card></div>
-
+                  </div>
 
               {visibleContent ?
-                <Link style={{ fontSize: '15px', paddingBottom: '10px', paddingLeft: '5px' }}
+                <Link style={{ fontSize: '15px', paddingBottom: '10px', paddingLeft: '300px' }}
                   to="/breakdown" state={{
                     HPTCo2: totalHPTCo2, batteryCo2: totalBatteryCo2,
                     motorCo2: totalMotorCo2, groundCo2: totalGroundTransportCo2, seaCo2: totalSeaTransportCo2
