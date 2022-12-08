@@ -4,36 +4,66 @@ import CardGroup from 'react-bootstrap/CardGroup';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Carousel } from "react-bootstrap";
+import { HomeImage } from "./HomeImage";
+import { useState } from "react";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa'
 
 
 function CO2Home() {
-    return (
-        <>
-            <CO2NavBar />
-            <div>
-                <h4 style={{ textAlign: "center", marginTop: '50px', fontWeight: 'bold', fontSize: '200%' , marginBottom: '50px'}}>Welcome to Carbon Dashboard</h4>
+  const [current, setCurrent] = useState(0);
+  const length = HomeImage.length;
 
-                <CardGroup>
-      <Card>
-        <Card.Img variant="top" src="https://www.corporateknights.com/wp-content/uploads/2022/09/11906295_s.jpg" />
-      </Card>
-      <Card>
-        <Card.Img variant="top" style = {{height: "100%"}}src="https://static.tildacdn.com/tild3466-3230-4132-a462-303364623839/-/resize/504x/emissions2.jpg" />
-      </Card>
-      <Card>
-        <Card.Img variant="top" style = {{height: "100%"}}src="https://images.labroots.com/content_article_profile_image_12168a3ee805b45f54fbb219863b1bea827d6ed9_964.jpg" />
-      </Card>
-      <Card>
-        <Card.Img variant="top" style = {{height: "100%"}}src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmpjsBm6dun7F7TNKotjGMWRXi5J3pPhPL5fcR9h0wHpxazHqwusfCld10vytoa1YRMXo&usqp=CAU
-" />
-      </Card>
-    </CardGroup>
+  if (!Array.isArray(HomeImage) || length <= 0) {
+    return null;
+  }
+
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  }
+
+  const prevSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  }
+
+  console.log("current: ", current)
+  return (
+    <div style={{ height: '100vh', background: "linear-gradient(90deg, #6304ff,#23adf3, transparent 26%), linear-gradient(-90deg, #6304ff,#23adf3, transparent 27%)" }}>
+      <CO2NavBar />
+      <div style={{ backgroundImage: "https://www.azocleantech.com/images/Article_Images/ImageForArticle_1109_15971493455431726.png" }}>
 
 
-            </div>
+        <div>
+          <h4 style={{ textAlign: "center", marginTop: '2%', fontWeight: 'bold', fontSize: '200%', marginBottom: '1%' }}>Welcome to Carbon Dashboard</h4>
+        </div>
+        <marquee style={{ fontSize: "20px" }}>
+          Carbon dashboard for Hornet Power Tools (HPT) that will calculate the total CO2 emissions from the Motor Supplier, Battery Supplier, Sea Transport and Road Transport. Over time as suppliers increase efficiency the CO2 value should go down for newer tools. This web application provides individual dashboards according to the requested suppliers and does not reveal any additional details other than their own supplier information. The CO2 emitted from all the suppliers is calculated by taking HPT Serial Number as the input, the users get to see breakdown of CO2 according to the suppliers.
+        </marquee>
 
-           
-          <Card style = {{width: "100%", height: "100%", alignItems:"center", backgroundColor: "lightseagreen"}}>
+        <section className="slider">
+          <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
+          {/* onClick={prevSlide}/> */}
+          <FaArrowAltCircleRight className="right-arrow" onClick={nextSlide} />
+          {/* onClick={nextSlide}/> */}
+          {
+            HomeImage.map((img, key) => {
+              return (
+                <div className={key === current ? 'slide active' : 'slide'}>
+                  {key === current && (
+                    <>
+                      <img className="home-image" src={img.image} alt="co2 component" key={key} />
+                      <p style = {{marginLeft: '32%',marginTop: '0.5%', fontSize: '20px'}}><b>{img.info}</b></p>
+                    </>
+                  )}
+
+                </div>
+              )
+            })
+          }
+        </section>
+        
+
+        {/* <Card style = {{width: "100%", height: "100%", alignItems:"center", backgroundImage:"linear-gradient(130deg,#23cff3,#6304ff)"}}>
             <Card.Body>
               <Card.Title style={{fontWeight: "bold"}}>Carbon Dashboard</Card.Title>
               <Card.Text style={{fontSize: "20px"}}>
@@ -45,9 +75,10 @@ function CO2Home() {
                     src="images/co2home.PNG"
                     className="co2HomeImg"
                 />
-          </Card>
+          </Card> */}
+      </div>
 
-        </>
-    );
+    </div>
+  );
 }
 export default CO2Home;

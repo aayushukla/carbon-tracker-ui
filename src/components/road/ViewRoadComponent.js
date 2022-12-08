@@ -110,7 +110,7 @@ function RoadRouteComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="co2container">
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                 <SidebarComponent value="Road" />
 
                 <main style={{ margin: '2%' }}>

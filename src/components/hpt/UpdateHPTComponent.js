@@ -130,22 +130,22 @@ function UpdateHPTComponent(props) {
     return (
         <>
             <CO2NavBar />
-            
 
-            <div className="co2container">
+
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                 <SidebarComponent value="HPT" />
 
-                <main style={{ margin: '2%' }}>
-                <div>
-                <p style={{ margin: '1%', size: "1px"}}>
-                    Enter HPT Serial Number to update</p>
-            </div><br></br>
+                <main style={{ marginTop: '2%', marginLeft: '7%' }}>
+                    <div>
+                        <p style={{ margin: '1%', size: "1px" }}>
+                            Enter HPT Serial Number to update</p>
+                    </div><br></br>
                     <div>
                         <form onSubmit={handleSubmit}>
-                            <input type="text" value = {serialNum} placeholder="Enter Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
+                            <input type="text" value={serialNum} placeholder="Enter Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                             &nbsp;&nbsp;
-                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
-                            onClick={onClick}>Find</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
+                                onClick={onClick}>Find</Button>
                         </form>
                     </div>
                     <br></br>
@@ -225,19 +225,25 @@ function UpdateHPTComponent(props) {
                                     </div>
 
                                 </div> */}
-                                
+
                                 <div className='row'>
                                     <div className='col'>
                                         <Button variant="success" type="submit" value="Submit"
-                                            onClick={() => setIsAddClicked(true)}  style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
-                                            >Update</Button>
+                                            onClick={() => setIsAddClicked(true)} style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
+                                        >Update</Button>
                                     </div>
+                                    {
+                                        isAddClicked && !isAdded &&
+                                        <div className='col' style={{ margin: '-5%', padding: '0px' }}>
+                                            <img style={{ padding: '0px' }} src={loader} alt="" />
+                                        </div>
+                                    }
                                     <br />
                                     <br />
                                     <div style={{ marginTop: '10px' }}>
                                         {
-                                            isAddClicked ?
-                                                isAdded ? <Modal show={isAddClicked} onHide={handleClose}
+                                            isAddClicked &&
+                                                isAdded && <Modal show={isAddClicked} onHide={handleClose}
                                                     style={{
                                                         overlay: {
                                                             position: 'fixed',
@@ -253,13 +259,12 @@ function UpdateHPTComponent(props) {
                                                     </Modal.Header>
                                                     <Modal.Body>Tool got updated successfully!!!</Modal.Body>
                                                     <Modal.Footer>
-                                                        <Button variant="secondary" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
-                                                        onClick={handleClose}>
+                                                        <Button variant="secondary" style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
+                                                            onClick={handleClose}>
                                                             Close
                                                         </Button>
                                                     </Modal.Footer>
                                                 </Modal>
-                                                    : <img src={loader} alt=""/> : null
                                         }
                                     </div>
                                 </div>

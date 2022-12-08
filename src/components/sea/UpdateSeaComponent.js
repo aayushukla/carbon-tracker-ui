@@ -115,13 +115,13 @@ function UpdateSeaComponent(props) {
             <CO2NavBar />
 
 
-            <div className="co2container">
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                 <SidebarComponent value="Sea" />
 
-                <main style={{ margin: '2%' }}>
+                <main style={{ marginTop: '2%', marginLeft: '7%' }}>
                     <div>
                         <p style={{ margin: '1%', size: "1px" }}>
-                            Enter Sea Transport Serial Number to update</p>
+                            Enter Sea Transport Serial Number</p>
                     </div><br></br>
                     <div>
                         <form onSubmit={handleSubmit}>

@@ -54,7 +54,7 @@ function SidebarComponent(componentType) {
                 icon: <BsFillEyeFill />,
             },
             {
-                title: "Update Tool",
+                title: "Update Motor",
                 link: "/updateMotor",
                 icon: <MdAssignmentTurnedIn />
             },
@@ -77,7 +77,7 @@ function SidebarComponent(componentType) {
                 icon: <BsFillEyeFill />,
             },
             {
-                title: "Update Tool",
+                title: "Update Battery",
                 link: "/updateBattery",
                 icon: <MdAssignmentTurnedIn />
             },
@@ -161,7 +161,7 @@ function SidebarComponent(componentType) {
 
     return (
         <>
-            <div className="sidebar" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}>
+            <div className="sidebar" style={{backgroundImage:"linear-gradient(130deg,#23fff3,#6304ff)"}}>
                 <div className="top_Section">
                     <a href={home_link} >
                         <img className="tool" width="200px"
@@ -173,8 +173,8 @@ function SidebarComponent(componentType) {
                         return (
 
                             <a href={path.link} key={key} className="link" id={window.location.pathname === path.link ? "active" : ""}>
-                                <div className="icon">{path.icon}</div>
-                                <div className="link_text">{path.title}</div>
+                                <div style= {{color: 'whitesmoke'}} className="icon">{path.icon}</div>
+                                <div style= {{color: 'whitesmoke'}} className="link_text">{path.title}</div>
                             </a>
 
                         )

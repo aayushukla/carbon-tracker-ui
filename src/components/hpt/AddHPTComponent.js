@@ -74,16 +74,16 @@ function AddHPTComponent(props) {
         <>
             <CO2NavBar />
 
-            <div className="co2container">
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                 <SidebarComponent value="HPT" />
 
-                <main style={{ margin: '2%' }}>
+                <main style={{ marginTop: '2%', marginLeft: '7%' }}>
                     <div>
-                        <h4 style={{ marginTop: '0.5%',marginRight: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '0%' }}>
+                        <h4 style={{ marginTop: '0.5%', marginRight: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '0%' }}>
                             Add Hornet Power Tool</h4>
-                    </div><br/>
+                    </div><br />
 
-                    <Form onSubmit={handleSubmit} style={{ marginTop: '-2%'}}>
+                    <Form onSubmit={handleSubmit} style={{ marginTop: '-2%' }}>
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Choose type of tool:</Form.Label>&nbsp;
@@ -147,7 +147,7 @@ function AddHPTComponent(props) {
 
                             </div>
                         </div>
-                        <div className='row' style = {{marginTop : '-3%'}}>
+                        <div className='row' style={{ marginTop: '-3%' }}>
                             <div className='col'>
                                 <Form.Label>Upload Drill Image:</Form.Label>&nbsp;
                                 <MDBFile id='customFile' onChange={event => setDrillImage(event.target.value)}></MDBFile>
@@ -157,18 +157,24 @@ function AddHPTComponent(props) {
                             </div>
 
                         </div>
-                        <br/>
-                        <div className='row' style = {{marginTop : '-2%'}}>
+                        <br />
+                        <div className='row' style={{ marginTop: '-2%' }}>
                             <div className='col'>
-                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                <Button variant="success" type="submit" value="Submit" style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            {
+                                isAddClicked && !isAdded && 
+                                <div className='col' style={{margin: '-2%', padding: '0px'}}>
+                                <img style={{padding: '0px'}} src={loader} alt="" />
+                            </div>
+                            }
                             <br />
                             <br />
                             <div style={{ marginTop: '10px' }}>
                                 {
-                                    isAddClicked ?
-                                        isAdded ? <Modal show={isAddClicked} onHide={handleClose}
+                                    isAddClicked &&
+                                        isAdded && <Modal show={isAddClicked} onHide={handleClose}
                                             style={{
                                                 overlay: {
                                                     position: 'fixed',
@@ -184,13 +190,13 @@ function AddHPTComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Tool got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
-                                                onClick={handleClose}>
+                                                <Button variant="secondary" style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
+                                                    onClick={handleClose}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            :  <img src={loader} alt=""/> : null
+                                           
                                 }
                             </div>
                         </div>

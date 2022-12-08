@@ -57,12 +57,9 @@ function UpdateBatteryComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="co2container">
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                <SidebarComponent  value="Battery"/>
-     
-            
-
-                <main style={{ margin: '2%' }}>
+               <main style={{ marginTop: '2%', marginLeft: '7%' }}>
                     <div>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '1%' }}>
                             Update Battery Data</h4>

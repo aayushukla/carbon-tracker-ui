@@ -58,12 +58,10 @@ function AddBatteryComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="co2container">
+            <div className="co2container" style={{ background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
                <SidebarComponent  value="Battery"/>
-     
-            
 
-                <main style={{ margin: '2%' }}>
+               <main style={{ marginTop: '2%', marginLeft: '7%' }}>
                     <div>
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
                             Add Battery Data</h4>
@@ -115,12 +113,18 @@ function AddBatteryComponent(props) {
                                      <Button variant="success" type="submit" onClick={() => setIsAddClicked(true)}
                                      style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>Add</Button>
                             </div> 
+                            {
+                                isAddClicked && !isAdded && 
+                                <div className='col' style={{margin: '-2%', padding: '0px'}}>
+                                <img style={{padding: '0px'}} src={loader} alt="" />
+                            </div>
+                            }
                             <br />
                             <br />
                             <div>
                                 {
-                                    isAddClicked ?
-                                        isAdded ? 
+                                    isAddClicked &&
+                                        isAdded && 
                                         <Modal show={isAddClicked} onHide={handleClose}
                                             style={{
                                                 overlay: {
@@ -142,7 +146,7 @@ function AddBatteryComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            :   <img src={loader} alt=""/>: null
+                                           
                                 }
                               
                             </div>

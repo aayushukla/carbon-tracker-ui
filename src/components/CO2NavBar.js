@@ -10,7 +10,7 @@ import { Avatar } from '@mui/material';
 function CO2NavBar()  {
 
     return (
-      <Navbar bg='light' style = {{padding: '1%'}}>
+      <Navbar bg='light' style = {{padding: '1.5%'}}>
         <Container fluid>
         <img
               src="images/vendia2.png"

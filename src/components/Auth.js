@@ -5,6 +5,7 @@ import LoginService from "../services/LoginService";
 import NavBar from './NavBar';
 import Modal from '@mui/material/Modal';
 import { Typography } from "@mui/material";
+import { ReactSession } from 'react-client-session'
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
@@ -24,7 +25,7 @@ export default function (props) {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
     console.log('authmod', authMode);
   }
-  
+
 
   const [fullname, setFullName] = useState();
   const [useremail, setUserEmail] = useState();
@@ -33,23 +34,27 @@ export default function (props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  let user = {
+    username: "",
+    email: ""
+  }
 
 
 
   const handleSignUp = async event => {
     event.preventDefault();
 
-    async function  addUserInfo () {
+    async function addUserInfo() {
 
       console.log(fullname);
-  
-      const addData = await LoginService.addUserData(fullname, useremail, userPassword); 
+
+      const addData = await LoginService.addUserData(fullname, useremail, userPassword);
     }
 
-  
+
     addUserInfo();
     setDisplay(true);
-  
+
   }
 
 
@@ -67,12 +72,13 @@ export default function (props) {
 
   }
 
- 
+
 
   async function getUserData(Email) {
     console.log("inside getuserdata");
     console.log(Email['Email'])
     const userData = await LoginService.getUserByID(Email['Email']);
+    console.log("userData: ", userData, userData.length)
 
     // userData.map(rows => {
     //   setRecords({
@@ -82,16 +88,25 @@ export default function (props) {
     //   })
     // })
 
-    if (userData == 0) {
-      
-      console.log("user not found")
+    if (userData.length === 0) {
+
+      alert("User not found.Please enter correct email id.")
     }
     else {
       const fetchedPassword = userData[0]["password"];
-      console.log("fetchedPassword: ", fetchedPassword)
-      if(fetchedPassword === passwd)
+      const name = userData[0]["username"];
+      const emailId = userData[0]["Email"];
+      console.log("fetchedPassword: ", userData[0])
+      if (fetchedPassword === passwd) {
+        user = {
+          username: { name },
+          email: { emailId }
+        }
+        ReactSession.set("user", user)
         navigate('/home');
-      else 
+      }
+
+      else
         alert("Password does not match.");
     }
 
@@ -158,9 +173,9 @@ export default function (props) {
     return (
       <div>
         <NavBar />
-       
+
         <div className="Auth-form-container">
-          <form className="Auth-form"  onSubmit={handleSignUp}>
+          <form className="Auth-form" onSubmit={handleSignUp}>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign Up</h3>
               <div className="text-center">
@@ -213,10 +228,10 @@ export default function (props) {
             </div>
           </form>
         </div>
-        
+
       </div>
 
-            
+
 
     )
   }

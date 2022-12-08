@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { ReactSession } from 'react-client-session'
 
 import CO2NavBar from './CO2NavBar';
 import {
@@ -16,14 +17,15 @@ import {
 
 function UserProfile() {
 
-
+const [user, setUser] = useState(ReactSession.get("user"))
+console.log("User profile: ", user)
 
     return (
 
         <>
             <CO2NavBar />
             <Card className="text-center" style={{marginTop: '20px'}}>
-      <Card.Header style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
+      <Card.Header style={{backgroundImage:"linear-gradient(130deg,#632fff,#23afff)"}}>
       <MDBCardImage
                   src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
                   alt="avatar"
@@ -46,7 +48,7 @@ function UserProfile() {
                     <MDBCardText>Full Name</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">John Miller</MDBCardText>
+                    <MDBCardText className="text-muted">{user.username.name}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                 <hr />
@@ -55,7 +57,7 @@ function UserProfile() {
                     <MDBCardText>Email</MDBCardText>
                   </MDBCol>
                   <MDBCol sm="9">
-                    <MDBCardText className="text-muted">johnmiller@vendia.csus.edu</MDBCardText>
+                    <MDBCardText className="text-muted">{user.email.emailId}</MDBCardText>
                   </MDBCol>
                 </MDBRow>
                
