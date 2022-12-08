@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import LoginService from "../services/LoginService";
 import NavBar from './NavBar';
+import Modal from '@mui/material/Modal';
+import { Typography } from "@mui/material";
 
 export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
@@ -27,6 +29,30 @@ export default function (props) {
   const [fullname, setFullName] = useState();
   const [useremail, setUserEmail] = useState();
   const [userPassword, setUserPassword] = useState();
+  const [displayAlert, setDisplay] = useState(false);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
+
+  const handleSignUp = async event => {
+    event.preventDefault();
+
+    async function  addUserInfo () {
+
+      console.log(fullname);
+  
+      const addData = await LoginService.addUserData(fullname, useremail, userPassword); 
+    }
+
+  
+    addUserInfo();
+    setDisplay(true);
+  
+  }
+
+
 
 
   const handleSubmit = async event => {
@@ -41,14 +67,7 @@ export default function (props) {
 
   }
 
-  async function  addUserInfo () {
-
-    console.log(fullname);
-
-    const addData = await LoginService.addUserData(fullname, useremail, userPassword);
-
-
-  }
+ 
 
   async function getUserData(Email) {
     console.log("inside getuserdata");
@@ -63,8 +82,6 @@ export default function (props) {
     //   })
     // })
 
-    addUserInfo();
-    
     if (userData == 0) {
       
       console.log("user not found")
@@ -141,8 +158,9 @@ export default function (props) {
     return (
       <div>
         <NavBar />
+       
         <div className="Auth-form-container">
-          <form className="Auth-form"  onSubmit={handleSubmit}>
+          <form className="Auth-form"  onSubmit={handleSignUp}>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign Up</h3>
               <div className="text-center">
@@ -195,7 +213,12 @@ export default function (props) {
             </div>
           </form>
         </div>
+        
       </div>
+
+            
+
     )
   }
+
 }
