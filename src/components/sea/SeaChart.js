@@ -28,9 +28,9 @@ function SeaChart(props) {
     console.log("sea records from seacharts", props.seaRecord[0].fuelCost)
 return (
 
-	<div style={{height:"1%", marginTop: "-3%"}}>
-	<h4 style={{fontSize: "18px", display: 'flex', justifyContent: 'left'}}>Sea Transport Cost Graph</h4>
-	<div style={{ maxWidth: "500px", height: "200px"}}>
+	<div style={{height:"50%"}}>
+	<h3>Sea Transport Cost Graph</h3>
+	<div style={{ maxWidth: "550px"}}>
 		<Bar
 		data={{
 			// Name of the variables on x-axies for each bar
@@ -42,9 +42,9 @@ return (
 				// Data or value of your each variable
 				data: [props.seaRecord[0].fuelCost, props.seaRecord[0].laborCost, props.seaRecord[0].bill],
 				// Color of each bar
-				backgroundColor: ["aqua", "green", "red", "yellow"],
+				backgroundColor: ["#82B1D6", "#B1D6F3", "#659BC6", "#1F659E"],
 				// Border color of each bar
-				borderColor: ["aqua", "green", "red", "yellow"],
+				borderColor: ["#82B1D6", "#B1D6F3", "#659BC6", "#3F7BAB"],
 				borderWidth: 0.5,
 			},
 			],
