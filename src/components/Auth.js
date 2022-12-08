@@ -11,6 +11,8 @@ export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
   const navigate = useNavigate();
 
+  ReactSession.setStoreType("sessionStorage");
+
   const [Email, setEmail] = useState();
   const [passwd, setPassword] = useState("");
   const [records, setRecords] = useState(
@@ -34,12 +36,6 @@ export default function (props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  let user = {
-    username: "",
-    email: ""
-  }
-
-
 
   const handleSignUp = async event => {
     event.preventDefault();
@@ -98,11 +94,12 @@ export default function (props) {
       const emailId = userData[0]["Email"];
       console.log("fetchedPassword: ", userData[0])
       if (fetchedPassword === passwd) {
-        user = {
+        const user = {
           username: { name },
           email: { emailId }
         }
         ReactSession.set("user", user)
+        console.log("ReactSession: ", ReactSession.get("user"))
         navigate('/home');
       }
 
