@@ -66,7 +66,7 @@ function UpdateBatteryComponent(props) {
                     <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '1%' }}>
                             Update Battery Data</h4>
                     </div>
-             
+              <br/>
                             
                             <Form onSubmit={handleSubmit}>
                               <div className='row'>
@@ -93,7 +93,7 @@ function UpdateBatteryComponent(props) {
                             <div className='row'>
                                 <div className='col'>
                                   <Form.Label>Date Manufactured:</Form.Label>&nbsp;
-                                  <Form.Control type="text" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
+                                  <Form.Control type="date" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
                                 </div>
 
                                 <div className='col'>
@@ -110,14 +110,36 @@ function UpdateBatteryComponent(props) {
                               
                               <div className='row'>
                                 <div className='col'>
-                                  <Button variant="success" type="submit" value="Submit"
-                                     onClick={() => setIsAddClicked(true)}>Add</Button>
+                                  <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                     onClick={() => setIsAddClicked(true)}>Update</Button>
                             </div> 
+                            <br />
                             <br />
                             <div>
                                 {
                                     isAddClicked ?
-                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Data updated Successfully!!</h3>
+                                        isAdded ? 
+                                        <Modal show={isAddClicked} onHide={handleClose}
+                                            style={{
+                                                overlay: {
+                                                    position: 'fixed',
+                                                    top: '0',
+                                                    left: '0',
+                                                    right: '0',
+                                                    bottom: '0',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                                }
+                                            }}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Success</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Battery data got updated successfully!!!</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose} style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
+                                                    Close
+                                                </Button>
+                                            </Modal.Footer>
+                                        </Modal>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                               

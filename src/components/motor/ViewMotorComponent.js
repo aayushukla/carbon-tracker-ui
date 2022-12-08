@@ -93,10 +93,11 @@ function ViewMotorComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNumber(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}>View</Button>
                         &nbsp;&nbsp;&nbsp; {
                             showData && isDataPresent &&
-                            <Button variant="success" type="submit" value="Submit" onClick={() => { setMotorRecords([]); setShowData(false); setIsDataPresent(false) }}>Clear</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                            onClick={() => { setMotorRecords([]); setShowData(false); setIsDataPresent(false) }}>Clear</Button>
                         }
 
                     </form>

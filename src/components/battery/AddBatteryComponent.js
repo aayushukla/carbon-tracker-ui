@@ -109,9 +109,12 @@ function AddBatteryComponent(props) {
                               
                               <div className='row'>
                                 <div className='col'>
-                                  <Button variant="success" type="submit" value="Submit"
-                                     onClick={() => setIsAddClicked(true)}>Add</Button>
+                                  {/* <Button variant="success" type="submit" value="Submit"
+                                     onClick={() => setIsAddClicked(true)}>Add</Button> */}
+                                     <Button variant="success" type="submit" onClick={() => setIsAddClicked(true)}
+                                     style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>Add</Button>
                             </div> 
+                            <br />
                             <br />
                             <div>
                                 {
@@ -133,12 +136,12 @@ function AddBatteryComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Battery got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" onClick={handleClose}>
+                                                <Button variant="secondary" onClick={handleClose} style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <h3 style={{ fontSize: "20px" }}>Adding....</h3> : null
                                 }
                               
                             </div>

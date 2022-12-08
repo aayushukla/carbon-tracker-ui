@@ -113,9 +113,10 @@ function AddMotorComponent(props) {
         
                       <div className = 'row'>
                        <div className = 'col'>
-                            <Button variant="success" type="submit" value="Submit"
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
                               onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            <br />
                             <br />
                             <div>
                                 {
@@ -137,12 +138,12 @@ function AddMotorComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Motor got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" onClick={handleClose}>
+                                                <Button variant="secondary" onClick={handleClose} style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <h3 style={{ fontSize: "20px" }}>Adding....</h3> : null
                                 }
                             </div>
                         </div>

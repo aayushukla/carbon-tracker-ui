@@ -161,7 +161,7 @@ function SidebarComponent(componentType) {
 
     return (
         <>
-            <div className="sidebar">
+            <div className="sidebar" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}>
                 <div className="top_Section">
                     <a href={home_link} >
                         <img className="tool" width="200px"

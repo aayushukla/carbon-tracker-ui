@@ -90,11 +90,12 @@ function ViewBatteryComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Serial Number" onChange={event => setSerialNumber(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>View</Button>
                         &nbsp;&nbsp;&nbsp;
                         {
                             showData && isDataPresent &&
-                            <Button variant="success" type="submit" value="Submit" onClick={() => { setBatteryRecords([]); setShowData(false) }}>Clear</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+                            onClick={() => { setBatteryRecords([]); setShowData(false) }}>Clear</Button>
                         }
                     </form>
 

@@ -103,11 +103,13 @@ function ViewHPTComponent(props) {
                         <form onSubmit={handleSubmit}>
                             <input type="text" placeholder="Enter HPT Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                             &nbsp;&nbsp;
-                            <Button variant="success" type="submit" value="Submit">View</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                            >View</Button>
                             &nbsp;&nbsp;&nbsp;
                             {
                                 showData && isDataPresent &&
-                                <Button variant="success" type="submit" value="Submit" onClick={() => {setHptRecords([]); setShowData(false)}}>Clear</Button>
+                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                onClick={() => {setHptRecords([]); setShowData(false)}}>Clear</Button>
                             }
                             
                         </form>

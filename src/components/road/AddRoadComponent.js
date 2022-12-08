@@ -128,9 +128,10 @@ function AddRoadComponent(props) {
                         </div>
                         <div className='row'>
                             <div className='col'>
-                                <Button variant="success" type="submit" value="Submit"
+                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            <br />
                             <br />
                             <div>
                                 {
@@ -152,12 +153,13 @@ function AddRoadComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Ground Route got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" onClick={handleClose}>
+                                                <Button variant="secondary" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+                                                onClick={handleClose}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <h3 style={{ fontSize: "20px" }}>Adding....</h3> : null
                                 }
                             </div>
                         </div>

@@ -78,11 +78,11 @@ function AddHPTComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <h4 style={{ margin: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '1%' }}>
+                        <h4 style={{ marginTop: '0.5%',marginRight: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '0%' }}>
                             Add Hornet Power Tool</h4>
                     </div><br/>
 
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} style={{ marginTop: '-2%'}}>
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Choose type of tool:</Form.Label>&nbsp;
@@ -156,12 +156,13 @@ function AddHPTComponent(props) {
                             </div>
 
                         </div>
-                        <br></br>
-                        <div className='row'>
+                        <br/>
+                        <div className='row' style = {{marginTop : '-2%'}}>
                             <div className='col'>
-                                <Button variant="success" type="submit" value="Submit"
+                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            <br />
                             <br />
                             <div style={{ marginTop: '10px' }}>
                                 {
@@ -182,12 +183,13 @@ function AddHPTComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Tool got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" onClick={handleClose}>
+                                                <Button variant="secondary" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                                onClick={handleClose}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <h3 style={{ fontSize: "20px", marging: '0%' }}>Updating....</h3> : null
                                 }
                             </div>
                         </div>

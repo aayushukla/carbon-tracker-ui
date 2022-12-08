@@ -108,7 +108,7 @@ function UpdateRoadComponent(props) {
                             </div>
                             <div className='col'>
                                 <Form.Label>Date Shipped:</Form.Label>&nbsp;
-                                <Form.Control type="text"  placeholder = "YYYY-MM-DD" value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
+                                <Form.Control type="date"  placeholder = "YYYY-MM-DD" value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
 
                             </div>
                         </div>
@@ -117,7 +117,7 @@ function UpdateRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Date Arrived:</Form.Label>&nbsp;
-                                <Form.Control type="text"  placeholder = "YYYY-MM-DD" value={dateArrived} onChange={event => setdateArrived(event.target.value)}></Form.Control>
+                                <Form.Control type="date"  placeholder = "YYYY-MM-DD" value={dateArrived} onChange={event => setdateArrived(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
@@ -130,14 +130,36 @@ function UpdateRoadComponent(props) {
                         </div>
                         <div className='row'>
                             <div className='col'>
-                                <Button variant="success" type="submit" value="Submit"
+                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
                                     onClick={() => setIsAddClicked(true)}>Update</Button>
                             </div>
+                            <br />
                             <br />
                             <div>
                                 {
                                     isAddClicked ?
-                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Transportation Info Updated Successfully!!</h3>
+                                        isAdded ? 
+                                        <Modal show={isAddClicked} onHide={handleClose}
+                                            style={{
+                                                overlay: {
+                                                    position: 'fixed',
+                                                    top: '0',
+                                                    left: '0',
+                                                    right: '0',
+                                                    bottom: '0',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                                }
+                                            }}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Success</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Ground Route data got updated successfully!!!</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose} style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
+                                                    Close
+                                                </Button>
+                                            </Modal.Footer>
+                                        </Modal>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                             </div>

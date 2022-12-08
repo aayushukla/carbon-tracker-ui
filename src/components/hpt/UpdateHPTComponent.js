@@ -142,7 +142,8 @@ function UpdateHPTComponent(props) {
                         <form onSubmit={handleSubmit}>
                             <input type="text" value = {serialNum} placeholder="Enter Serial Number" onChange={event => setSerialNum(event.target.value)}></input>
                             &nbsp;&nbsp;
-                            <Button variant="success" type="submit" value="Submit" onClick={onClick}>View</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                            onClick={onClick}>Find</Button>
                         </form>
                     </div>
                     <br></br>
@@ -226,8 +227,10 @@ function UpdateHPTComponent(props) {
                                 <div className='row'>
                                     <div className='col'>
                                         <Button variant="success" type="submit" value="Submit"
-                                            onClick={() => setIsAddClicked(true)}>Update</Button>
+                                            onClick={() => setIsAddClicked(true)}  style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                            >Update</Button>
                                     </div>
+                                    <br />
                                     <br />
                                     <div style={{ marginTop: '10px' }}>
                                         {
@@ -248,7 +251,8 @@ function UpdateHPTComponent(props) {
                                                     </Modal.Header>
                                                     <Modal.Body>Tool got updated successfully!!!</Modal.Body>
                                                     <Modal.Footer>
-                                                        <Button variant="secondary" onClick={handleClose}>
+                                                        <Button variant="secondary" style={{backgroundImage:"linear-gradient(130deg,#23adf3,#6304ff)"}}
+                                                        onClick={handleClose}>
                                                             Close
                                                         </Button>
                                                     </Modal.Footer>

@@ -89,11 +89,12 @@ function ViewSeaComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Tracking Number" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>View</Button>
                         &nbsp;&nbsp;&nbsp;
                         {
                             showData && 
-                            <Button variant="success" type="submit" value="Submit" onClick={() => { setSeaRecords([]); setShowData(false) }}>Clear</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+                            onClick={() => { setSeaRecords([]); setShowData(false) }}>Clear</Button>
                         }
                     </form>
 

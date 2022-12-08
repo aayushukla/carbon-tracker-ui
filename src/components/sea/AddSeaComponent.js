@@ -128,9 +128,10 @@ function AddSeaComponent(props) {
                         </div>
                         <div className='row'>
                             <div className='col'>
-                                <Button variant="success" type="submit" value="Submit"
+                                <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            <br />
                             <br />
                             <div>
                                 {
@@ -152,7 +153,7 @@ function AddSeaComponent(props) {
                                             </Modal.Header>
                                             <Modal.Body>Sea Route got added successfully!!!</Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="secondary" onClick={handleClose}>
+                                                <Button variant="secondary" onClick={handleClose} style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
                                                     Close
                                                 </Button>
                                             </Modal.Footer>

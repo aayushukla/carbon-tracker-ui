@@ -121,11 +121,13 @@ function RoadRouteComponent(props) {
                     <form onSubmit={handleSubmit}>
                         <input type="text" placeholder="Enter Road Rout Id" onChange={event => setTrackingNum(event.target.value)}></input>
                         &nbsp;&nbsp;
-                        <Button variant="success" type="submit" value="Submit">View</Button>
+                        <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+                        >View</Button>
                         &nbsp;&nbsp;&nbsp;
                         {
                             showData &&
-                            <Button variant="success" type="submit" value="Submit" onClick={() => { setRoadRecords([]); setShowData(false) }}>Clear</Button>
+                            <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+                            onClick={() => { setRoadRecords([]); setShowData(false) }}>Clear</Button>
                         }
                     </form>
                     {/* <div id="hptData"></div> */}
