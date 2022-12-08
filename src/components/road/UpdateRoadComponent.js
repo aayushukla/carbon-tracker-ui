@@ -5,6 +5,7 @@ import HPTSidebar from '../HPTSidebar';
 import GroundTransportService from '../../services/GroundTransportService';
 import SidebarComponent from '../SidebarComponent';
 
+import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
 
 
 function UpdateRoadComponent(props) {
@@ -160,7 +161,7 @@ function UpdateRoadComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>
