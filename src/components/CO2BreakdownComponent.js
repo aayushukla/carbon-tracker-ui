@@ -43,13 +43,13 @@ function CO2Breakdown(props) {
     return (
         <>
             <CO2NavBar />
-            <div style={{ textAlign: 'center', marginLeft: '10%'}}>
-                <h4 style={{ textAlign: "center", marginTop: '30px' }}>You can see total CO2 breakdown here..</h4>
+            <div style={{ textAlign: 'center', marginLeft: '5%', marginTop: '0%', marginRight: '1%'}}>
+                <h4 style={{ textAlign: "center", marginTop: '20px', paddingRight: '0px' }}>You can see total CO2 breakdown here..</h4>
                 <br></br>
-                <Row >
-                        <Col >
-                            <Card style={{ marginTop: '15px', alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}>
-                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                <Row style={{marginLeft: '6%', marginTop: '-1%', padding: '-12%'}} >
+                        <Col style={{padding:'-10px', paddingRight:'0px'}}>
+                            <Card style={{  marginTop: '15px', alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "65%" }}>
+                                <Card.Header style={{ fontSize: '15px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                                   Battery Component
                                 </Card.Header>
                                 <Card.Body>
@@ -60,9 +60,9 @@ function CO2Breakdown(props) {
                                 </Card.Body>
                             </Card>
 
-                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}  className='text-center'>
+                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "65%" }}  className='text-center'>
                                
-                            <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                            <Card.Header style={{ fontSize: '15px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                             Ground Transportation       
                             </Card.Header>
                             <Card.Body >
@@ -76,9 +76,9 @@ function CO2Breakdown(props) {
 
                         </Col>
 
-                        <Col>
-                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }} >
-                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                        <Col style={{padding:'-10px'}}>
+                            <Card  style={{ marginLeft: '-6%', marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "65%" }} >
+                                <Card.Header style={{ fontSize: '15px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                                 Motor Component                                
                                 </Card.Header>
                                 <Card.Body>
@@ -91,9 +91,9 @@ function CO2Breakdown(props) {
                                 </Card.Body>
                             </Card>
 
-                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}  className='text-center'>
+                            <Card  style={{ marginLeft: '-6%',marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "65%" }}  className='text-center'>
                                
-                            <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                            <Card.Header style={{ fontSize: '15px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                             Sea Transportation       
                             </Card.Header>
                             <Card.Body >
@@ -107,9 +107,9 @@ function CO2Breakdown(props) {
                 
 
                         </Col>
-                        <Col>
-                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }} >
-                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                        <Col style={{padding:'-10px'}}>
+                            <Card  style={{ marginLeft: '-15%',marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }} >
+                                <Card.Header style={{ fontSize: '15px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                                   Hornet Power Tool
                                 </Card.Header>
                                 <Card.Body>
