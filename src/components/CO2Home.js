@@ -36,9 +36,9 @@ function CO2Home() {
         <div>
           <h4 style={{ textAlign: "center", marginTop: '2%', fontWeight: 'bold', fontSize: '200%', marginBottom: '1%' }}>Welcome to Carbon Dashboard</h4>
         </div>
-        <marquee style={{ fontSize: "20px" }}>
-          {/* Carbon dashboard for Hornet Power Tools (HPT) that will calculate the total CO2 emissions from the Motor Supplier, Battery Supplier, Sea Transport and Road Transport. Over time as suppliers increase efficiency the CO2 value should go down for newer tools. This web application provides individual dashboards according to the requested suppliers and does not reveal any additional details other than their own supplier information. The CO2 emitted from all the suppliers is calculated by taking HPT Serial Number as the input, the users get to see breakdown of CO2 according to the suppliers. */}
-        </marquee>
+        {/* <marquee style={{ fontSize: "20px" }}>
+          Carbon dashboard for Hornet Power Tools (HPT) that will calculate the total CO2 emissions from the Motor Supplier, Battery Supplier, Sea Transport and Road Transport. Over time as suppliers increase efficiency the CO2 value should go down for newer tools. This web application provides individual dashboards according to the requested suppliers and does not reveal any additional details other than their own supplier information. The CO2 emitted from all the suppliers is calculated by taking HPT Serial Number as the input, the users get to see breakdown of CO2 according to the suppliers.
+        </marquee> */}
 
         <section className="slider">
           <FaArrowAltCircleLeft className="left-arrow" onClick={prevSlide} />
@@ -79,6 +79,9 @@ function CO2Home() {
                 />
           </Card> */}
       </div>
+      {/* <p style={{ fontSize: "20px" }}>
+          Carbon dashboard for Hornet Power Tools (HPT) that will calculate the total CO2 emissions from the Motor Supplier, Battery Supplier, Sea Transport and Road Transport. Over time as suppliers increase efficiency the CO2 value should go down for newer tools. This web application provides individual dashboards according to the requested suppliers and does not reveal any additional details other than their own supplier information. The CO2 emitted from all the suppliers is calculated by taking HPT Serial Number as the input, the users get to see breakdown of CO2 according to the suppliers.
+        </p> */}
 
     </div>
   );
