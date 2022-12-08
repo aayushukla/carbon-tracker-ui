@@ -11,6 +11,7 @@ export default function (props) {
   let [authMode, setAuthMode] = useState("signin")
   const navigate = useNavigate();
 
+
   ReactSession.setStoreType("sessionStorage");
 
   const [Email, setEmail] = useState();
@@ -36,6 +37,7 @@ export default function (props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  // const [isAdded, setIsAdded] = useState(false)
 
   const handleSignUp = async event => {
     event.preventDefault();
@@ -44,7 +46,9 @@ export default function (props) {
 
       console.log(fullname);
 
-      const addData = await LoginService.addUserData(fullname, useremail, userPassword);
+      const addData = await LoginService.addUserData(fullname, useremail, userPassword)
+      .then(res => alert("User got created successfully!"));
+      
     }
 
 
@@ -53,8 +57,12 @@ export default function (props) {
 
   }
 
+  // const handleModalClose = () => {
+  //   setIsAdded(false)
+  // }
 
 
+  
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -188,6 +196,7 @@ export default function (props) {
                   className="form-control mt-1"
                   placeholder="e.g Jane Doe"
                   onChange={event => setFullName(event.target.value)}
+                  required
                 />
               </div>
               <div className="form-group mt-3">
@@ -197,7 +206,7 @@ export default function (props) {
                   className="form-control mt-1"
                   placeholder="Email Address"
                   onChange={event => setUserEmail(event.target.value)}
-
+                  required
                 />
               </div>
               <div className="form-group mt-3">
@@ -207,7 +216,7 @@ export default function (props) {
                   className="form-control mt-1"
                   placeholder="Password"
                   onChange={event => setUserPassword(event.target.value)}
-
+                  required
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
@@ -215,6 +224,32 @@ export default function (props) {
                   style={{ fontSize: "15px", marginLeft: '10px', marginBottom: '2px', backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                   Sign Up
                 </Button>
+                {/* {
+                  isAdded &&
+                  <Modal show={isAdded} onHide={handleModalClose}
+                    style={{
+                      overlay: {
+                        position: 'fixed',
+                        top: '0',
+                        left: '0',
+                        right: '0',
+                        bottom: '0',
+                        backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                      }
+                    }}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Success</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>Tool got added successfully!!!</Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" style={{ backgroundImage: "linear-gradient(130deg,#23adf3,#6304ff)" }}
+                        onClick={handleModalClose}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+
+                } */}
                 {/* <button type="submit" className="btn btn-primary">
                     Sign Up
                   </button> */}
