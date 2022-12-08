@@ -5,7 +5,7 @@ import HPTSidebar from '../HPTSidebar';
 import SeaTransportService from '../../services/SeaTransportService';
 import SeaSidebar from '../SeaSideBar';
 import SidebarComponent from '../SidebarComponent';
-import loader from '../../../public/gifForUpdate.gif'
+import loader from '../gifs/gifForUpdate.gif'
 
 
 function AddSeaComponent(props) {

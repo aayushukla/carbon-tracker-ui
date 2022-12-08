@@ -3,7 +3,7 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import BatteryService from '../../services/BatteryService';
 import CO2NavBar from '../CO2NavBar';
 import SidebarComponent from '../SidebarComponent';
-import loader from '../../../public/gifForUpdate.gif'
+import loader from '../gifs/gifForUpdate.gif'
 
 
 function AddBatteryComponent(props) {

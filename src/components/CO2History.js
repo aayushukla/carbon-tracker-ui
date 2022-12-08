@@ -15,7 +15,7 @@ import Chart from 'chart.js/auto';
 import LinearProgress from '@mui/material/LinearProgress';
 import Alert from '@mui/material/Alert';
 
-import Loader from '../../../public/gifloader.gif'
+import Loader from './gifs/gifloader.gif'
 
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';

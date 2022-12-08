@@ -4,7 +4,7 @@ import MotorService from '../../services/MotorService';
 import CO2NavBar from '../CO2NavBar';
 import SidebarComponent from '../SidebarComponent';
 import { MDBFile } from 'mdb-react-ui-kit';
-import loader from '../../../public/gifForUpdate.gif'
+import loader from '../gifs/gifForUpdate.gif'
 
 
 

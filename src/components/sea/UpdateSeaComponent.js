@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import SeaTransportService from '../../services/SeaTransportService';
 import CO2NavBar from '../CO2NavBar';
-import loader from '../../../public/gifForUpdate.gif'
+import loader from '../gifs/gifForUpdate.gif'
 
 
 import SidebarComponent from '../SidebarComponent';
