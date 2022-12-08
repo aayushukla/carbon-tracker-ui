@@ -22,6 +22,12 @@ export default function (props) {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
     console.log('authmod', authMode);
   }
+  
+
+  const [fullname, setFullName] = useState();
+  const [useremail, setUserEmail] = useState();
+  const [userPassword, setUserPassword] = useState();
+
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -34,6 +40,16 @@ export default function (props) {
     });
 
   }
+
+  async function  addUserInfo () {
+
+    console.log(fullname);
+
+    const addData = await LoginService.addUserData(fullname, useremail, userPassword);
+
+
+  }
+
   async function getUserData(Email) {
     console.log("inside getuserdata");
     console.log(Email['Email'])
@@ -47,6 +63,7 @@ export default function (props) {
     //   })
     // })
 
+    addUserInfo();
     
     if (userData == 0) {
       
@@ -125,7 +142,7 @@ export default function (props) {
       <div>
         <NavBar />
         <div className="Auth-form-container">
-          <form className="Auth-form">
+          <form className="Auth-form"  onSubmit={handleSubmit}>
             <div className="Auth-form-content">
               <h3 className="Auth-form-title">Sign Up</h3>
               <div className="text-center">
@@ -137,9 +154,10 @@ export default function (props) {
               <div className="form-group mt-3">
                 <label>Full Name</label>
                 <input
-                  type="email"
+                  type="name"
                   className="form-control mt-1"
                   placeholder="e.g Jane Doe"
+                  onChange={event => setFullName(event.target.value)}
                 />
               </div>
               <div className="form-group mt-3">
@@ -148,6 +166,8 @@ export default function (props) {
                   type="email"
                   className="form-control mt-1"
                   placeholder="Email Address"
+                  onChange={event => setUserEmail(event.target.value)}
+
                 />
               </div>
               <div className="form-group mt-3">
@@ -156,6 +176,8 @@ export default function (props) {
                   type="password"
                   className="form-control mt-1"
                   placeholder="Password"
+                  onChange={event => setUserPassword(event.target.value)}
+
                 />
               </div>
               <div className="d-grid gap-2 mt-3">
