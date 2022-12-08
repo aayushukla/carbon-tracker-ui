@@ -15,7 +15,7 @@ import Chart from 'chart.js/auto';
 import LinearProgress from '@mui/material/LinearProgress';
 import Alert from '@mui/material/Alert';
 
-
+import Loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gifloader.gif'
 
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import { useDemoData } from '@mui/x-data-grid-generator';
@@ -66,8 +66,12 @@ function CO2History() {
 
     const [displayAlert, setDisplay] = useState(false);
 
+    const [loader, setloader] = useState(false)
+
 
     async function getCO2Val() {
+
+      setloader(true);
 
         if(value == 'Motor') {
             rows = await MotorService.getMotorRowsData();
@@ -107,7 +111,10 @@ function CO2History() {
       }
 
 
+      setloader(false);
 
+
+        
         setVisible(true);
 
         state = {
@@ -129,98 +136,122 @@ function CO2History() {
 
     return (
     <>
+
+
+
+        
+        
         <CO2NavBar />
 
-        <div className="container">
-          
-        <Card style={{borderWidth: 0, borderColor: 'transparent', elevation: 0, width:'100%'}}>
-                 
-    <Card.Title style={{fontSize: '25px', marginTop:'20px', fontWeight:'bold'}}>CO2 History</Card.Title>
-    <Form onSubmit={handleSubmit}>
+        {loader ? 
+     <div style={{textAlign:'center'}}>
+                    
+     <img src={Loader} alt="" style={{width:'50%', height:'40%'}}/>
+     
+ </div>
+:     <></>}
 
-    {displayAlert ?  <Alert severity="error"> Please select a component type </Alert>
+{!loader ?
+    
+<div className="container">
+
+<Card style={{borderWidth: 0, borderColor: 'transparent', elevation: 0, width:'100%'}}>
+         
+<Card.Title style={{fontSize: '25px', marginTop:'20px', fontWeight:'bold'}}>CO2 History</Card.Title>
+<Form onSubmit={handleSubmit}>
+
+{displayAlert ?  <Alert severity="error"> Please select a component type </Alert>
 
 : null }
 
-    <Card.Text style={{fontSize: '20px'}}>
-            Select a Component
-    </Card.Text>
-    <select style={{width:'30rem', height:'3rem', marginBottom:'40px'}} value={value} onChange={event => setComponentVal(event.target.value)} placeholder="Choose a Component">
-            <option value="Select Component">Select Component</option>
-            <option value="Motor">Motor</option>
-            <option value="Battery">Battery</option>
-            <option  value="Sea Transport">Sea Transportation</option>
-            <option value="Ground Transport">Ground Transportation</option>
-    </select>
-    <Button variant="primary" type="submit" 
-        style={{ fontSize: "15px", marginLeft:'10px', marginBottom:'2px', backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
-        >
-        Show CO2 History Table
+<Card.Text style={{fontSize: '20px'}}>
+    Select a Component
+</Card.Text>
+<select style={{width:'30rem', height:'3rem', marginBottom:'40px'}} value={value} onChange={event => setComponentVal(event.target.value)} placeholder="Choose a Component">
+    <option value="Select Component">Select Component</option>
+    <option value="Motor">Motor</option>
+    <option value="Battery">Battery</option>
+    <option  value="Sea Transport">Sea Transportation</option>
+    <option value="Ground Transport">Ground Transportation</option>
+</select>
+<Button variant="primary" type="submit" 
+style={{ fontSize: "15px", marginLeft:'10px', marginBottom:'2px', backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
+>
+Show CO2 History Table
 
-    </Button>
-    <Button  style={{ fontSize: "15px", marginLeft:'10px', marginBottom:'2px', backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}} onClick={handleOpen}>Generate Graph</Button>
+</Button>
+<Button  style={{ fontSize: "15px", marginLeft:'10px', marginBottom:'2px', backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}} onClick={handleOpen}>Generate Graph</Button>
 
-    <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description">
-        <Box sx={style}>
-        <Typography id="modal-modal-title" variant="h6" component="h1">
-          Highest CO2 Emission : {Math.max(...graphData)} 
-          </Typography>
-        <Bar
-          data={state}
-          options={{
-            title:{
-              display:true,
-              text:'CO2 Emission',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }}}
-        />
-        </Box>
-      </Modal>
-    </Form>
-    </Card>
+<Modal
+open={open}
+onClose={handleClose}
+aria-labelledby="modal-modal-title"
+aria-describedby="modal-modal-description">
+<Box sx={style}>
+<Typography id="modal-modal-title" variant="h6" component="h1">
+  Highest CO2 Emission : {Math.max(...graphData)} 
+  </Typography>
+<Bar
+  data={state}
+  options={{
+    title:{
+      display:true,
+      text:'CO2 Emission',
+      fontSize:20
+    },
+    legend:{
+      display:true,
+      position:'right'
+    }}}
+/>
+</Box>
+</Modal>
+</Form>
+</Card>
+</div>
+: <></>}
 
-    </div>
+{visible && columns && columns.length && !loader ?
 
-{visible && columns && columns.length ?
-  
-    <div className="container">
-    <div style={{ height: 400, width: '100%' }}>
-        <DataGrid
-            rows={rows}
-            getRowId={(row) => row.internalId}
-            columns={columns}
-            pageSize={5}
-            rowsPerPageOptions={[5]}
-            sx={{
-              
-                '&.MuiDataGrid-root': {
-                border: 'none',
-                }
-            }}
-    
-            loading={loading}
-            components={{
-          Toolbar: CustomToolbar,
-        }}
-        
-        />
+<div className="container">
+<div style={{ height: 400, width: '100%' }}>
+<DataGrid
+    rows={rows}
+    getRowId={(row) => row.internalId}
+    columns={columns}
+    pageSize={5}
+    rowsPerPageOptions={[5]}
+    sx={{
+      
+        '&.MuiDataGrid-root': {
+        border: 'none',
+        }
+    }}
 
-        </div>
+    loading={loading}
+    components={{
+  Toolbar: CustomToolbar,
+}}
 
-    </div>
-    
+/>
+
+</div>
+
+</div>
+
+
 : null}
-   
+
+
+
+
+
+       
     </>
+
     );
+    
 }
 
 export default CO2History;
+
