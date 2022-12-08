@@ -5,7 +5,7 @@ import HPTSidebar from '../HPTSidebar';
 import GroundTransportService from '../../services/GroundTransportService';
 import SidebarComponent from '../SidebarComponent';
 
-import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
+import loader from '../../../public/gifForUpdate.gif'
 
 
 function UpdateRoadComponent(props) {
