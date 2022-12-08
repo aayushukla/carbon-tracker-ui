@@ -28,9 +28,9 @@ function SeaChart(props) {
     console.log("sea records from seacharts", props.seaRecord[0].fuelCost)
 return (
 
-	<div style={{height:"50%"}}>
-	<h1>Sea Transport Cost Graph</h1>
-	<div style={{ maxWidth: "650px"}}>
+	<div style={{height:"1%", marginTop: "-3%"}}>
+	<h4 style={{fontSize: "18px", display: 'flex', justifyContent: 'left'}}>Sea Transport Cost Graph</h4>
+	<div style={{ maxWidth: "500px", height: "200px"}}>
 		<Bar
 		data={{
 			// Name of the variables on x-axies for each bar
