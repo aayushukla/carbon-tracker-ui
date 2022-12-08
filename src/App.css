@@ -200,7 +200,7 @@ label {
 .sidebar {
   /* background: lightseagreen ; */
   color: black;
-  height: 89vh;
+  height: 87vh;
   width: 200px;
 }
 
@@ -227,12 +227,12 @@ label {
 }
 
 .link:hover {
-  background: lightgray ;
+  background: black ;
   transition: all 0.5s;
 }
 
 #active {
-  background: lightgray;
+  background: black;
 }
 
 .toolContainer{
@@ -293,3 +293,40 @@ label {
   margin-bottom: 2%;
 }
 
+.slider {
+  position: relative;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-left: 19%;
+}
+
+.home-image {
+width: 750px;
+height: 350px;
+border-radius: 10px;
+margin-left: 4%;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  font-size: 3rem;
+  color: black;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.right-arrow {
+  position: absolute;
+  top: 50%;
+  right: 155px;
+  font-size: 3rem;
+  color: black;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
