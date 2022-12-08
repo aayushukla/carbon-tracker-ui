@@ -181,57 +181,8 @@ class BatteryService {
         return [...yearMap.values()];
     }
 
-    async getTotalCo2 () {
-        var co2Sum = 0;
-
-        batteryData = await getEntity.battery.list();
-        batteryData = batteryData.items;
-        for (var j=0;j<batteryData.length;j++) {
-        co2Sum = co2Sum + batteryData[j].co2;
-        console.log(batteryData[j].co2);   
-    }
-    console.log(co2Sum)
     
-    return co2Sum;     
-    }
-
-    async getCostData () {
-        var cost = 0;
-
-        batteryData = await getEntity.battery.list();
-        batteryData = batteryData.items;
-        for (var j=0;j<batteryData.length;j++) {
-        cost = cost + batteryData[j].costManufactured;
-        console.log(cost);   
-    }
-    console.log(cost)
     
-    return cost;     
-    }
-
-    async getLength () {
-        
-        batteryData = await getEntity.battery.list();
-        batteryData = batteryData.items;
-
-        return batteryData.length;
-     }
-
-     async getSalesCostData () {
-        
-        var cost = 0;
-
-        batteryData = await getEntity.battery.list();
-        batteryData = batteryData.items;
-        for (var j=0;j<batteryData.length;j++) {
-        cost = cost + batteryData[j].salesPrice;
-        console.log(cost);   
-    }
-    console.log(cost)
-    
-    return cost;     
-
-     }
 
 }
 
