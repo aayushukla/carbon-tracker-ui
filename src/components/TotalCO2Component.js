@@ -12,6 +12,7 @@ import SeaTransportService from '../services/SeaTransportService';
 import CO2NavBar from './CO2NavBar';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Alert from '@mui/material/Alert';
+import { HPTImages } from './HPTImages';
 
 var serial = 0;
 var motorInfo = 0;
@@ -60,7 +61,7 @@ function TotalCO2Component() {
 
       const hptTotal = await HPTService.getHornetPowerToolDataByID(serialNum)
       sethptData([...hptTotal])
-
+      setSerialNum(serialNum);
       if (Object.keys(hptTotal).length == 0) {
         setDisplay(true)
 
@@ -217,7 +218,17 @@ function TotalCO2Component() {
 
               <div className="col-sm">
                 <Card className='comp-card-container'>
-                  Drill Image:
+                  Drill Image: 
+                  {
+                    HPTImages.map((hpt) => {
+                      // console.log("hpt.sn : ",hpt.sn,serialNum, hpt.sn === serialNum, hpt.image)
+                      hpt.sn === serialNum ? 
+                        <img style={{ width: "150px", height: "100px" }} src={hpt.image} />
+                        :
+                        <img style={{ width: "150px", height: "100px" }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
+                        
+                    })
+                  }
                   <img style={{ width: "150px", height: "100px" }} src="https://aurora.a.bigcontent.io/v1/static/drill_bosch_lifestyle" />
                 </Card></div>
 

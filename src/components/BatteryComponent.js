@@ -74,7 +74,7 @@ function BatteryComponent(props) {
                                   }}  value={totalCo2} text={`${totalCo2}`} maxValue={1000} />
                                 {/* <Card.Img variant="top" style={{ width: '50%', height: '50%' }} src="https://i.pinimg.com/originals/8a/97/93/8a979307cfdf16f80b8b869280b5f37e.jpg" /> */}
                                 <Card.Body>
-                                    <Card.Text style={{ fontSize: '25px', fontWeight: 'bold' }} className='text-center'>
+                                    <Card.Text style={{ fontSize: '20px' }} className='text-center'>
                                          kgCO2
                                     </Card.Text>
                                 </Card.Body>
