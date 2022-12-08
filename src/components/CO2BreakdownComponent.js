@@ -3,6 +3,14 @@ import CO2NavBar from './CO2NavBar.js';
 import { Button } from 'react-bootstrap';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
+
+import {
+    CircularProgressbar,
+  } from "react-circular-progressbar";import 'react-circular-progressbar/dist/styles.css';
 
 
 //I have no idea what I'm doing, or how to pass values from component to component .-.
@@ -15,6 +23,8 @@ function CO2Breakdown(props) {
     const totalMotorCo2 = location.state?.motorCo2;
     const totalGroundCo2 = location.state?.groundCo2;
     const totalSeaCo2 = location.state?.seaCo2;
+
+    const percentage = 66;
 
 
     const sourceStyle = {
@@ -33,10 +43,95 @@ function CO2Breakdown(props) {
     return (
         <>
             <CO2NavBar />
-            <div style={{ textAlign: 'center' }}>
+            <div style={{ textAlign: 'center', marginLeft: '10%'}}>
                 <h4 style={{ textAlign: "center", marginTop: '30px' }}>You can see total CO2 breakdown here..</h4>
                 <br></br>
-                <div>
+                <Row >
+                        <Col >
+                            <Card style={{ marginTop: '15px', alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}>
+                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                                  Battery Component
+                                </Card.Header>
+                                <Card.Body>
+                                <CircularProgressbar
+                                styles={{
+                                   root : {width:'50%'},
+                                  }}  value={totalBatteryCo2} text={`${totalBatteryCo2}`} />
+                                </Card.Body>
+                            </Card>
+
+                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}  className='text-center'>
+                               
+                            <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                            Ground Transportation       
+                            </Card.Header>
+                            <Card.Body >
+                            <CircularProgressbar
+                                styles={{
+                                   root : {width:'50%'},
+                                  }}  value={totalGroundCo2} text={`${totalGroundCo2}`} />
+                                   </Card.Body>
+                            </Card>
+
+
+                        </Col>
+
+                        <Col>
+                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }} >
+                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                                Motor Component                                
+                                </Card.Header>
+                                <Card.Body>
+                                <CircularProgressbar
+                                styles={{
+                                   root : {width:'50%'},
+                                  }}  value={totalMotorCo2} text={`${totalMotorCo2}`} />
+                                      
+
+                                </Card.Body>
+                            </Card>
+
+                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }}  className='text-center'>
+                               
+                            <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                            Sea Transportation       
+                            </Card.Header>
+                            <Card.Body >
+                            <CircularProgressbar
+                                styles={{
+                                   root : {width:'50%'},
+                                  }}  value={totalSeaCo2} text={`${totalSeaCo2}`} />
+
+                                   </Card.Body>
+                            </Card>
+                
+
+                        </Col>
+                        <Col>
+                            <Card  style={{ marginTop: '15px',alignItems: 'center', display: 'flex', justifyItems: 'center',  width: "70%" }} >
+                                <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
+                                  Hornet Power Tool
+                                </Card.Header>
+                                <Card.Body>
+
+                                <CircularProgressbar
+                                styles={{
+                                   root : {width:'50%'},
+                                  }}  value={totalHPTCo2} text={`${totalHPTCo2}`} />
+
+                                </Card.Body>
+                            </Card>
+
+
+                        </Col>
+
+
+
+
+                    </Row>
+
+
+                {/* <div>
                     <input type="text" value="Hornet Power Tools" style={sourceStyle} disabled />
                     &nbsp;&nbsp;&nbsp;
                     <input type="text" value={totalHPTCo2} style={co2Style} disabled />
@@ -64,7 +159,7 @@ function CO2Breakdown(props) {
                     <input type="text" value="Ground Transportation" style={sourceStyle} disabled />
                     &nbsp;&nbsp;&nbsp;
                     <input type="text" value={totalGroundCo2} style={co2Style} disabled />
-                </div>
+                </div> */}
                 {/* <text style={{fontSize:'20px'}}> The Total CO2 for the HPT is: </text>
             {
                 totalHPTCo2
