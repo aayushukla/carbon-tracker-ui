@@ -4,7 +4,7 @@ import MotorService from '../../services/MotorService';
 import CO2NavBar from '../CO2NavBar';
 import SidebarComponent from '../SidebarComponent';
 import { MDBFile } from 'mdb-react-ui-kit';
-import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
+import loader from '../../../public/gifForUpdate.gif'
 
 
 
