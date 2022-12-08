@@ -32,6 +32,17 @@ class LoginService {
         }
 
     }
+
+    async addUserData(fullname, email, password) {
+
+        const response = await getEntity.user.add({
+            username: fullname,
+            Email: email,
+            password: password
+    });
+
+}
+
 }
 
 export default new LoginService();
