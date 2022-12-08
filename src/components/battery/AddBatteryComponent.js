@@ -91,7 +91,7 @@ function AddBatteryComponent(props) {
 
                                 <div>
                                   <Form.Label>Date Manufactured:</Form.Label>&nbsp;
-                                  <Form.Control type="text" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
+                                  <Form.Control type="date" placeholder = "YYYY-MM-DD" value = {dateManufactured} onChange={event => setDateManufactured(event.target.value)}></Form.Control>
                                 </div>
                                </div>
                              
@@ -116,7 +116,28 @@ function AddBatteryComponent(props) {
                             <div>
                                 {
                                     isAddClicked ?
-                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Data added Successfully!!</h3>
+                                        isAdded ? 
+                                        <Modal show={isAddClicked} onHide={handleClose}
+                                            style={{
+                                                overlay: {
+                                                    position: 'fixed',
+                                                    top: '0',
+                                                    left: '0',
+                                                    right: '0',
+                                                    bottom: '0',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                                }
+                                            }}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Success</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Battery got added successfully!!!</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose}>
+                                                    Close
+                                                </Button>
+                                            </Modal.Footer>
+                                        </Modal>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                               

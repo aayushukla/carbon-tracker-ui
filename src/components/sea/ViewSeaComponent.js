@@ -29,7 +29,7 @@ function ViewSeaComponent(props) {
         async function getSeaData() {
             try {
                 if ((serialNum === "" || serialNum === null))
-                    alert("Please enter Sea Route Id");
+                    alert("Please enter Sea Tracking number");
                 else {
                     SeaTransportService.getSeaTransportDataByID(serialNum)
                         .then(seaData => {
@@ -84,10 +84,10 @@ function ViewSeaComponent(props) {
                 <main style={{ margin: '2%' }}>
                     <div>
                         <p style={{ margin: '1%', fontSize: '18px' }}>
-                            Enter Sea Route Id</p>
+                            Enter Sea Tracking Number</p>
                     </div><br></br>
                     <form onSubmit={handleSubmit}>
-                        <input type="text" placeholder="Enter Sea Route Id" onChange={event => setSerialNum(event.target.value)}></input>
+                        <input type="text" placeholder="Enter Tracking Number" onChange={event => setSerialNum(event.target.value)}></input>
                         &nbsp;&nbsp;
                         <Button variant="success" type="submit" value="Submit">View</Button>
                         &nbsp;&nbsp;&nbsp;

@@ -63,7 +63,7 @@ function UpdateBatteryComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                    <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
+                    <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '1%' }}>
                             Update Battery Data</h4>
                     </div>
              

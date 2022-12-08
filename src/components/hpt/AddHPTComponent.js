@@ -78,9 +78,9 @@ function AddHPTComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <h4 style={{ margin: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '30px' }}>
+                        <h4 style={{ margin: '1%', fontWeight: 'bold', fontSize: '150%', marginBottom: '1%' }}>
                             Add Hornet Power Tool</h4>
-                    </div>
+                    </div><br/>
 
                     <Form onSubmit={handleSubmit}>
                         <div className='row'>
@@ -146,7 +146,7 @@ function AddHPTComponent(props) {
 
                             </div>
                         </div>
-                        <div className='row'>
+                        <div className='row' style = {{marginTop : '-3%'}}>
                             <div className='col'>
                                 <Form.Label>Upload Drill Image:</Form.Label>&nbsp;
                                 <MDBFile id='customFile' onChange={event => setDrillImage(event.target.value)}></MDBFile>

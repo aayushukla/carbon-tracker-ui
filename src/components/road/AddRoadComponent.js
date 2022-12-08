@@ -70,7 +70,7 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Tracking Number:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "RTXXXXX" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
+                                <Form.Control type="text" placeholder = "Tracking Number" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
@@ -106,7 +106,7 @@ function AddRoadComponent(props) {
                             </div>
                             <div className='col'>
                                 <Form.Label>Date Shipped:</Form.Label>&nbsp;
-                                <Form.Control type="text"  placeholder = "YYYY-MM-DD" value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
+                                <Form.Control type="date"  placeholder = "YYYY-MM-DD" value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
 
                             </div>
                         </div>
@@ -115,7 +115,7 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Date Arrived:</Form.Label>&nbsp;
-                                <Form.Control type="text"  placeholder = "YYYY-MM-DD" value={dateArrived} onChange={event => setdateArrived(event.target.value)}></Form.Control>
+                                <Form.Control type="date"  placeholder = "YYYY-MM-DD" value={dateArrived} onChange={event => setdateArrived(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
@@ -135,7 +135,28 @@ function AddRoadComponent(props) {
                             <div>
                                 {
                                     isAddClicked ?
-                                        isAdded ? <h3 style={{ fontSize: "20px" }}>Transport data added Successfully!!</h3>
+                                        isAdded ? 
+                                        <Modal show={isAddClicked} onHide={handleClose}
+                                            style={{
+                                                overlay: {
+                                                    position: 'fixed',
+                                                    top: '0',
+                                                    left: '0',
+                                                    right: '0',
+                                                    bottom: '0',
+                                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                                }
+                                            }}>
+                                            <Modal.Header closeButton>
+                                                <Modal.Title>Success</Modal.Title>
+                                            </Modal.Header>
+                                            <Modal.Body>Ground Route got added successfully!!!</Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="secondary" onClick={handleClose}>
+                                                    Close
+                                                </Button>
+                                            </Modal.Footer>
+                                        </Modal>
                                             : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
                                 }
                             </div>

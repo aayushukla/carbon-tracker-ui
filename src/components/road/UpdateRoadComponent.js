@@ -63,7 +63,7 @@ function UpdateRoadComponent(props) {
 
                 <main style={{ margin: '2%' }}>
                     <div>
-                        <h4 style={{ margin: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '50px' }}>
+                        <h4 style={{ marginRight: '2%',marginLeft: '2%', fontWeight: 'bold', fontSize: '150%', marginBottom: '3%' }}>
                             Update Road Transport Data</h4>
                     </div>
 
