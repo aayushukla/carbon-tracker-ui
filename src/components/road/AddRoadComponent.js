@@ -21,7 +21,7 @@ function AddRoadComponent(props) {
     const [isAdded, setIsAdded] = useState(false);
     const [isAddClicked, setIsAddClicked] = useState(false);
 
-    const handleClose = () => setIsAdded(false);
+    const handleClose = () => setIsAddClicked(false);
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -71,17 +71,17 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Tracking Number:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Tracking Number" value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={trackingNumber} onChange={event => settrackingNumber(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
                                 <Form.Label>Route ID:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "5-Digits" value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={routeID} onChange={event => setrouteID(event.target.value)}></Form.Control>
 
                             </div>
                             <div className='col'>
                                 <Form.Label>CO2:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Enter Number" value={co2} onChange={event => setCo2(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={co2} onChange={event => setCo2(event.target.value)}></Form.Control>
                             </div>
                         </div>
 
@@ -90,11 +90,11 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Vehicle ID:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "V000" value={vehicleID} onChange={event => setvehicleID(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={vehicleID} onChange={event => setvehicleID(event.target.value)}></Form.Control>
                             </div>
                             <div className='col'>
                                 <Form.Label>Fuel Cost:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Enter Number" value={fuelCost} onChange={event => setfuelCost(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={fuelCost} onChange={event => setfuelCost(event.target.value)}></Form.Control>
                             </div>
                         </div>
 
@@ -103,11 +103,11 @@ function AddRoadComponent(props) {
                         <div className='row'>
                             <div className='col'>
                                 <Form.Label>Labor Cost:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Enter Number" value={laborCost} onChange={event => setlaborCost(event.target.value)}></Form.Control>
+                                <Form.Control type="text"  value={laborCost} onChange={event => setlaborCost(event.target.value)}></Form.Control>
                             </div>
                             <div className='col'>
                                 <Form.Label>Date Shipped:</Form.Label>&nbsp;
-                                <Form.Control type="date"  placeholder = "YYYY-MM-DD" value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
+                                <Form.Control type="date"   value={dateShipped} onChange={event => setdateShipped(event.target.value)}></Form.Control>
 
                             </div>
                         </div>
@@ -121,7 +121,7 @@ function AddRoadComponent(props) {
                             </div>
                             <div className='col'>
                                 <Form.Label>Bill:</Form.Label>&nbsp;
-                                <Form.Control type="text" placeholder = "Enter Number" value={bill}
+                                <Form.Control type="text"  value={bill}
                                     onChange={event => setbill(event.target.value)}>
                                 </Form.Control><br />
 
@@ -132,12 +132,18 @@ function AddRoadComponent(props) {
                                 <Button variant="success" type="submit" value="Submit" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}
                                     onClick={() => setIsAddClicked(true)}>Add</Button>
                             </div>
+                            {
+                                isAddClicked && !isAdded && 
+                                <div className='col' style={{margin: '-2%', padding: '0px'}}>
+                                <img style={{padding: '0px'}} src={loader} alt="" />
+                            </div>
+                            }
                             <br />
                             <br />
                             <div>
                                 {
-                                    isAddClicked ?
-                                        isAdded ? 
+                                    isAddClicked &&
+                                        isAdded &&
                                         <Modal show={isAddClicked} onHide={handleClose}
                                             style={{
                                                 overlay: {
@@ -160,7 +166,7 @@ function AddRoadComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <img src={loader} alt=""/> : null
+                                            // : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>

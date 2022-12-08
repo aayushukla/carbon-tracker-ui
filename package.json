@@ -26,6 +26,7 @@
     "react-bootstrap": "^2.5.0",
     "react-bootstrap-sidebar-menu": "^2.0.3",
     "react-chartjs-2": "^4.3.1",
+    "react-circular-progressbar": "^2.1.0",
     "react-client-session": "^0.0.8",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",

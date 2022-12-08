@@ -16,7 +16,12 @@ import {
 
 } from 'mdb-react-ui-kit';
 
+import {
+    CircularProgressbar,
+  } from "react-circular-progressbar";import 'react-circular-progressbar/dist/styles.css';
+
 function BatteryComponent(props) {
+
 
     const [totalCo2, setTotalCo2] = useState(0);
     const [batteryCost, setbatteryCost] = useState(0);
@@ -48,7 +53,7 @@ function BatteryComponent(props) {
     return (
         <>
             <CO2NavBar />
-            <div className="co2container" style={{ background: "linear-gradient(90deg, #6304ff,#23adf3, transparent 26%), linear-gradient(-90deg, #6304ff,#23adf3, transparent 27%)" }}>
+            <div className="co2container" >
                 <SidebarComponent value="Battery" />
 
                 <main style={{ margin: '2%' }}>
@@ -62,12 +67,15 @@ function BatteryComponent(props) {
                                 <Card.Header style={{ fontSize: '20px', textAlign: 'center', color: 'white', width: "100%", backgroundImage: "linear-gradient(130deg,#6304ff,#23adf3)" }}>
                                     Total CO2 Emission - Battery
                                 </Card.Header>
-                                <Card.Img variant="top" style={{ width: '50%', height: '50%' }} src="https://i.pinimg.com/originals/8a/97/93/8a979307cfdf16f80b8b869280b5f37e.jpg" />
+                                <CircularProgressbar
+                                styles={{
+                                   root : {width:'20%', marginTop:'2%'},
+                                   path: {stroke: totalCo2 < 500 ? 'green' : 'red'}
+                                  }}  value={totalCo2} text={`${totalCo2}`} maxValue={1000} />
+                                {/* <Card.Img variant="top" style={{ width: '50%', height: '50%' }} src="https://i.pinimg.com/originals/8a/97/93/8a979307cfdf16f80b8b869280b5f37e.jpg" /> */}
                                 <Card.Body>
-                                    <Card.Text style={{ fontSize: '25px', fontWeight: 'bold' }} className='text-center'>
-                                        {
-                                            totalCo2
-                                        } kgCO2
+                                    <Card.Text style={{ fontSize: '20px' }} className='text-center'>
+                                         kgCO2
                                     </Card.Text>
                                 </Card.Body>
                             </Card>
