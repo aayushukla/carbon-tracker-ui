@@ -5,6 +5,7 @@ import HPTSidebar from '../HPTSidebar';
 import SeaTransportService from '../../services/SeaTransportService';
 import SeaSidebar from '../SeaSideBar';
 import SidebarComponent from '../SidebarComponent';
+import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
 
 
 function AddSeaComponent(props) {
@@ -158,7 +159,7 @@ function AddSeaComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>

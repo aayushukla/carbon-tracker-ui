@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { Button, Container, Form, Modal } from 'react-bootstrap';
 import SeaTransportService from '../../services/SeaTransportService';
 import CO2NavBar from '../CO2NavBar';
+import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
 
 
 import SidebarComponent from '../SidebarComponent';
@@ -225,7 +226,7 @@ function UpdateSeaComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Updating....</h3> : null
+                                            : <img src={loader} alt=""/>: null
                                 }
                             </div>
                         </div>
