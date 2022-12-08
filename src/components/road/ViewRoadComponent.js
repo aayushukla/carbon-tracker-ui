@@ -6,6 +6,7 @@ import { Container } from 'react-bootstrap';
 import GroundTransportService from '../../services/GroundTransportService';
 import { Button } from 'react-bootstrap';
 import SidebarComponent from '../SidebarComponent';
+import RoadChart from './RoadChart';
 
 
 
@@ -133,6 +134,7 @@ function RoadRouteComponent(props) {
                     {/* <div id="hptData"></div> */}
                     {
                         showData &&
+                        <div>
                         <MDBTable align='middle'>
                             <MDBTableHead>
                                 <tr>
@@ -166,6 +168,9 @@ function RoadRouteComponent(props) {
                                 }
                             </MDBTableBody>
                         </MDBTable>
+                        <br></br><br></br>
+                        <RoadChart roadRecord={roadRecords}/>
+                        </div>
                     }
                 </main>
             </div>
