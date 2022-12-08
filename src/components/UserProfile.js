@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import NavBar from './NavBar';
-import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button'
+
 import CO2NavBar from './CO2NavBar';
+import {
+    MDBCol,
+    MDBContainer,
+    MDBRow,
+    MDBCard,
+    MDBCardText,
+    MDBCardBody,
+    MDBCardImage,
+ 
+  } from 'mdb-react-ui-kit';
+
+  import { Card,Button } from 'react-bootstrap';
 
 function UserProfile() {
 
@@ -14,14 +22,66 @@ function UserProfile() {
 
         <>
             <CO2NavBar />
+            <Card className="text-center" style={{marginTop: '20px'}}>
+      <Card.Header style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}>
+      <MDBCardImage
+                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                  alt="avatar"
+                  className="rounded-circle"
+                  style={{ width: '100px' }}
+                  fluid />
+                <h3 className="mb-1" style={{marginTop: '5px', color: 'white'}}>John Miller</h3>  
 
-            <div class="container" style={{ marginTop: '2%' }}>
+      </Card.Header>
+      <Card.Body>
+        <Card.Title>User Details</Card.Title>
+  
+        <MDBRow>
+          <MDBCol lg="8">
+      
+            <MDBCard className="mb-1" style={{width:'50em', marginLeft:'35%', marginTop:'5px'}}>
+              <MDBCardBody>
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Full Name</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">John Miller</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+                <hr />
+                <MDBRow>
+                  <MDBCol sm="3">
+                    <MDBCardText>Email</MDBCardText>
+                  </MDBCol>
+                  <MDBCol sm="9">
+                    <MDBCardText className="text-muted">johnmiller@vendia.csus.edu</MDBCardText>
+                  </MDBCol>
+                </MDBRow>
+               
+              </MDBCardBody>
+            </MDBCard>
 
-            
+            <MDBRow>
+              <MDBCol md="6">
+          
+              </MDBCol>
 
-            </div>
+              <MDBCol md="6">
+               
+              </MDBCol>
+            </MDBRow>
+          </MDBCol>
+        </MDBRow>
 
 
+   
+        {/* <Button variant="primary">Go somewhere</Button> */}
+      </Card.Body>
+      
+      <Card.Footer className="text-muted" style={{backgroundImage:"linear-gradient(130deg,#6304ff,#23adf3)"}}></Card.Footer>
+    </Card>
+          
 
         </>
 
