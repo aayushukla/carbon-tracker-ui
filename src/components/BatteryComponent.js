@@ -24,27 +24,44 @@ function BatteryComponent(props) {
 
 
     const [totalCo2, setTotalCo2] = useState(0);
-    const [batteryCost, setbatteryCost] = useState(0);
-    const [batteryLength, setLength] = useState(0);
-    const [salescost, setSalesCost] = useState(0);
+    const [partsCost, setPartsCost] = useState(0);
+    const [salesCost, setSalesCost] = useState(0);
+    const [maxCo2SN, setMaxCo2SN] = useState(0);
+    const [BatteryLength, setLength] = useState(0);
+  
+    
+  
     useEffect(() => {
-
-        async function getBatteryData() {
-            const co2 = await BatteryService.getTotalCo2();
-            setTotalCo2(co2);
-            const cost = await BatteryService.getCostData();
-            setbatteryCost(cost);
-            const salescost = await BatteryService.getSalesCostData();
-            setSalesCost(salescost);
-            const batteryLen = await BatteryService.getLength();
-            setLength(batteryLen);
-
-
+  
+      async function getBatteryData() {
+        let co2Sum = 0;
+        let parts = 0;
+        let sale = 0
+        let maxCO2 = 0;
+        let maxSN = 0;
+        const data = await BatteryService.getBatteryData();
+        const co2 = data;
+        let count = co2.length;
+        for (var j = 0; j < co2.length; j++) {
+          co2Sum = co2Sum + co2[j].co2;
+          parts = parts + co2[j].costManufactured;
+          sale = sale + co2[j].salesPrice;
+          console.log([j].co2);
+          if (co2[j].co2 > maxCO2) {
+            maxCO2 = co2[j].co2;
+            maxSN = co2[j].serialNumber;
+          }
         }
+        console.log("Total CO2: ", co2Sum)
+        setTotalCo2(co2Sum);
+        setPartsCost(parts);
+        setSalesCost(sale);
+        setMaxCo2SN(maxSN)
+        setLength(count);
+    }
 
-
-        console.log("Battery Page", totalCo2)
-        getBatteryData();
+    console.log("HPT Data", totalCo2)
+    getBatteryData();
 
     });
 
@@ -104,7 +121,7 @@ function BatteryComponent(props) {
                                         </MDBCol>
                                         <MDBCol >
                                             <MDBCardText >
-                                                {batteryCost}$
+                                                {partsCost}$
                                             </MDBCardText>
                                         </MDBCol>
                                     </MDBRow>
@@ -115,7 +132,7 @@ function BatteryComponent(props) {
                                         </MDBCol>
                                         <MDBCol>
                                             <MDBCardText>
-                                                {salescost}$
+                                                {salesCost}$
                                             </MDBCardText>
                                         </MDBCol>
                                     </MDBRow>
@@ -126,7 +143,7 @@ function BatteryComponent(props) {
                                         </MDBCol>
                                         <MDBCol>
                                             <MDBCardText>
-                                                {batteryLength}
+                                                {BatteryLength}
                                             </MDBCardText>
                                         </MDBCol>
                                     </MDBRow>
@@ -137,7 +154,7 @@ function BatteryComponent(props) {
                                         </MDBCol>
                                         <MDBCol>
                                             <MDBCardText>
-                                                60000
+                                                {maxCo2SN}
                                             </MDBCardText>
                                         </MDBCol>
                                     </MDBRow>
