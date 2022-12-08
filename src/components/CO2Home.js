@@ -28,7 +28,7 @@ function CO2Home() {
 
   console.log("current: ", current)
   return (
-    <div style={{ height: '100vh', background: "linear-gradient(90deg, #6304ff,#23adf3, transparent 26%), linear-gradient(-90deg, #6304ff,#23adf3, transparent 27%)" }}>
+    <div style={{ height: '100vh', background: "linear-gradient(-45deg, #6304ff,#23adf3, transparent 26%), linear-gradient(135deg, #6304ff,#23adf3, transparent 27%)" }}>
       <CO2NavBar />
       <div style={{ backgroundImage: "https://www.azocleantech.com/images/Article_Images/ImageForArticle_1109_15971493455431726.png" }}>
 
