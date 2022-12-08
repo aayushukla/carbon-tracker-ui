@@ -72,6 +72,28 @@ class SeaTransportService {
 
     }
 
+
+    async getSTColumnDataForDashBoard () {
+        seaData = await getEntity.seaTransportation.list();
+        seaData = seaData.items;
+        let j = 0
+        if(seaData) {
+            headerData = Object.keys(seaData[0]);
+            console.log("FETCHED",headerData)
+            let colValues = ['CO2','Ship ID','Fuel Cost','Labor Cost']
+
+            for (var i=4;i<8;i++) {
+            
+              columns[j] = {field : headerData[i], headerName:colValues[j], width:100}
+              j = j + 1
+   
+            }
+            
+            return columns;
+        }
+
+    }
+
     async getSTRowsData () {
         seaData = await getEntity.seaTransportation.list();
         seaData = seaData.items;
@@ -85,6 +107,29 @@ class SeaTransportService {
                 var jsondata = {};
                 for (var j=2;j<bodyData.length;j++) {
                     console.log("HERE2");
+
+                    jsondata[headerData[j]] = bodyData[j];
+                }
+                jsondata['internalId'] = i;
+                rows.push(jsondata);
+            }    
+        }
+
+    return rows;
+
+    }
+
+    async getSTRowsDataForDashBoard () {
+        seaData = await getEntity.seaTransportation.list();
+        seaData = seaData.items;
+
+        if(seaData) {
+
+            for (var i=0; i<seaData.length; i++) {
+                headerData = Object.keys(seaData[0]);
+                bodyData = Object.values(seaData[i]);
+                var jsondata = {};
+                for (var j=4;j<8;j++) {
 
                     jsondata[headerData[j]] = bodyData[j];
                 }

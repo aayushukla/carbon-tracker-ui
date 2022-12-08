@@ -192,6 +192,50 @@ class GroundTransportService {
 
     
 
+    async getGTColumnDataForDashBoard () {
+        groundData = await getEntity.groundTransportation.list();
+        groundData = groundData.items;
+        let j = 0
+        if(groundData) {
+            headerData = Object.keys(groundData[0]);
+            console.log("FETCHED",headerData)
+            let colValues = ['CO2','Vehicle ID','Fuel Cost','Labor Cost']
+
+            for (var i=4;i<8;i++) {
+            
+              columns[j] = {field : headerData[i], headerName:colValues[j], width:100}
+              j = j + 1
+   
+            }
+            
+            return columns;
+        }
+
+    }
+
+    async getGTRowsDataForDashBoard () {
+        groundData = await getEntity.groundTransportation.list();
+        groundData = groundData.items;
+
+        if(groundData) {
+
+            for (var i=0; i<groundData.length; i++) {
+                headerData = Object.keys(groundData[0]);
+                bodyData = Object.values(groundData[i]);
+                var jsondata = {};
+                for (var j=4;j<8;j++) {
+
+                    jsondata[headerData[j]] = bodyData[j];
+                }
+                jsondata['internalId'] = i;
+                rows.push(jsondata);
+            }    
+        }
+
+    return rows;
+
+    }
+
      
 }
 
