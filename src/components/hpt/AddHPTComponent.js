@@ -4,6 +4,7 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import HPTService from '../../services/HPTService';
 import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
+import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
 
 import SidebarComponent from '../SidebarComponent';
 
@@ -189,7 +190,7 @@ function AddHPTComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px", marging: '0%' }}>Updating....</h3> : null
+                                            :  <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>
