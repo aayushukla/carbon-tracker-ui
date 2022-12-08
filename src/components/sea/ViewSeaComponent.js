@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import HPTService from '../../services/HPTService';
+import { Button, Container } from 'react-bootstrap';
+
 import CO2NavBar from '../CO2NavBar';
-import ReactDOM from 'react-dom';
-import SeaSidebar from '../SeaSideBar';
-import { MDBBadge, MDBBtn, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
+import { MDBBadge, MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import SeaTransportService from '../../services/SeaTransportService';
 import SidebarComponent from '../SidebarComponent';
-
+import Row from 'react-bootstrap/Row';
+import SeaChart from './SeaChart';
 function ViewSeaComponent(props) {
 
     const [showData, setShowData] = useState(false);
     const [serialNum, setSerialNum] = useState("");
-    const [isDataPresent, setIsDataPresent] = useState(false)
+    const [isDataPresent, setIsDataPresent] = useState(false);
     // const [records, setRecords] = useState([]);
     let records = {};
 
@@ -97,9 +96,13 @@ function ViewSeaComponent(props) {
                             onClick={() => { setSeaRecords([]); setShowData(false) }}>Clear</Button>
                         }
                     </form>
-
+                        
                     {
                         showData && isDataPresent &&
+
+                        <div>
+                         
+                        
                         <MDBTable align='middle'>
                             <MDBTableHead>
                                 <tr>
@@ -134,48 +137,20 @@ function ViewSeaComponent(props) {
                                                 <td>{item.dateShipped}</td>
                                                 <td>{item.dateArrived}</td>
                                                 <td>{item.bill}</td>
-                                            </tr>
-
-
-                                            // <tr>
-
-                                            //     <td>121</td>
-                                            //     <td>22</td>
-                                            //     <td>
-                                            //         <MDBBadge color={item.co2 < 50 ? 'success' : 'danger'} pill>
-                                            //             121
-                                            //         </MDBBadge>
-                                            //     </td>
-                                            //     <td>121</td>
-                                            //     <td>121</td>
-                                            //     <td>121</td>
-                                            //     <td>2022-10-06</td>
-                                            //     <td>2022-10-07</td>
-                                            //     <td>121</td>
-                                            // </tr>
+                                            </tr>       
 
                                         )
                                     })
-
-
-                                    // <tr>
-                                    //     <td>Drill</td>
-                                    //     <td>55555</td>
-                                    //     <td>
-                                    //         <MDBBadge color='danger' pill>
-                                    //             30
-                                    //         </MDBBadge>
-                                    //     </td>
-                                    //     <td>30</td>
-                                    //     <td>60</td>
-                                    //     <td>12345</td>
-                                    //     <td>54321</td>
-                                    //     <td>99999</td>
-                                    //     <td>11111</td>
-                                    // </tr>
+                                 
                                 }
                             </MDBTableBody>
+                            
                         </MDBTable>
+                        <br></br><br></br>
+                        <SeaChart seaRecord={seaRecords}/>
+                        </div>
+                      
+                        
                     }
                 </main>
             </div>

@@ -136,28 +136,12 @@ function SidebarComponent(componentType) {
                 title: "Edit Sea Route",
                 link: "/editSea",
                 icon: <MdAssignmentTurnedIn/>
-            }
+            },
+       
+
+
         ]
     }
-
-
-    //     return (
-    //         <div className="sidebar">
-    //             <div className="top_Section">
-    //                <img className="tool" width = "200px" style ={{justifyContent:'center'}} src="images/sideimage.jpg"></img>
-    //             </div>
-    //             {
-    //                 links.map((path, key) => { return(
-    //                     <a href={path.link} key={key} className="link" id={window.location.pathname === path.link? "active" : ""}>
-    //                         <div className="icon">{path.icon}</div>
-    //                         <div className="link_text">{path.title}</div>
-    //                     </a>
-    //                 ) 
-    //                 })
-    //             }
-    //         </div>
-    //     );
-    // }
 
     return (
         <>

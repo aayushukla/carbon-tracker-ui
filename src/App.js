@@ -34,6 +34,7 @@ import UpdateSeaComponent from "./components/sea/UpdateSeaComponent";
 
 
 
+
 function App() {
   const [token, setToken] = useState();
 
@@ -71,6 +72,7 @@ function App() {
         <Route path="/seamap" element={<WorldMap />} />
         <Route path="/userProfile" element={<UserProfile />} />
         <Route path="/editSea" element={<UpdateSeaComponent />} />
+
 
       </Routes>
   )
