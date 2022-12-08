@@ -4,6 +4,7 @@ import MotorService from '../../services/MotorService';
 import CO2NavBar from '../CO2NavBar';
 import SidebarComponent from '../SidebarComponent';
 import { MDBFile } from 'mdb-react-ui-kit';
+import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
 
 
 
@@ -143,7 +144,7 @@ function AddMotorComponent(props) {
                                                 </Button>
                                             </Modal.Footer>
                                         </Modal>
-                                            : <h3 style={{ fontSize: "20px" }}>Adding....</h3> : null
+                                            : <img src={loader} alt=""/> : null
                                 }
                             </div>
                         </div>
