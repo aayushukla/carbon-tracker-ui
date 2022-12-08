@@ -4,7 +4,7 @@ import { Button, Container, Form, Modal } from 'react-bootstrap';
 import HPTService from '../../services/HPTService';
 import CO2NavBar from '../CO2NavBar';
 import HPTSidebar from '../HPTSidebar';
-import loader from '/Users/jkottu/CSC234/carbon-project/carbon-tracker-ui/src/components/gidForUpdate.gif'
+import loader from '../../../public/gifForUpdate.gif'
 
 import SidebarComponent from '../SidebarComponent';
 
