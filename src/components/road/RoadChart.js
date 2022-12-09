@@ -6,9 +6,9 @@ function RoadChart(props) {
     console.log("sea records from seacharts", props)
 return (
 
-	<div style={{height:"50%"}}>
-	<h3>Road Transport Cost Graph</h3>
-	<div style={{ maxWidth: "550px"}}>
+	<div style={{height:"30%", marginTop: '-2%'}}>
+	<h3 style={{fontSize: '20px'}}>Road Transport Cost Graph</h3>
+	<div style={{ maxWidth: "550px", height: '200px'}}>
 		<Bar
 		data={{
 			// Name of the variables on x-axies for each bar
